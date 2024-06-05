@@ -1,21 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=8 format=3 uid="uid://cpf0i51h6ms7j"]
 
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7jelm"]
 [ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/scrolling_layer.tscn" id="1_n0yag"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cvuvq"]
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="2_m5qq5"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_dxken"]
+
+[sub_resource type="Resource" id="Resource_0rg0c"]
+script = ExtResource("3_dxken")
+duration = 1.0
+transition = 0
+ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23eey"]
 size = Vector2(100000, 71)
 
 [node name="Level" type="Node2D"]
 
-[node name="Character" parent="." instance=ExtResource("2_m5qq5")]
-position = Vector2(267, 352)
-
-[node name="Camera2D" type="Camera2D" parent="Character"]
-position = Vector2(-26, 38)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 375)
 limit_top = 0
 limit_bottom = 750
-position_smoothing_speed = 6.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("1_7jelm")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(360, 375)
+script = ExtResource("2_cvuvq")
+follow_mode = 2
+follow_target = NodePath("../Character")
+tween_resource = SubResource("Resource_0rg0c")
+draw_limits = true
+limit_top = 0
+limit_bottom = 750
+metadata/_edit_group_ = true
+
+[node name="Character" parent="." instance=ExtResource("2_m5qq5")]
+position = Vector2(360, 383)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_n0yag")]
 

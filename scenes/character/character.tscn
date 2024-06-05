@@ -1,6 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5hgdb0d3dor"]
+[gd_scene load_steps=11 format=3 uid="uid://h5hgdb0d3dor"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_o6o0n"]
+[ext_resource type="Texture2D" uid="uid://x0j2yily3pqr" path="res://assets/textures/character/guns_pack/1 Characters/1 Biker/Run1.png" id="2_qm8rb"]
 
-[node name="Character" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujljw"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7luur"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1soe"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jil3r"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf3ph"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b0hf"]
+atlas = ExtResource("2_qm8rb")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxlay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujljw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7luur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1soe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jil3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf3ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b0hf")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rjfo"]
+radius = 40.0
+
+[node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_o6o0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_sxlay")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.698043
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-35, 57)
+shape = SubResource("CircleShape2D_6rjfo")

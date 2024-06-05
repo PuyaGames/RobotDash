@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=4 format=3 uid="uid://cpf0i51h6ms7j"]
+
+[ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/scrolling_layer.tscn" id="1_n0yag"]
+[ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="2_m5qq5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23eey"]
+size = Vector2(100000, 71)
 
 [node name="Level" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("2_m5qq5")]
+position = Vector2(267, 352)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(-26, 38)
+limit_top = 0
+limit_bottom = 750
+position_smoothing_speed = 6.0
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_n0yag")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(23, 566)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(722, 145)
+shape = SubResource("RectangleShape2D_23eey")

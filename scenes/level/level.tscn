@@ -18,7 +18,7 @@ size = Vector2(100000, 71)
 [node name="Level" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(360, 375)
+position = Vector2(313, 667)
 limit_top = 0
 limit_bottom = 750
 
@@ -26,7 +26,7 @@ limit_bottom = 750
 script = ExtResource("1_7jelm")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(360, 375)
+position = Vector2(313, 667)
 script = ExtResource("2_cvuvq")
 follow_mode = 2
 follow_target = NodePath("../Character")
@@ -37,7 +37,7 @@ limit_bottom = 750
 metadata/_edit_group_ = true
 
 [node name="Character" parent="." instance=ExtResource("2_m5qq5")]
-position = Vector2(360, 383)
+position = Vector2(313, 169)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_n0yag")]
 
@@ -45,5 +45,5 @@ position = Vector2(360, 383)
 position = Vector2(23, 566)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(722, 145)
+position = Vector2(875, 5)
 shape = SubResource("RectangleShape2D_23eey")

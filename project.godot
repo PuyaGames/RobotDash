@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Enums="*res://scenes/global/enums.gd"
+Structs="*res://scenes/global/structs.gd"
 
 [debug]
 

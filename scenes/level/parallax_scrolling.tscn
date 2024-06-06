@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0cm1os56ell5"]
+
+[ext_resource type="Script" path="res://scenes/level/parallax_scrolling.gd" id="1_e6n2m"]
+
+[node name="ParallaxScrolling" type="ParallaxBackground"]
+scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
+script = ExtResource("1_e6n2m")

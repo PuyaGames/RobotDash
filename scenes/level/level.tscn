@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=11 format=3 uid="uid://cpf0i51h6ms7j"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7jelm"]
-[ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/scrolling_layer.tscn" id="1_n0yag"]
+[ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/parallax_scrolling.tscn" id="1_n0yag"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cvuvq"]
+[ext_resource type="Script" path="res://scenes/structs/scrolling_layer_bean.gd" id="2_etje1"]
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="2_m5qq5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_dxken"]
+[ext_resource type="Texture2D" uid="uid://binp51etodvv2" path="res://assets/textures/background/halloween/1_game_background/layers/1.png" id="3_q3dli"]
+
+[sub_resource type="Resource" id="Resource_t8rdb"]
+script = ExtResource("2_etje1")
+sprite = ExtResource("3_q3dli")
+sprite_size = Vector2(1920, 1080)
+scale_x = 0.0
+motion_mirroring = Vector2(1, 0)
 
 [sub_resource type="Resource" id="Resource_0rg0c"]
 script = ExtResource("3_dxken")
@@ -16,6 +25,9 @@ ease = 2
 size = Vector2(100000, 71)
 
 [node name="Level" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_n0yag")]
+layer_beans = Array[ExtResource("2_etje1")]([SubResource("Resource_t8rdb")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(313, 667)
@@ -39,11 +51,11 @@ metadata/_edit_group_ = true
 [node name="Character" parent="." instance=ExtResource("2_m5qq5")]
 position = Vector2(313, 169)
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("1_n0yag")]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(23, 566)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(875, 5)
 shape = SubResource("RectangleShape2D_23eey")
+
+[node name="Foreground" parent="." instance=ExtResource("1_n0yag")]

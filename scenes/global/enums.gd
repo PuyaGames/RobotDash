@@ -16,3 +16,12 @@ enum TerrainType
     Desert_Cloud,
     Desert_Dusk,
 }
+
+enum PlayerState
+{
+    Walk,
+    Run,
+    Jump,
+    Fall,
+    Idle
+}

@@ -10,7 +10,7 @@ size = Vector2(1939.71, 106)
 script = ExtResource("1_qmut3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.763, 0.763)
+scale = Vector2(0.93, 0.93)
 texture = ExtResource("2_jg5m3")
 centered = false
 

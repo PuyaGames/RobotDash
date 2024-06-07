@@ -3,11 +3,6 @@ extends ParallaxBackground
 class_name ParallaxScrolling
 
 
-@export var level : Level
-@export var layer_hiding_odds_list : Array[float] = [
-	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
-]
-
 @onready var layer_01 : ParallaxLayer = $"ParallaxLayer1"
 @onready var layer_02 : ParallaxLayer = $"ParallaxLayer2"
 @onready var layer_03 : ParallaxLayer = $"ParallaxLayer3"

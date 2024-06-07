@@ -6,11 +6,11 @@ class_name TerrainGenerator
 @onready var terrain_root_02 : Node2D = $"Terrain2"
 @onready var terrain_root_03 : Node2D = $"Terrain3"
 
-const terrain_length : float = 1464.0
+const terrain_length : float = 1785.0
 var update_trigger_position_x : float
 var update_trigger_offset : float = 20.0
-var temp_terrain_root : Terrain
-var terrain_root_list : Array[Terrain] = []
+var temp_terrain_root : Node2D
+var terrain_root_list : Array[Node2D] = []
 var terrain_generating_count : int = 0
 
 func _ready() -> void:

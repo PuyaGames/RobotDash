@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=21 format=3 uid="uid://cpf0i51h6ms7j"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7jelm"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jeg3s"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://wcgv0uc1kk08" path="res://scenes/level/terrain_generator.tscn" id="12_ct1ow"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="13_5dx4o"]
 [ext_resource type="Texture2D" uid="uid://dwnbtj0544rwb" path="res://assets/textures/water_noise.jpg" id="14_7rwk6"]
+[ext_resource type="Texture2D" uid="uid://dy8l382auh87q" path="res://resources/ui/at_button.tres" id="16_lpsdw"]
 
 [sub_resource type="Resource" id="Resource_0rg0c"]
 script = ExtResource("3_dxken")
@@ -32,13 +33,13 @@ shader_parameter/strength = 0.02
 shader_parameter/noise_texture = ExtResource("14_7rwk6")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bly6a"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
+viewport_path = NodePath("Visible/SubViewportContainer/SubViewport")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jeg3s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(375, 667)
+position = Vector2(375, 812)
 limit_left = 0
 limit_top = 0
 limit_right = 750
@@ -48,10 +49,10 @@ limit_bottom = 1334
 script = ExtResource("1_7jelm")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(375, 667)
+position = Vector2(375, 812)
 script = ExtResource("2_cvuvq")
 follow_mode = 2
-follow_target = NodePath("../SubViewportContainer/SubViewport/Player")
+follow_target = NodePath("../Visible/SubViewportContainer/SubViewport/Player")
 tween_resource = SubResource("Resource_0rg0c")
 draw_limits = true
 limit_left = 0
@@ -60,19 +61,24 @@ limit_right = 750
 limit_bottom = 1334
 metadata/_edit_group_ = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_57anw")
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Visible" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(750, 1624)
+layout_mode = 3
+anchors_preset = 0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Visible"]
+material = SubResource("ShaderMaterial_57anw")
+layout_mode = 0
+offset_right = 750.0
+offset_bottom = 824.0
+
+[node name="SubViewport" type="SubViewport" parent="Visible/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(750, 824)
+size = Vector2i(750, 1004)
 render_target_update_mode = 4
 
-[node name="Background" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("level") instance=ExtResource("1_n0yag")]
-level = NodePath("../../..")
-layer_hiding_odds_list = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+[node name="Background" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("1_n0yag")]
 layer_01_texture = ExtResource("2_g8caq")
 layer_02_texture = ExtResource("3_o88j5")
 layer_03_texture = ExtResource("4_53vm5")
@@ -80,25 +86,104 @@ layer_04_texture = ExtResource("5_3skol")
 layer_05_texture = ExtResource("6_54e7l")
 layer_06_texture = ExtResource("7_unaa6")
 
-[node name="TerrainGenerator" parent="SubViewportContainer/SubViewport" instance=ExtResource("12_ct1ow")]
+[node name="TerrainGenerator" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("12_ct1ow")]
 
-[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_m5qq5")]
-position = Vector2(140, 162)
+[node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("2_m5qq5")]
+position = Vector2(120, 162)
 
-[node name="Foreground" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_n0yag")]
-layer_hiding_odds_list = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+[node name="Foreground" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("1_n0yag")]
 
-[node name="Reflection" type="CanvasLayer" parent="."]
-
-[node name="Water" type="TextureRect" parent="Reflection"]
+[node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -510.0
-offset_bottom = 314.001
+offset_top = -620.0
+offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("ViewportTexture_bly6a")
 flip_v = true
+
+[node name="ColorRect" type="ColorRect" parent="Visible/Water"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="JumpButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(750, 0)
+offset_top = 16.0
+offset_right = 750.0
+offset_bottom = 81.0
+
+[node name="ProgressLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "100%"
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 610.0
+offset_top = 1140.0
+offset_right = 718.0
+offset_bottom = 1248.0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("16_lpsdw")
+stretch_mode = 3
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "暂停"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 610.0
+offset_top = 1275.0
+offset_right = 718.0
+offset_bottom = 1383.0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("16_lpsdw")
+stretch_mode = 3
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "返回"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/JumpButton" to="." method="_on_jump_button_button_down"]

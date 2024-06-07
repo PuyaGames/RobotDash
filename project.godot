@@ -28,10 +28,11 @@ gdscript/warnings/untyped_declaration=2
 [display]
 
 window/size/viewport_width=750
-window/size/viewport_height=1334
+window/size/viewport_height=1624
 window/size/window_width_override=375
-window/size/window_height_override=667
+window/size/window_height_override=812
 window/stretch/mode="canvas_items"
+window/handheld/orientation=1
 
 [editor_plugins]
 
@@ -43,7 +44,7 @@ import/blender/enabled=false
 
 [gui]
 
-theme/custom_font="res://assets/fonts/wts11.ttf"
+theme/custom_font="res://assets/fonts/SourceHanSansCN-Bold.otf"
 
 [input]
 
@@ -72,7 +73,12 @@ test_right={
 ]
 }
 
+[phantom_camera]
+
+tips/show_jitter_tips=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -6,10 +6,16 @@
 [node name="TerrainGenerator" type="Node2D"]
 script = ExtResource("1_vufd6")
 
-[node name="Terrain1" parent="." instance=ExtResource("2_rp6gl")]
+[node name="Terrain1" type="Node2D" parent="."]
 
-[node name="Terrain2" parent="." instance=ExtResource("2_rp6gl")]
+[node name="Terrain1" parent="Terrain1" instance=ExtResource("2_rp6gl")]
+
+[node name="Terrain2" type="Node2D" parent="."]
 position = Vector2(1464.96, 0)
 
-[node name="Terrain3" parent="." instance=ExtResource("2_rp6gl")]
+[node name="Terrain2" parent="Terrain2" instance=ExtResource("2_rp6gl")]
+
+[node name="Terrain3" type="Node2D" parent="."]
 position = Vector2(2929.92, 0)
+
+[node name="Terrain3" parent="Terrain3" instance=ExtResource("2_rp6gl")]

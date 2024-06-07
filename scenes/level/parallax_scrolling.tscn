@@ -4,70 +4,81 @@
 
 [node name="ParallaxScrolling" type="ParallaxBackground"]
 script = ExtResource("1_e6n2m")
-layer_01_texture = null
-layer_02_texture = null
-layer_03_texture = null
-layer_04_texture = null
-layer_05_texture = null
-layer_06_texture = null
-layer_07_texture = null
-layer_08_texture = null
-layer_09_texture = null
-layer_10_texture = null
+layer_hiding_odds_list = null
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.04, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer1"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.06, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.08, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer6"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer7"]
 scale = Vector2(0.763344, 0.763344)
 centered = false
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer8"]
 centered = false
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer9"]
 centered = false
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1464, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer10"]
 centered = false

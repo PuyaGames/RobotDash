@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wcgv0uc1kk08"]
+
+[ext_resource type="Script" path="res://scenes/level/terrain_generator.gd" id="1_vufd6"]
+[ext_resource type="PackedScene" uid="uid://bhako1y2iibih" path="res://scenes/level/terrain.tscn" id="2_rp6gl"]
+
+[node name="TerrainGenerator" type="Node2D"]
+script = ExtResource("1_vufd6")
+
+[node name="Terrain1" parent="." instance=ExtResource("2_rp6gl")]
+
+[node name="Terrain2" parent="." instance=ExtResource("2_rp6gl")]
+position = Vector2(1464.96, 0)
+
+[node name="Terrain3" parent="." instance=ExtResource("2_rp6gl")]
+position = Vector2(2929.92, 0)

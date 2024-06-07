@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhako1y2iibih"]
+
+[ext_resource type="Script" path="res://scenes/level/terrain.gd" id="1_qmut3"]
+[ext_resource type="Texture2D" uid="uid://bx5rfq6tisiht" path="res://assets/textures/background/halloween/1_game_background/layers/7.png" id="2_jg5m3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrles"]
+size = Vector2(1939.71, 106)
+
+[node name="Terrain" type="Node2D"]
+script = ExtResource("1_qmut3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.763, 0.763)
+texture = ExtResource("2_jg5m3")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(959.371, 1021.07)
+shape = SubResource("RectangleShape2D_hrles")

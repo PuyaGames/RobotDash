@@ -1,6 +1,12 @@
 @tool
 extends ParallaxBackground
+class_name ParallaxScrolling
 
+
+@export var level : Level
+@export var layer_hiding_odds_list : Array[float] = [
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+]
 
 @onready var layer_01 : ParallaxLayer = $"ParallaxLayer1"
 @onready var layer_02 : ParallaxLayer = $"ParallaxLayer2"
@@ -12,6 +18,11 @@ extends ParallaxBackground
 @onready var layer_08 : ParallaxLayer = $"ParallaxLayer8"
 @onready var layer_09 : ParallaxLayer = $"ParallaxLayer9"
 @onready var layer_10 : ParallaxLayer = $"ParallaxLayer10"
+
+@onready var layer_list : Array[ParallaxLayer] = [
+	layer_01, layer_02, layer_03, layer_04, layer_05,
+	layer_06, layer_07, layer_08, layer_09, layer_10,
+]
 
 @onready var layer_01_sprite : Sprite2D = $"ParallaxLayer1/Sprite2D"
 @onready var layer_02_sprite : Sprite2D = $"ParallaxLayer2/Sprite2D"
@@ -83,18 +94,24 @@ extends ParallaxBackground
 		layer_10_texture = new_value
 		if Engine.is_editor_hint():
 			layer_10_sprite.texture = new_value
-	
 
 
 func _ready() -> void:
-	if Engine.is_editor_hint() == false:
-		layer_01_sprite.texture = layer_01_texture
-		layer_02_sprite.texture = layer_02_texture
-		layer_03_sprite.texture = layer_03_texture
-		layer_04_sprite.texture = layer_04_texture
-		layer_05_sprite.texture = layer_05_texture
-		layer_06_sprite.texture = layer_06_texture
-		layer_07_sprite.texture = layer_07_texture
-		layer_08_sprite.texture = layer_08_texture
+	layer_01_sprite.texture = layer_01_texture
+	layer_02_sprite.texture = layer_02_texture
+	layer_03_sprite.texture = layer_03_texture
+	layer_04_sprite.texture = layer_04_texture
+	layer_05_sprite.texture = layer_05_texture
+	layer_06_sprite.texture = layer_06_texture
+	layer_07_sprite.texture = layer_07_texture
+	layer_08_sprite.texture = layer_08_texture
+
+
+func move_forward(speed : float, delta : float) -> void:
+	for iter in layer_list:
+		iter.motion_offset.x -= speed * delta * iter.motion_scale.x
+
+
+	
 
 

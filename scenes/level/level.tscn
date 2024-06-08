@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=24 format=3 uid="uid://cpf0i51h6ms7j"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7jelm"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jeg3s"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://wcgv0uc1kk08" path="res://scenes/level/terrain_generator.tscn" id="12_ct1ow"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="13_5dx4o"]
 [ext_resource type="Texture2D" uid="uid://dwnbtj0544rwb" path="res://assets/textures/water_noise.jpg" id="14_7rwk6"]
-[ext_resource type="Texture2D" uid="uid://dy8l382auh87q" path="res://resources/ui/at_button.tres" id="16_lpsdw"]
+[ext_resource type="Texture2D" uid="uid://b8ohm704fi7sp" path="res://assets/textures/ui/buttons.png" id="16_370dc"]
 
 [sub_resource type="Resource" id="Resource_0rg0c"]
 script = ExtResource("3_dxken")
@@ -34,6 +34,16 @@ shader_parameter/noise_texture = ExtResource("14_7rwk6")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bly6a"]
 viewport_path = NodePath("Visible/SubViewportContainer/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n667b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw7pm"]
+atlas = ExtResource("16_370dc")
+region = Rect2(548, 400, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpjm4"]
+atlas = ExtResource("16_370dc")
+region = Rect2(544, 144, 48, 48)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jeg3s")
@@ -127,63 +137,45 @@ grow_vertical = 2
 focus_mode = 0
 flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(750, 0)
-offset_top = 16.0
-offset_right = 750.0
-offset_bottom = 81.0
+[node name="TopPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n667b")
 
-[node name="ProgressLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="ProgressLabel" type="Label" parent="CanvasLayer/TopPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.5
+offset_top = 24.0
+offset_right = 81.5
+offset_bottom = 112.0
+grow_horizontal = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "100%"
-
-[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
-offset_left = 610.0
-offset_top = 1140.0
-offset_right = 718.0
-offset_bottom = 1248.0
-focus_mode = 0
-keep_pressed_outside = true
-texture_normal = ExtResource("16_lpsdw")
-stretch_mode = 3
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "暂停"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" type="TextureButton" parent="CanvasLayer"]
-offset_left = 610.0
-offset_top = 1275.0
-offset_right = 718.0
-offset_bottom = 1383.0
-focus_mode = 0
-keep_pressed_outside = true
-texture_normal = ExtResource("16_lpsdw")
-stretch_mode = 3
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer/BackButton"]
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/TopPanel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "返回"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = -112.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 112.0
+grow_horizontal = 0
+focus_mode = 0
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = SubResource("AtlasTexture_iw7pm")
+texture_pressed = SubResource("AtlasTexture_hpjm4")
+stretch_mode = 0
+metadata/_edit_group_ = true
 
 [connection signal="button_down" from="CanvasLayer/JumpButton" to="." method="_on_jump_button_button_down"]

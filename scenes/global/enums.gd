@@ -1,7 +1,7 @@
 extends Node
 
 
-enum TerrainType
+enum ETerrainType
 {
     Halloween_Green,
     Halloween_Red,
@@ -15,13 +15,4 @@ enum TerrainType
     Desert_Rock,
     Desert_Cloud,
     Desert_Dusk,
-}
-
-enum PlayerState
-{
-    Walk,
-    Run,
-    Jump,
-    Fall,
-    Idle
 }

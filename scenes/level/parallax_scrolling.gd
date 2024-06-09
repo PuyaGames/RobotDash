@@ -33,80 +33,83 @@ class_name ParallaxScrolling
 @export var layer_01_texture : Texture2D:
 	set(new_value):
 		layer_01_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_01_sprite != null:
 			layer_01_sprite.texture = new_value
 
 @export var layer_02_texture : Texture2D:
 	set(new_value):
 		layer_02_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_02_sprite != null:
 			layer_02_sprite.texture = new_value
 	
 @export var layer_03_texture : Texture2D:
 	set(new_value):
 		layer_03_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_03_sprite != null:
 			layer_03_sprite.texture = new_value
 	
 @export var layer_04_texture : Texture2D:
 	set(new_value):
 		layer_04_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_04_sprite != null:
 			layer_04_sprite.texture = new_value
 	
 @export var layer_05_texture : Texture2D:
 	set(new_value):
 		layer_05_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_05_sprite != null:
 			layer_05_sprite.texture = new_value
 	
 @export var layer_06_texture : Texture2D:
 	set(new_value):
 		layer_06_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_06_sprite != null:
 			layer_06_sprite.texture = new_value
 	
 @export var layer_07_texture : Texture2D:
 	set(new_value):
 		layer_07_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_07_sprite != null:
 			layer_07_sprite.texture = new_value
 	
 @export var layer_08_texture : Texture2D:
 	set(new_value):
 		layer_08_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_08_sprite != null:
 			layer_08_sprite.texture = new_value
 	
 @export var layer_09_texture : Texture2D:
 	set(new_value):
 		layer_09_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_09_sprite != null:
 			layer_09_sprite.texture = new_value
 	
 @export var layer_10_texture : Texture2D:
 	set(new_value):
 		layer_10_texture = new_value
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && layer_10_sprite != null:
 			layer_10_sprite.texture = new_value
 
 
 func _ready() -> void:
-	layer_01_sprite.texture = layer_01_texture
-	layer_02_sprite.texture = layer_02_texture
-	layer_03_sprite.texture = layer_03_texture
-	layer_04_sprite.texture = layer_04_texture
-	layer_05_sprite.texture = layer_05_texture
-	layer_06_sprite.texture = layer_06_texture
-	layer_07_sprite.texture = layer_07_texture
-	layer_08_sprite.texture = layer_08_texture
+	if (layer_01_sprite != null):
+		layer_01_sprite.texture = layer_01_texture
+	if (layer_02_sprite != null):
+		layer_02_sprite.texture = layer_02_texture
+	if (layer_03_sprite != null):
+		layer_03_sprite.texture = layer_03_texture
+	if (layer_04_sprite != null):
+		layer_04_sprite.texture = layer_04_texture
+	if (layer_05_sprite != null):
+		layer_05_sprite.texture = layer_05_texture
+	if (layer_06_sprite != null):
+		layer_06_sprite.texture = layer_06_texture
+	if (layer_07_sprite != null):
+		layer_07_sprite.texture = layer_07_texture
+	if (layer_08_sprite != null):
+		layer_08_sprite.texture = layer_08_texture
 
 
 func move_forward(speed : float, delta : float) -> void:
 	for iter in layer_list:
 		iter.motion_offset.x -= speed * delta * iter.motion_scale.x
-
-
-	
-
-

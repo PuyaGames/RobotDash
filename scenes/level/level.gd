@@ -2,7 +2,7 @@ extends Node2D
 class_name Level
 
 
-@onready var player : Character = $"Visible/SubViewportContainer/SubViewport/Player"
+@onready var player : Player = $"Visible/SubViewportContainer/SubViewport/Player"
 @onready var background : ParallaxScrolling = $"Visible/SubViewportContainer/SubViewport/Background"
 @onready var foreground : ParallaxScrolling = $"Visible/SubViewportContainer/SubViewport/Foreground"
 @onready var terrain_generator : TerrainGenerator = $"Visible/SubViewportContainer/SubViewport/TerrainGenerator"
@@ -12,6 +12,7 @@ var odometer : int = 0
 
 func _ready() -> void:
 	odometer = player.position.x as int
+	pass
 	
 
 func _process(delta: float) -> void:

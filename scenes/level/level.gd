@@ -22,4 +22,7 @@ func _process(delta: float) -> void:
 
 
 func _on_jump_button_button_down() -> void:
-	pass
+	if player.is_can_double_jump():
+		player.double_jump()
+	else:
+		player.jump()

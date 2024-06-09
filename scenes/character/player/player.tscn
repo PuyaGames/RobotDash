@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cmeeg816o3qaw"]
+[gd_scene load_steps=36 format=3 uid="uid://cmeeg816o3qaw"]
 
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="1_ac2ss"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_637sq"]
@@ -233,10 +233,6 @@ animation = &"Run"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_he2hp"]
 animation = &"Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8uv24"]
-advance_mode = 2
-advance_expression = "player_state == EPlayerState.Walk"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_svfg5"]
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Ready"
@@ -252,10 +248,6 @@ advance_expression = "player_state == EPlayerState.Jump"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8xpti"]
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.DoubleJump"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_46c60"]
-advance_mode = 2
-advance_expression = "player_state == EPlayerState.Fall"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6mnk1"]
 advance_mode = 2
@@ -277,6 +269,17 @@ advance_expression = "player_state == EPlayerState.Idle"
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Cheer"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0gerd"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.DoubleJump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tasa1"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5emw2"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2vcd4"]
 states/Cheer/node = SubResource("AnimationNodeAnimation_dxh1y")
 states/Cheer/position = Vector2(1053, 111)
@@ -296,19 +299,18 @@ states/Run/position = Vector2(576, 305)
 states/Start/position = Vector2(177, 111)
 states/Walk/node = SubResource("AnimationNodeAnimation_he2hp")
 states/Walk/position = Vector2(371, 111)
-transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_8uv24"), "Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_8xpti"), "DoubleJump", "Fall", SubResource("AnimationNodeStateMachineTransition_46c60"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c")]
-graph_offset = Vector2(44, -60)
+transitions = ["Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_8xpti"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_0gerd"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_tasa1"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_5emw2")]
+graph_offset = Vector2(-148, 196)
 
 [node name="Player" instance=ExtResource("1_ac2ss")]
 script = ExtResource("2_637sq")
-movement_speed = 400.0
 jump_peak_time = 0.5
 jump_fall_time = 0.5
-jump_height = 2.0
+jump_height = 3.0
 jump_distance = 4.0
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 19
+frame = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

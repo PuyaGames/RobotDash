@@ -40,6 +40,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	position.x = 120.0
+
 	if velocity.y > 0.0:
 		velocity.y += jump_gravity * delta
 		if not is_on_floor() &&\

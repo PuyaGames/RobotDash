@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b23g0ktdrkovh"]
+
+[ext_resource type="Script" path="res://scenes/level/platform.gd" id="1_e5pmp"]
+[ext_resource type="Texture2D" uid="uid://bx5rfq6tisiht" path="res://assets/textures/background/halloween/1_game_background/layers/7.png" id="2_bqxr3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vl6cd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvpvf"]
+atlas = ExtResource("2_bqxr3")
+region = Rect2(0, 968, 504, 48)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka4vy"]
+custom_solver_bias = 0.657
+radius = 22.56
+height = 511.08
+
+[node name="Platform" type="StaticBody2D"]
+script = ExtResource("1_e5pmp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vl6cd")
+texture = SubResource("AtlasTexture_xvpvf")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(252, 24)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ka4vy")

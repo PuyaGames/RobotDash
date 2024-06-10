@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cmeeg816o3qaw"]
+[gd_scene load_steps=37 format=3 uid="uid://cmeeg816o3qaw"]
 
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="1_ac2ss"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_637sq"]
@@ -34,34 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_nesmj"]
-resource_name = "DoubleJump"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [19]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
 }
 
 [sub_resource type="Animation" id="Animation_f0nh4"]
@@ -194,11 +166,39 @@ tracks/0/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42, 43]
 }
 
+[sub_resource type="Animation" id="Animation_b7oex"]
+resource_name = "DoubleJump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubg3a"]
 _data = {
 "Attack": SubResource("Animation_m1iqx"),
 "Cheer": SubResource("Animation_vajqx"),
-"DoubleJump": SubResource("Animation_nesmj"),
+"DoubleJump": SubResource("Animation_b7oex"),
 "Fall": SubResource("Animation_f0nh4"),
 "Idle": SubResource("Animation_esct6"),
 "Jump": SubResource("Animation_8gj1r"),
@@ -212,7 +212,7 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dxh1y"]
 animation = &"Cheer"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gq0hd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kg6cg"]
 animation = &"DoubleJump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nraun"]
@@ -245,10 +245,6 @@ advance_expression = "player_state == EPlayerState.Run"
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Jump"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8xpti"]
-advance_mode = 2
-advance_expression = "player_state == EPlayerState.DoubleJump"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6mnk1"]
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Fall"
@@ -269,25 +265,33 @@ advance_expression = "player_state == EPlayerState.Idle"
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Cheer"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0gerd"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5emw2"]
 advance_mode = 2
-advance_expression = "player_state == EPlayerState.DoubleJump"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tasa1"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bky72"]
 advance_mode = 2
 advance_expression = "player_state == EPlayerState.Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5emw2"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jegvv"]
 advance_mode = 2
+advance_expression = "player_state == EPlayerState.DoubleJump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hyoag"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.DoubleJump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yofqf"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.Run"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2vcd4"]
 states/Cheer/node = SubResource("AnimationNodeAnimation_dxh1y")
 states/Cheer/position = Vector2(1053, 111)
-states/DoubleJump/node = SubResource("AnimationNodeAnimation_gq0hd")
-states/DoubleJump/position = Vector2(43, 627)
+states/DoubleJump/node = SubResource("AnimationNodeAnimation_kg6cg")
+states/DoubleJump/position = Vector2(38, 627)
 states/End/position = Vector2(177, -10)
 states/Fall/node = SubResource("AnimationNodeAnimation_nraun")
-states/Fall/position = Vector2(38, 305)
+states/Fall/position = Vector2(29, 305)
 states/Idle/node = SubResource("AnimationNodeAnimation_ppqfl")
 states/Idle/position = Vector2(810, 209)
 states/Jump/node = SubResource("AnimationNodeAnimation_00xuh")
@@ -299,8 +303,8 @@ states/Run/position = Vector2(576, 305)
 states/Start/position = Vector2(177, 111)
 states/Walk/node = SubResource("AnimationNodeAnimation_he2hp")
 states/Walk/position = Vector2(371, 111)
-transitions = ["Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_8xpti"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_0gerd"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_tasa1"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_5emw2")]
-graph_offset = Vector2(-148, 196)
+transitions = ["Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_5emw2"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_bky72"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_jegvv"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_hyoag"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_yofqf")]
+graph_offset = Vector2(-295, 256)
 
 [node name="Player" instance=ExtResource("1_ac2ss")]
 script = ExtResource("2_637sq")
@@ -308,9 +312,10 @@ jump_peak_time = 0.5
 jump_fall_time = 0.5
 jump_height = 3.0
 jump_distance = 4.0
+can_double_jump = false
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 24
+frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

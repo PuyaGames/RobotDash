@@ -7,19 +7,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrles"]
 size = Vector2(1939.71, 106)
 
-[node name="Terrain" type="Node2D"]
+[node name="Terrain" type="StaticBody2D"]
 script = ExtResource("1_qmut3")
+metadata/_edit_vertical_guides_ = [0.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.93, 0.93)
 texture = ExtResource("2_jg5m3")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-position = Vector2(959.371, 1021.07)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(892.215, 949.595)
+scale = Vector2(0.93, 0.93)
 shape = SubResource("RectangleShape2D_hrles")
 
 [node name="Platform" parent="." instance=ExtResource("3_tmmx1")]
-position = Vector2(748, 600)
+position = Vector2(256, 656)
+platform_type = 1
+
+[node name="Platform2" parent="." instance=ExtResource("3_tmmx1")]
+position = Vector2(256, 416)
+
+[node name="Platform3" parent="." instance=ExtResource("3_tmmx1")]
+position = Vector2(1152, 416)
+
+[node name="Platform4" parent="." instance=ExtResource("3_tmmx1")]
+position = Vector2(1152, 656)
+platform_type = 1

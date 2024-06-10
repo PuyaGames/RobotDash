@@ -23,6 +23,7 @@ Structs="*res://scenes/global/structs.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 SceneManager="*res://addons/scene_manager/scene_manager.tscn"
 Scenes="*res://addons/scene_manager/scenes.gd"
+Preload="*res://scenes/global/preload.gd"
 
 [debug]
 

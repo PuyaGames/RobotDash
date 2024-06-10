@@ -36,6 +36,34 @@ tracks/0/keys = {
 "values": [7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_b7oex"]
+resource_name = "DoubleJump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="Animation" id="Animation_f0nh4"]
 resource_name = "Fall"
 length = 0.1
@@ -166,34 +194,6 @@ tracks/0/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42, 43]
 }
 
-[sub_resource type="Animation" id="Animation_b7oex"]
-resource_name = "DoubleJump"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [19]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubg3a"]
 _data = {
 "Attack": SubResource("Animation_m1iqx"),
@@ -304,18 +304,22 @@ states/Start/position = Vector2(177, 111)
 states/Walk/node = SubResource("AnimationNodeAnimation_he2hp")
 states/Walk/position = Vector2(371, 111)
 transitions = ["Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_5emw2"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_bky72"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_jegvv"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_hyoag"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_yofqf")]
-graph_offset = Vector2(-295, 256)
+graph_offset = Vector2(-57, 51)
 
 [node name="Player" instance=ExtResource("1_ac2ss")]
 script = ExtResource("2_637sq")
 jump_peak_time = 0.5
 jump_fall_time = 0.5
 jump_height = 3.0
-jump_distance = 4.0
+jump_distance = 2.0
 can_double_jump = false
+movement_speed = 300.0
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 19
+frame = 25
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

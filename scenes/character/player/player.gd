@@ -22,8 +22,9 @@ enum EPlayerState
 @export var jump_peak_time : float = 0.5
 @export var jump_fall_time : float = 0.5
 @export var jump_height : float = 2.0
-@export var jump_distance : float = 4.0
+@export var jump_distance : float = 2.0
 @export var can_double_jump : bool = false
+@export var movement_speed : float = 300.0
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 
@@ -32,7 +33,6 @@ var has_double_jump : bool = false
 var jump_gravity : float
 var jump_velocity : float
 var fall_gravity : float
-var movement_speed : float
 var player_state : EPlayerState = EPlayerState.Run
 
 
@@ -68,7 +68,6 @@ func calculate_movement_parameters() -> void:
 	jump_gravity = jump_height_x2 / pow(jump_peak_time, 2) * 100.0
 	fall_gravity = jump_height_x2 / pow(jump_fall_time, 2) * 100.0
 	jump_velocity = jump_gravity * jump_peak_time * -1.0
-	movement_speed = (jump_distance / (jump_peak_time + jump_fall_time)) * 100.0
 
 
 func set_walk_state() -> void:

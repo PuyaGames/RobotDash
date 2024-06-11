@@ -99,6 +99,7 @@ layer_06_texture = ExtResource("7_unaa6")
 
 [node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("13_uqsvg")]
 position = Vector2(120, 200)
+can_double_jump = true
 
 [node name="Foreground" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("1_n0yag")]
 

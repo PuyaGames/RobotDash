@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b23g0ktdrkovh"]
+
+[ext_resource type="Script" path="res://scenes/level/platform/platform.gd" id="1_br3nh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03fg3"]
+
+[node name="Platform" type="StaticBody2D"]
+script = ExtResource("1_br3nh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_03fg3")

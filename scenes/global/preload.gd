@@ -1,5 +1,5 @@
 extends Node
 
 
-const platform_long: PlatformData = preload("res://resources/platform/platform_long.tres")
-const platform_short: PlatformData = preload("res://resources/platform/platform_short.tres")
+const tscn_short_platform : PackedScene = preload("res://scenes/level/platform/short_platform.tscn")
+const tscn_long_platform : PackedScene = preload("res://scenes/level/platform/long_platform.tscn")

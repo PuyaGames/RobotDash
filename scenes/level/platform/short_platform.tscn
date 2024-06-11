@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://op0g4ngfhrit"]
+
+[ext_resource type="PackedScene" uid="uid://b23g0ktdrkovh" path="res://scenes/level/platform/platform.tscn" id="1_dtfx1"]
+[ext_resource type="Texture2D" uid="uid://bx5rfq6tisiht" path="res://assets/textures/background/halloween/1_game_background/layers/7.png" id="2_alp8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oasm0"]
+atlas = ExtResource("2_alp8s")
+region = Rect2(0, 984, 560, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74w1j"]
+size = Vector2(560, 32)
+
+[node name="ShortPlatform" instance=ExtResource("1_dtfx1")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_oasm0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(280, 16)
+shape = SubResource("RectangleShape2D_74w1j")

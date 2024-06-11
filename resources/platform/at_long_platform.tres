@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dflth18ex3neg"]
-
-[ext_resource type="Texture2D" uid="uid://bx5rfq6tisiht" path="res://assets/textures/background/halloween/1_game_background/layers/7.png" id="1_dsf0p"]
-
-[resource]
-atlas = ExtResource("1_dsf0p")
-region = Rect2(0, 984, 640, 24)

@@ -77,6 +77,15 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "播放广告"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 745.0
+offset_right = 468.0
+offset_bottom = 890.0
+theme_override_font_sizes/font_size = 100
+text = "TEST"
+
 [connection signal="button_down" from="LoginButton" to="." method="_on_login_button_button_down"]
 [connection signal="button_down" from="CheckButton" to="." method="_on_check_button_button_down"]
 [connection signal="button_down" from="MomentButton" to="." method="_on_moment_button_button_down"]

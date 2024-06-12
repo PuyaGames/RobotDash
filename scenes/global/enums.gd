@@ -37,23 +37,23 @@ enum PlayerType
 enum EPlatformAssemblyType
 {
 	# Long Long None None
-	LLNN,
+	L_L_N_N,
 	# Short Long Left None
-	SLLN,
+	S_L_L_N,
 	# Short Long Right None
-	SLRN,
+	S_L_R_N,
 	# Long Short None Left
-	LSNL,
-	LSNR,
-	SSLL,
-	SSRR,
-	SSLR,
-	SSRL,
-	SNLN,
-	SNRN,
-	NSNL,
-	NSNR,
-	LNNN,
-	NLNN,
-	NNNN
+	L_S_N_L,
+	L_S_N_R,
+	S_S_L_L,
+	S_S_R_R,
+	S_S_L_R,
+	S_S_R_L,
+	S_N_L_N,
+	S_N_R_N,
+	N_S_N_L,
+	N_S_N_R,
+	L_N_N_N,
+	N_L_N_N,
+	N_N_N_N
 }

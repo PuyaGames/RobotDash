@@ -22,7 +22,7 @@ enum EPlayerState
 @export var jump_peak_time : float = 0.5
 @export var jump_fall_time : float = 0.5
 @export var jump_height : float = 2.0
-@export var jump_distance : float = 2.0
+#@export var jump_distance : float = 2.0
 @export var can_double_jump : bool = false
 @export var movement_speed : float = 300.0
 

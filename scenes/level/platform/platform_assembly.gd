@@ -1,31 +1,34 @@
-extends Node
+extends Node2D
 class_name PlatformAssembly
 
 
-@export var platform_assembly_type : Enums.EPlatformAssemblyType = Enums.EPlatformAssemblyType.LLNN
+@export var platform_assembly_type : Enums.EPlatformAssemblyType = Enums.EPlatformAssemblyType.N_N_N_N
 
-@onready var platform_position_dict : Dictionary = {
-	Enums.EPlatformAssemblyType.LLNN : Vector4(),
-	Enums.EPlatformAssemblyType.SLLN : Vector4(),
-	Enums.EPlatformAssemblyType.SLRN : Vector4(),
-	Enums.EPlatformAssemblyType.LSNL : Vector4(),
-	Enums.EPlatformAssemblyType.LSNR : Vector4(),
-	Enums.EPlatformAssemblyType.SSLL : Vector4(),
-	Enums.EPlatformAssemblyType.SSRR : Vector4(),
-	Enums.EPlatformAssemblyType.SSLR : Vector4(),
-	Enums.EPlatformAssemblyType.SSRL : Vector4(),
-	Enums.EPlatformAssemblyType.SNLN : Vector4(),
-	Enums.EPlatformAssemblyType.SNRN : Vector4(),
-	Enums.EPlatformAssemblyType.NSNL : Vector4(),
-	Enums.EPlatformAssemblyType.NSNR : Vector4(),
-	Enums.EPlatformAssemblyType.LNNN : Vector4(),
-	Enums.EPlatformAssemblyType.NLNN : Vector4(),
-	Enums.EPlatformAssemblyType.NNNN : Vector4()
+const long_platform_length : float = 640.0
+const short_platform_length : float = 400.0
+const offset_x : float = long_platform_length - short_platform_length
+
+const platform_position_dict : Dictionary = {
+	Enums.EPlatformAssemblyType.L_L_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.S_L_L_N : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.S_L_R_N : Vector4(offset_x, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.L_S_N_L : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.L_S_N_R : Vector4(0.0, 0.0, offset_x, 232.0),
+	Enums.EPlatformAssemblyType.S_S_L_L : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.S_S_R_R : Vector4(offset_x, 0.0, offset_x, 232.0),
+	Enums.EPlatformAssemblyType.S_S_L_R : Vector4(0.0, 0.0, offset_x, 232.0),
+	Enums.EPlatformAssemblyType.S_S_R_L : Vector4(offset_x, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.S_N_L_N : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.S_N_R_N : Vector4(offset_x, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.N_S_N_L : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.N_S_N_R : Vector4(0.0, 0.0, offset_x, 232.0),
+	Enums.EPlatformAssemblyType.L_N_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.N_L_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
+	Enums.EPlatformAssemblyType.N_N_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
 }
 
-func _ready() -> void:
-	var platform_positions : Vector4 = platform_position_dict[platform_assembly_type]
 
+func _ready() -> void:
 	var TypeString : String = Enums.EPlatformAssemblyType.keys()[platform_assembly_type]
 	var platform_position : Vector4 = platform_position_dict[platform_assembly_type]
 	
@@ -36,14 +39,16 @@ func _ready() -> void:
 		else:
 			platform_01 = Preload.tscn_short_platform.instantiate()
 		platform_01.position = Vector2(platform_position.x, platform_position.y)
+		add_child(platform_01)
 		
-	if TypeString[1] != 'N':
+	if TypeString[2] != 'N':
 		var platform_02 : Platform2D
-		if TypeString[1] == 'L':
+		if TypeString[2] == 'L':
 			platform_02 = Preload.tscn_long_platform.instantiate()
 		else:
 			platform_02 = Preload.tscn_short_platform.instantiate()
 		platform_02.position = Vector2(platform_position.z, platform_position.w)
+		add_child(platform_02)
 	
 
 

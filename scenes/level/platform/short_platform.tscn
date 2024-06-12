@@ -5,10 +5,10 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oasm0"]
 atlas = ExtResource("2_alp8s")
-region = Rect2(0, 984, 560, 32)
+region = Rect2(0, 984, 400, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74w1j"]
-size = Vector2(560, 32)
+size = Vector2(400, 32)
 
 [node name="ShortPlatform" instance=ExtResource("1_dtfx1")]
 
@@ -16,5 +16,5 @@ size = Vector2(560, 32)
 texture = SubResource("AtlasTexture_oasm0")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(280, 16)
+position = Vector2(200, 16)
 shape = SubResource("RectangleShape2D_74w1j")

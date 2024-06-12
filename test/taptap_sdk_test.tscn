@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2wat6rpgdpvd"]
+
+[ext_resource type="Script" path="res://test/taptap_sdk_test.gd" id="1_5ig7v"]
+
+[node name="TaptapSdkTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ig7v")
+
+[node name="LoginButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 171.0
+offset_right = 620.0
+offset_bottom = 271.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "登录"
+
+[node name="CheckButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 365.0
+offset_right = 620.0
+offset_bottom = 465.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "防沉迷"
+
+[node name="MomentButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 556.0
+offset_right = 620.0
+offset_bottom = 656.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "动态"
+
+[node name="InitButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 983.0
+offset_right = 620.0
+offset_bottom = 1083.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "初始化广告"
+
+[node name="LoadButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 1183.0
+offset_right = 620.0
+offset_bottom = 1283.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "加载广告"
+
+[node name="ShowButton" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 1359.0
+offset_right = 620.0
+offset_bottom = 1459.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "播放广告"
+
+[connection signal="button_down" from="LoginButton" to="." method="_on_login_button_button_down"]
+[connection signal="button_down" from="CheckButton" to="." method="_on_check_button_button_down"]
+[connection signal="button_down" from="MomentButton" to="." method="_on_moment_button_button_down"]
+[connection signal="button_down" from="InitButton" to="." method="_on_init_button_button_down"]
+[connection signal="button_down" from="LoadButton" to="." method="_on_load_button_button_down"]
+[connection signal="button_down" from="ShowButton" to="." method="_on_show_button_button_down"]

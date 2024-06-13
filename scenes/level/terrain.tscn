@@ -9,8 +9,6 @@ size = Vector2(1939.71, 106)
 
 [node name="Terrain" type="StaticBody2D"]
 script = ExtResource("1_qmut3")
-metadata/_edit_vertical_guides_ = [0.0, 1786.0]
-metadata/_edit_horizontal_guides_ = [468.0, 712.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.93, 0.93)

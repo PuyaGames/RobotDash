@@ -110,6 +110,10 @@ func _ready() -> void:
 		layer_08_sprite.texture = layer_08_texture
 
 
+func init_background(map_type : Enums.EMapType):
+	pass
+	
+
 func move_forward(speed : float, delta : float) -> void:
 	for iter in layer_list:
 		iter.motion_offset.x -= speed * delta * iter.motion_scale.x

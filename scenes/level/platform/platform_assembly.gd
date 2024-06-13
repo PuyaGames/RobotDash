@@ -5,8 +5,11 @@ class_name PlatformAssembly
 @export var platform_assembly_type : Enums.EPlatformAssemblyType = Enums.EPlatformAssemblyType.N_N_N_N
 
 const long_platform_length : float = 640.0
-const short_platform_length : float = 400.0
+const short_platform_length : float = 320.0
 const offset_x : float = long_platform_length - short_platform_length
+
+var platform_01 : Platform2D = null
+var platform_02 : Platform2D = null
 
 const platform_position_dict : Dictionary = {
 	Enums.EPlatformAssemblyType.L_L_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
@@ -29,11 +32,22 @@ const platform_position_dict : Dictionary = {
 
 
 func _ready() -> void:
-	var TypeString : String = Enums.EPlatformAssemblyType.keys()[platform_assembly_type]
-	var platform_position : Vector4 = platform_position_dict[platform_assembly_type]
+	regenerate(platform_assembly_type)
+	
+
+
+func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> void:
+	if platform_01 != null:
+		platform_01.queue_free()
+		platform_01 = null
+	if platform_02 != null:
+		platform_02.queue_free()
+		platform_02 = null
+	
+	var TypeString : String = Enums.EPlatformAssemblyType.keys()[new_platform_assembly_type]
+	var platform_position : Vector4 = platform_position_dict[new_platform_assembly_type]
 	
 	if TypeString[0] != 'N':
-		var platform_01 : Platform2D
 		if TypeString[0] == 'L':
 			platform_01 = Preload.tscn_long_platform.instantiate()
 		else:
@@ -42,16 +56,9 @@ func _ready() -> void:
 		add_child(platform_01)
 		
 	if TypeString[2] != 'N':
-		var platform_02 : Platform2D
 		if TypeString[2] == 'L':
 			platform_02 = Preload.tscn_long_platform.instantiate()
 		else:
 			platform_02 = Preload.tscn_short_platform.instantiate()
 		platform_02.position = Vector2(platform_position.z, platform_position.w)
 		add_child(platform_02)
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

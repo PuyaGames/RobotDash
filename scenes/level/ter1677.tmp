@@ -25,10 +25,12 @@ shape = SubResource("RectangleShape2D_hrles")
 
 [node name="PlatformAssembly1" parent="." instance=ExtResource("3_44xyx")]
 position = Vector2(256, 436)
+platform_assembly_type = 2
 metadata/_edit_vertical_guides_ = [-45.0]
 metadata/_edit_horizontal_guides_ = [205.0]
 
 [node name="PlatformAssembly2" parent="." instance=ExtResource("3_44xyx")]
 position = Vector2(1146, 436)
+platform_assembly_type = 0
 metadata/_edit_vertical_guides_ = [-45.0]
 metadata/_edit_horizontal_guides_ = [205.0]

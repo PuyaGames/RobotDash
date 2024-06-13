@@ -315,7 +315,7 @@ can_double_jump = false
 movement_speed = 0.0
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 24
+frame = 25
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

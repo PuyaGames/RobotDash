@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ntm53fhy4jc"
-path="res://.godot/imported/character_femaleAdventurer_sheet.png-684977011e30e693faf0f7773816f17d.ctex"
+uid="uid://byjvd56u82pxk"
+path="res://.godot/imported/character_femaleAdventurer_sheetHD.png-f6e2edf4d4ec2ebd9995c7375c43a237.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/character/character_femaleAdventurer_sheet.png"
-dest_files=["res://.godot/imported/character_femaleAdventurer_sheet.png-684977011e30e693faf0f7773816f17d.ctex"]
+source_file="res://assets/textures/character/character_femaleAdventurer_sheetHD.png"
+dest_files=["res://.godot/imported/character_femaleAdventurer_sheetHD.png-f6e2edf4d4ec2ebd9995c7375c43a237.ctex"]
 
 [params]
 

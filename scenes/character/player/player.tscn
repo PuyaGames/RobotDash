@@ -308,14 +308,10 @@ graph_offset = Vector2(-57, 51)
 
 [node name="Player" instance=ExtResource("1_ac2ss")]
 script = ExtResource("2_637sq")
-jump_peak_time = 0.5
-jump_fall_time = 0.5
-jump_height = 2.5
-can_double_jump = false
-movement_speed = 0.0
+player_type = 2
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 25
+frame = 26
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

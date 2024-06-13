@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerBean" load_steps=3 format=3 uid="uid://y53wkc0t6hry"]
+
+[ext_resource type="Script" path="res://scenes/resource/player_bean.gd" id="1_ixc4x"]
+[ext_resource type="Texture2D" uid="uid://b27be3wogwqki" path="res://assets/textures/character/character_robot_sheetHD.png" id="2_04atr"]
+
+[resource]
+script = ExtResource("1_ixc4x")
+texture_sheet = ExtResource("2_04atr")
+jump_peak_time = 0.5
+jump_fall_time = 0.5
+jump_height = 2.5
+can_double_jump = true
+movement_speed = 200.0

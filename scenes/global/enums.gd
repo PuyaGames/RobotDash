@@ -8,6 +8,16 @@ enum EMapType
 	Desert
 }
 
+enum EPlayerType
+{
+	XiaoLi,
+	XiaoMei,
+	DaZhuang,
+	SangBiao,
+	Robot,
+	Zombie
+}
+
 enum ETerrainType
 {
 	Halloween_Green,
@@ -22,16 +32,6 @@ enum ETerrainType
 	Desert_Rock,
 	Desert_Cloud,
 	Desert_Dusk,
-}
-
-enum PlayerType
-{
-	XiaoLi,
-	XiaoMei,
-	DaZhuang,
-	SangBiao,
-	Robot,
-	Zombie
 }
 
 enum EPlatformAssemblyType

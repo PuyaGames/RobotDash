@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerBean" load_steps=3 format=3 uid="uid://b4uamn7qbsj6g"]
+
+[ext_resource type="Script" path="res://scenes/resource/player_bean.gd" id="1_bobou"]
+[ext_resource type="Texture2D" uid="uid://dv73axsp21su0" path="res://assets/textures/character/character_zombie_sheetHD.png" id="2_m30vh"]
+
+[resource]
+script = ExtResource("1_bobou")
+texture_sheet = ExtResource("2_m30vh")
+jump_peak_time = 0.5
+jump_fall_time = 0.5
+jump_height = 2.5
+can_double_jump = false
+movement_speed = 200.0

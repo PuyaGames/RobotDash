@@ -17,17 +17,15 @@ enum EPlayerState
 	Ready
 }
 
-
-@export_category("Movement Parameters")
-@export var jump_peak_time : float = 0.5
-@export var jump_fall_time : float = 0.5
-@export var jump_height : float = 2.0
-#@export var jump_distance : float = 2.0
-@export var can_double_jump : bool = false
-@export var movement_speed : float = 300.0
+@export var player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 
+var jump_peak_time : float = 0.5
+var jump_fall_time : float = 0.5
+var jump_height : float = 2.0
+var can_double_jump : bool = false
+var movement_speed : float = 300.0
 var player_jump_position : Vector2
 var has_double_jump : bool = false
 var jump_gravity : float
@@ -37,7 +35,8 @@ var player_state : EPlayerState = EPlayerState.Run
 
 
 func _ready() -> void:
-	calculate_movement_parameters()
+	_init_player()
+	_calculate_movement_parameters()
 
 
 func _physics_process(delta: float) -> void:
@@ -63,12 +62,36 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func calculate_movement_parameters() -> void:
+func _calculate_movement_parameters() -> void:
 	var jump_height_x2 : float = jump_height * 2
 	jump_gravity = jump_height_x2 / pow(jump_peak_time, 2) * 100.0
 	fall_gravity = jump_height_x2 / pow(jump_fall_time, 2) * 100.0
 	jump_velocity = jump_gravity * jump_peak_time * -1.0
-
+	
+	
+func _init_player() -> void:
+	if player_type == Enums.EPlayerType.XiaoLi:
+		_set_player_by_bean(Preload.xiaoli_bean)
+	elif player_type == Enums.EPlayerType.XiaoMei:
+		_set_player_by_bean(Preload.xiaomei_bean)
+	elif player_type == Enums.EPlayerType.DaZhuang:
+		_set_player_by_bean(Preload.dazhuang_bean)
+	elif player_type == Enums.EPlayerType.SangBiao:
+		_set_player_by_bean(Preload.sangbiao_bean)
+	elif player_type == Enums.EPlayerType.Robot:
+		_set_player_by_bean(Preload.robot_bean)
+	elif player_type == Enums.EPlayerType.Zombie:
+		_set_player_by_bean(Preload.zombie_bean)
+		
+		
+func _set_player_by_bean(player_bean : PlayerBean) -> void:
+	$"Sprite2D".texture = player_bean.texture_sheet
+	jump_peak_time = player_bean.jump_peak_time
+	jump_fall_time = player_bean.jump_fall_time
+	jump_height = player_bean.jump_height
+	can_double_jump = player_bean.can_double_jump
+	movement_speed = player_bean.movement_speed
+	
 
 func set_walk_state() -> void:
 	player_state = EPlayerState.Walk

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerBean" load_steps=3 format=3 uid="uid://crdocphmx4lvv"]
+
+[ext_resource type="Script" path="res://scenes/resource/player_bean.gd" id="1_xiery"]
+[ext_resource type="Texture2D" uid="uid://byjvd56u82pxk" path="res://assets/textures/character/character_femaleAdventurer_sheetHD.png" id="2_88r84"]
+
+[resource]
+script = ExtResource("1_xiery")
+texture_sheet = ExtResource("2_88r84")
+jump_peak_time = 0.5
+jump_fall_time = 0.5
+jump_height = 2.5
+can_double_jump = true
+movement_speed = 200.0

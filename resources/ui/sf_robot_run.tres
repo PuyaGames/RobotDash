@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bqt556rgjjy0r"]
+
+[ext_resource type="Texture2D" uid="uid://b27be3wogwqki" path="res://assets/textures/character/character_robot_sheetHD.png" id="1_1dfj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l446c"]
+atlas = ExtResource("1_1dfj4")
+region = Rect2(1152, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7he4j"]
+atlas = ExtResource("1_1dfj4")
+region = Rect2(1344, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1x7n"]
+atlas = ExtResource("1_1dfj4")
+region = Rect2(1536, 512, 192, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l446c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7he4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1x7n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

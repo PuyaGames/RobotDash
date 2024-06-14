@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dsg1ahxtoml0s"]
+
+[ext_resource type="Texture2D" uid="uid://dq6r1hvj54v6m" path="res://assets/textures/character/character_maleAdventurer_sheetHD.png" id="1_ju5gx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbxi7"]
+atlas = ExtResource("1_ju5gx")
+region = Rect2(1152, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_186ih"]
+atlas = ExtResource("1_ju5gx")
+region = Rect2(1344, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vill"]
+atlas = ExtResource("1_ju5gx")
+region = Rect2(1536, 512, 192, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbxi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_186ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vill")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

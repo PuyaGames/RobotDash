@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://pldqllglpt0e"]
+
+[ext_resource type="Texture2D" uid="uid://dv73axsp21su0" path="res://assets/textures/character/character_zombie_sheetHD.png" id="1_uvmkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3umo"]
+atlas = ExtResource("1_uvmkv")
+region = Rect2(1152, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdpyw"]
+atlas = ExtResource("1_uvmkv")
+region = Rect2(1344, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7dht"]
+atlas = ExtResource("1_uvmkv")
+region = Rect2(1536, 512, 192, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3umo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdpyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7dht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

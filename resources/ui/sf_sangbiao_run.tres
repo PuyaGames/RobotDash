@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b4o0flrgd5hc5"]
+
+[ext_resource type="Texture2D" uid="uid://eu6tm6on6x37" path="res://assets/textures/character/character_malePerson_sheetHD.png" id="1_ppnpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xc6l"]
+atlas = ExtResource("1_ppnpn")
+region = Rect2(1152, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4couk"]
+atlas = ExtResource("1_ppnpn")
+region = Rect2(1344, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wblsb"]
+atlas = ExtResource("1_ppnpn")
+region = Rect2(1536, 512, 192, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xc6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4couk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wblsb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

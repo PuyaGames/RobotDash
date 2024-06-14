@@ -32,3 +32,7 @@ func _init_level_map() -> void:
 	pass
 	background.init_background(map_type)
 	terrain_generator.init_terrain_generator(map_type)
+
+
+func _on_pause_button_toggled(toggled_on: bool) -> void:
+	get_tree().paused = true

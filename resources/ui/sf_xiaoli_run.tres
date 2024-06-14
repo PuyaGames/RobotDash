@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://l65p4hn4unvl"]
+
+[ext_resource type="Texture2D" uid="uid://byjvd56u82pxk" path="res://assets/textures/character/character_femaleAdventurer_sheetHD.png" id="1_l8drd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6qys"]
+atlas = ExtResource("1_l8drd")
+region = Rect2(1152, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1rjm"]
+atlas = ExtResource("1_l8drd")
+region = Rect2(1344, 512, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8mm5"]
+atlas = ExtResource("1_l8drd")
+region = Rect2(1536, 512, 192, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6qys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1rjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8mm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

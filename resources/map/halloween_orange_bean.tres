@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=11 format=3 uid="uid://cr431x7ma41f7"]
+
+[ext_resource type="Texture2D" uid="uid://cqtkafrgvkn1n" path="res://assets/textures/background/halloween/4_game_background/layers/1.png" id="1_l4hy3"]
+[ext_resource type="Texture2D" uid="uid://bbsg7strf6bch" path="res://assets/textures/background/halloween/4_game_background/layers/2.png" id="2_obsg0"]
+[ext_resource type="Texture2D" uid="uid://80fmuguhd2gn" path="res://assets/textures/background/halloween/4_game_background/layers/3.png" id="3_b1l5h"]
+[ext_resource type="Texture2D" uid="uid://b2k4whve8w1f6" path="res://assets/textures/background/halloween/4_game_background/layers/4.png" id="4_i4p85"]
+[ext_resource type="Texture2D" uid="uid://d3ok1f5qc2uft" path="res://assets/textures/background/halloween/4_game_background/layers/5.png" id="5_sme1h"]
+[ext_resource type="Texture2D" uid="uid://cdwcyx6fn0ww4" path="res://assets/textures/background/halloween/4_game_background/layers/6.png" id="6_am6y4"]
+[ext_resource type="Texture2D" uid="uid://bws711x0y1bsr" path="res://assets/textures/background/halloween/4_game_background/layers/7.png" id="7_ns5jn"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="8_mf671"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuqfg"]
+atlas = ExtResource("7_ns5jn")
+region = Rect2(0, 984, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5cg8"]
+atlas = ExtResource("7_ns5jn")
+region = Rect2(0, 984, 320, 32)
+
+[resource]
+script = ExtResource("8_mf671")
+background_textures = Array[Texture2D]([ExtResource("1_l4hy3"), ExtResource("2_obsg0"), ExtResource("3_b1l5h"), ExtResource("4_i4p85"), ExtResource("5_sme1h"), ExtResource("6_am6y4")])
+short_platform_texture = SubResource("AtlasTexture_q5cg8")
+long_platform_texture = SubResource("AtlasTexture_nuqfg")
+terrain_texture = ExtResource("7_ns5jn")

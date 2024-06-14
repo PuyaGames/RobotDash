@@ -9,7 +9,7 @@ class_name TerrainGenerator
 @onready var terrain_02 : Terrain = $"TerrainRoot2/Terrain2"
 @onready var terrain_03 : Terrain = $"TerrainRoot3/Terrain3"
 
-const terrain_length : float = 1785.0
+const terrain_length : float = 1784.0
 var update_trigger_position_x : float
 var update_trigger_offset : float = 20.0
 var terrain_generating_count : int = 0
@@ -27,6 +27,7 @@ func _ready() -> void:
 
 var temp_terrain_root : Node2D
 var temp_terrain : Terrain
+
 func move_forward(speed : float, delta : float) -> void:
 	var moved_distance : float = speed * delta
 	for terrain_root in terrain_root_list:
@@ -45,3 +46,8 @@ func move_forward(speed : float, delta : float) -> void:
 		terrain_root_list[2] = temp_terrain_root
 		terrain_list[2] = temp_terrain
 		
+		
+func init_terrain_generator(map_type : Enums.EMapType) -> void:
+	terrain_01.init_terrain(map_type)
+	terrain_02.init_terrain(map_type)
+	terrain_03.init_terrain(map_type)

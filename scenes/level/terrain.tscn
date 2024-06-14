@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlbqs5bq27jym" path="res://scenes/level/platform/platform_assembly.tscn" id="3_44xyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrles"]
-size = Vector2(1939.71, 106)
+size = Vector2(1939.71, 93.4247)
 
 [node name="Terrain" type="StaticBody2D"]
 script = ExtResource("1_qmut3")
@@ -17,7 +17,7 @@ centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(892.215, 949.595)
+position = Vector2(892.215, 955.442)
 scale = Vector2(0.93, 0.93)
 shape = SubResource("RectangleShape2D_hrles")
 

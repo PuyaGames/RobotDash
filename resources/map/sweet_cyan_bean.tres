@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=11 format=3 uid="uid://c8pwthedwbdrd"]
+
+[ext_resource type="Texture2D" uid="uid://byvbqedqqvx1e" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer07_Sky.png" id="1_saoqm"]
+[ext_resource type="Texture2D" uid="uid://3m76lrsnulao" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer06_Rocks.png" id="2_d52xb"]
+[ext_resource type="Texture2D" uid="uid://csqjfbumwpxe1" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer05_Hills.png" id="3_6wdcg"]
+[ext_resource type="Texture2D" uid="uid://dwwh0p4ajkk62" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer04_Clouds.png" id="4_py7hs"]
+[ext_resource type="Texture2D" uid="uid://dxx8rgqd323fo" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer03_Hills_Castle.png" id="5_vltsy"]
+[ext_resource type="Texture2D" uid="uid://3jik06uh8hkq" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer02_Trees_rocks.png" id="6_8kx8k"]
+[ext_resource type="Texture2D" uid="uid://cqlc6ifnwbdrn" path="res://assets/textures/background/sweet/platformer_background_4/Layers/layer01_Ground.png" id="7_w3n8g"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="8_q0fnu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trpkt"]
+atlas = ExtResource("7_w3n8g")
+region = Rect2(432, 888, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls060"]
+atlas = ExtResource("7_w3n8g")
+region = Rect2(448, 888, 320, 32)
+
+[resource]
+script = ExtResource("8_q0fnu")
+background_textures = Array[Texture2D]([ExtResource("1_saoqm"), ExtResource("2_d52xb"), ExtResource("3_6wdcg"), ExtResource("4_py7hs"), ExtResource("5_vltsy"), ExtResource("6_8kx8k")])
+short_platform_texture = SubResource("AtlasTexture_ls060")
+long_platform_texture = SubResource("AtlasTexture_trpkt")
+terrain_texture = ExtResource("7_w3n8g")
+y_offset = 94.0

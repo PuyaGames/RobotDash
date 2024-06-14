@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=11 format=3 uid="uid://cmas4h0u3lg3t"]
+
+[ext_resource type="Texture2D" uid="uid://okf6nwmaq2gq" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer07_Sky.png" id="1_wlyie"]
+[ext_resource type="Texture2D" uid="uid://bv3cilvgj6m2a" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer06_Rocks.png" id="2_d72y7"]
+[ext_resource type="Texture2D" uid="uid://d2ahikvpp3ixf" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer05_Clouds.png" id="3_qiq8t"]
+[ext_resource type="Texture2D" uid="uid://c3lkangu4m836" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer04_Hills_2.png" id="4_b8eai"]
+[ext_resource type="Texture2D" uid="uid://bbfdnjajn2hvb" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer03_Hills_1.png" id="5_5q76b"]
+[ext_resource type="Texture2D" uid="uid://dw6nbc0jexn5g" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer02_Trees.png" id="6_6pmp4"]
+[ext_resource type="Texture2D" uid="uid://dje4v4al3uyts" path="res://assets/textures/background/sweet/platformer_background_3/Layers/layer01_Ground.png" id="7_4c2c3"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="8_thoyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_668il"]
+atlas = ExtResource("7_4c2c3")
+region = Rect2(416, 1024, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8plf"]
+atlas = ExtResource("7_4c2c3")
+region = Rect2(8, 1016, 320, 32)
+
+[resource]
+script = ExtResource("8_thoyo")
+background_textures = Array[Texture2D]([ExtResource("1_wlyie"), ExtResource("2_d72y7"), ExtResource("3_qiq8t"), ExtResource("4_b8eai"), ExtResource("5_5q76b"), ExtResource("6_6pmp4")])
+short_platform_texture = SubResource("AtlasTexture_l8plf")
+long_platform_texture = SubResource("AtlasTexture_668il")
+terrain_texture = ExtResource("7_4c2c3")
+y_offset = 50.0

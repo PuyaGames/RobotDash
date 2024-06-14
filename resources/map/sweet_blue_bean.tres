@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=13 format=3 uid="uid://4n77k662x033"]
+
+[ext_resource type="Texture2D" uid="uid://cygm5p1hlm31h" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer09_Sky.png" id="1_7v5g3"]
+[ext_resource type="Texture2D" uid="uid://c67rd5m6nqcj0" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer08_Stars_1.png" id="2_qaj7f"]
+[ext_resource type="Texture2D" uid="uid://vwi0lf63m155" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer07_Stars_2.png" id="3_6d3op"]
+[ext_resource type="Texture2D" uid="uid://dwpc5fi6ysd8c" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer06_Stars_3.png" id="4_54g01"]
+[ext_resource type="Texture2D" uid="uid://b4npkug2e5q64" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer05_Castle.png" id="5_vlbxm"]
+[ext_resource type="Texture2D" uid="uid://lpiml48j777i" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer04_Path.png" id="6_33mot"]
+[ext_resource type="Texture2D" uid="uid://cklqikae3tfhb" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer03_Clouds_3.png" id="7_h04rg"]
+[ext_resource type="Texture2D" uid="uid://dj5qnxwcbrkuq" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer02_Clouds_2.png" id="8_d6exk"]
+[ext_resource type="Texture2D" uid="uid://bih5fhlhiivvb" path="res://assets/textures/background/sweet/platformer_background_2/Layers/layer01_Clouds_1.png" id="9_oy4p3"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="10_s634r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3mg5"]
+atlas = ExtResource("9_oy4p3")
+region = Rect2(944, 1000, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7taw"]
+atlas = ExtResource("9_oy4p3")
+region = Rect2(0, 1024, 320, 32)
+
+[resource]
+script = ExtResource("10_s634r")
+background_textures = Array[Texture2D]([ExtResource("1_7v5g3"), ExtResource("2_qaj7f"), ExtResource("3_6d3op"), ExtResource("4_54g01"), ExtResource("5_vlbxm"), ExtResource("6_33mot"), ExtResource("7_h04rg"), ExtResource("8_d6exk")])
+short_platform_texture = SubResource("AtlasTexture_s7taw")
+long_platform_texture = SubResource("AtlasTexture_q3mg5")
+terrain_texture = ExtResource("9_oy4p3")
+y_offset = 0.0

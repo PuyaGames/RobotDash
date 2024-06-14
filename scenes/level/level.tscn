@@ -47,6 +47,7 @@ region = Rect2(544, 144, 48, 48)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jeg3s")
+map_type = 14
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(375, 812)
@@ -99,9 +100,7 @@ layer_06_texture = ExtResource("7_unaa6")
 
 [node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("13_uqsvg")]
 position = Vector2(120, 200)
-player_type = 0
-
-[node name="Foreground" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("1_n0yag")]
+player_type = 5
 
 [node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")

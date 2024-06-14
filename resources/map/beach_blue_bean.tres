@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=8 format=3 uid="uid://c2uyka552jdlj"]
+
+[ext_resource type="Texture2D" uid="uid://cm0tmgeegr2s2" path="res://assets/textures/background/beach/game_background_1/layers/sky.png" id="1_khigl"]
+[ext_resource type="Texture2D" uid="uid://dt8aom5ei276" path="res://assets/textures/background/beach/game_background_1/layers/cloud.png" id="2_iqi1w"]
+[ext_resource type="Texture2D" uid="uid://k8kiycxvrcf4" path="res://assets/textures/background/beach/game_background_1/layers/sea.png" id="3_qg7v7"]
+[ext_resource type="Texture2D" uid="uid://bcrw43123wsmo" path="res://assets/textures/background/beach/game_background_1/layers/land.png" id="4_dh886"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="5_ihwoe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vak0f"]
+atlas = ExtResource("4_dh886")
+region = Rect2(0, 920, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy7q1"]
+atlas = ExtResource("4_dh886")
+region = Rect2(120, 904, 320, 32)
+
+[resource]
+script = ExtResource("5_ihwoe")
+background_textures = Array[Texture2D]([ExtResource("1_khigl"), ExtResource("2_iqi1w"), ExtResource("3_qg7v7")])
+short_platform_texture = SubResource("AtlasTexture_dy7q1")
+long_platform_texture = SubResource("AtlasTexture_vak0f")
+terrain_texture = ExtResource("4_dh886")
+y_offset = 160.0
+soil_color = Color(1, 1, 1, 1)

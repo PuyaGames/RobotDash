@@ -10,6 +10,7 @@ const offset_x : float = long_platform_length - short_platform_length
 
 var platform_01 : Platform2D = null
 var platform_02 : Platform2D = null
+var _map_type : Enums.EMapType
 
 const platform_position_dict : Dictionary = {
 	Enums.EPlatformAssemblyType.L_L_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
@@ -52,6 +53,7 @@ func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> voi
 			platform_01 = Preload.tscn_long_platform.instantiate()
 		else:
 			platform_01 = Preload.tscn_short_platform.instantiate()
+		platform_01.init_platform(_map_type)
 		platform_01.position = Vector2(platform_position.x, platform_position.y)
 		add_child(platform_01)
 		
@@ -60,5 +62,14 @@ func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> voi
 			platform_02 = Preload.tscn_long_platform.instantiate()
 		else:
 			platform_02 = Preload.tscn_short_platform.instantiate()
+		platform_02.init_platform(_map_type)
 		platform_02.position = Vector2(platform_position.z, platform_position.w)
 		add_child(platform_02)
+		
+		
+func init_platform_assembly(map_type : Enums.EMapType) -> void:
+	_map_type = map_type
+	if platform_01 != null:
+		platform_01.init_platform(map_type)
+	if platform_02 != null:
+		platform_02.init_platform(map_type)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=13 format=3 uid="uid://n2x44ml1jj1t"]
+
+[ext_resource type="Texture2D" uid="uid://bgj28f4ftyxh0" path="res://assets/textures/background/halloween/3_game_background/layers/1.png" id="1_g6axc"]
+[ext_resource type="Texture2D" uid="uid://bk0xjpyktfcmd" path="res://assets/textures/background/halloween/3_game_background/layers/2.png" id="2_hkj8k"]
+[ext_resource type="Texture2D" uid="uid://4rjp17nqxsvl" path="res://assets/textures/background/halloween/3_game_background/layers/3.png" id="3_bkd01"]
+[ext_resource type="Texture2D" uid="uid://b4cn5frvpcxyg" path="res://assets/textures/background/halloween/3_game_background/layers/4.png" id="4_kqybe"]
+[ext_resource type="Texture2D" uid="uid://b0ntvk6t730es" path="res://assets/textures/background/halloween/3_game_background/layers/5.png" id="5_vakwo"]
+[ext_resource type="Texture2D" uid="uid://ml2iqpxutg00" path="res://assets/textures/background/halloween/3_game_background/layers/6.png" id="6_jqfaw"]
+[ext_resource type="Texture2D" uid="uid://cx7adworr1sjo" path="res://assets/textures/background/halloween/3_game_background/layers/7.png" id="7_x0b2q"]
+[ext_resource type="Texture2D" uid="uid://c5n4pp5kloc5e" path="res://assets/textures/background/halloween/3_game_background/layers/8.png" id="8_8kybe"]
+[ext_resource type="Texture2D" uid="uid://yqgwe2wshno0" path="res://assets/textures/background/halloween/3_game_background/layers/9.png" id="9_0behm"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="10_sb66g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfoux"]
+atlas = ExtResource("9_0behm")
+region = Rect2(0, 984, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g77lw"]
+atlas = ExtResource("9_0behm")
+region = Rect2(0, 984, 320, 32)
+
+[resource]
+script = ExtResource("10_sb66g")
+background_textures = Array[Texture2D]([ExtResource("1_g6axc"), ExtResource("2_hkj8k"), ExtResource("3_bkd01"), ExtResource("4_kqybe"), ExtResource("5_vakwo"), ExtResource("6_jqfaw"), ExtResource("7_x0b2q"), ExtResource("8_8kybe")])
+short_platform_texture = SubResource("AtlasTexture_g77lw")
+long_platform_texture = SubResource("AtlasTexture_sfoux")
+terrain_texture = ExtResource("9_0behm")

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MapBean" load_steps=9 format=3 uid="uid://d4bfhm05mn0ax"]
+
+[ext_resource type="Texture2D" uid="uid://cdkdvyp7u7on8" path="res://assets/textures/background/desert/4/1.png" id="1_fh5a3"]
+[ext_resource type="Texture2D" uid="uid://d22yqabtg0n4q" path="res://assets/textures/background/desert/4/2.png" id="2_51w48"]
+[ext_resource type="Texture2D" uid="uid://ce47h06608crs" path="res://assets/textures/background/desert/4/3.png" id="3_oig2x"]
+[ext_resource type="Texture2D" uid="uid://c7qqkf0rhdoud" path="res://assets/textures/background/desert/4/4.png" id="4_3a4fw"]
+[ext_resource type="Texture2D" uid="uid://cp62spegt2fvs" path="res://assets/textures/background/desert/4/5.png" id="5_njw6i"]
+[ext_resource type="Script" path="res://scenes/resource/map_bean.gd" id="6_x367p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfebc"]
+atlas = ExtResource("5_njw6i")
+region = Rect2(296, 984, 640, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjdvg"]
+atlas = ExtResource("5_njw6i")
+region = Rect2(24, 984, 320, 32)
+
+[resource]
+script = ExtResource("6_x367p")
+background_textures = Array[Texture2D]([ExtResource("1_fh5a3"), ExtResource("2_51w48"), ExtResource("3_oig2x"), ExtResource("4_3a4fw")])
+short_platform_texture = SubResource("AtlasTexture_sjdvg")
+long_platform_texture = SubResource("AtlasTexture_mfebc")
+terrain_texture = ExtResource("5_njw6i")
+y_offset = 14.0
+soil_color = Color(1, 1, 1, 1)

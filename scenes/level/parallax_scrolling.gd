@@ -30,6 +30,11 @@ class_name ParallaxScrolling
 @onready var layer_09_sprite : Sprite2D = $"ParallaxLayer9/Sprite2D"
 @onready var layer_10_sprite : Sprite2D = $"ParallaxLayer10/Sprite2D"
 
+@onready var layer_sprite_list : Array[Sprite2D] = [
+	layer_01_sprite, layer_02_sprite, layer_03_sprite, layer_04_sprite, layer_05_sprite,
+	layer_06_sprite, layer_07_sprite, layer_08_sprite, layer_09_sprite, layer_10_sprite,
+]
+
 @export var layer_01_texture : Texture2D:
 	set(new_value):
 		layer_01_texture = new_value
@@ -91,6 +96,12 @@ class_name ParallaxScrolling
 			layer_10_sprite.texture = new_value
 
 
+@onready var layer_texture_list : Array[Texture2D] = [
+	layer_01_texture, layer_02_texture, layer_03_texture, layer_04_texture, layer_05_texture,
+	layer_06_texture, layer_07_texture, layer_08_texture, layer_09_texture, layer_10_texture,
+]
+
+
 func _ready() -> void:
 	if (layer_01_sprite != null):
 		layer_01_sprite.texture = layer_01_texture
@@ -108,12 +119,60 @@ func _ready() -> void:
 		layer_07_sprite.texture = layer_07_texture
 	if (layer_08_sprite != null):
 		layer_08_sprite.texture = layer_08_texture
+	if (layer_09_sprite != null):
+		layer_09_sprite.texture = layer_09_texture
+	if (layer_10_sprite != null):
+		layer_10_sprite.texture = layer_10_texture
 
 
-func init_background(map_type : Enums.EMapType):
-	pass
+func init_background(map_type : Enums.EMapType) -> void:
+	for layer_sprite in layer_sprite_list:
+		layer_sprite.texture = null
+		
+	if map_type == Enums.EMapType.Halloween_Green:
+		_set_background_by_bean(Preload.map_halloween_green_bean)
+	elif map_type == Enums.EMapType.Halloween_Red:
+		_set_background_by_bean(Preload.map_halloween_red_bean)
+	elif map_type == Enums.EMapType.Halloween_Blue:
+		_set_background_by_bean(Preload.map_halloween_blue_bean)
+	elif map_type == Enums.EMapType.Halloween_Orange:
+		_set_background_by_bean(Preload.map_halloween_orange_bean)
+	elif map_type == Enums.EMapType.Sweet_Pink:
+		_set_background_by_bean(Preload.map_sweet_pink_bean)
+	elif map_type == Enums.EMapType.Sweet_Blue:
+		_set_background_by_bean(Preload.map_sweet_blue_bean)
+	elif map_type == Enums.EMapType.Sweet_Green:
+		_set_background_by_bean(Preload.map_sweet_green_bean)
+	elif map_type == Enums.EMapType.Sweet_Cyan:
+		_set_background_by_bean(Preload.map_sweet_cyan_bean)
+	elif map_type == Enums.EMapType.Desert_Cactus:
+		_set_background_by_bean(Preload.map_desert_cactus_bean)
+	elif map_type == Enums.EMapType.Desert_Rock:
+		_set_background_by_bean(Preload.map_desert_rock_bean)
+	elif map_type == Enums.EMapType.Desert_Sky:
+		_set_background_by_bean(Preload.map_desert_sky_bean)
+	elif map_type == Enums.EMapType.Desert_Dusk:
+		_set_background_by_bean(Preload.map_desert_dusk_bean)
+	elif map_type == Enums.EMapType.Beach_Blue:
+		_set_background_by_bean(Preload.map_beach_blue_bean)
+	elif map_type == Enums.EMapType.Beach_Green:
+		_set_background_by_bean(Preload.map_beach_green_bean)
+	elif map_type == Enums.EMapType.Beach_Cyan:
+		_set_background_by_bean(Preload.map_beach_cyan_bean)
+	elif map_type == Enums.EMapType.Beach_Dusk:
+		_set_background_by_bean(Preload.map_beach_dusk_bean)
 	
 
+func _set_background_by_bean(map_bean : MapBean) -> void:
+	for i in range(map_bean.background_textures.size()):
+		layer_sprite_list[i].texture = map_bean.background_textures[i]
+		if i != 0:
+			layer_sprite_list[i].position.y = map_bean.y_offset
+			if map_bean.y_offset < 0.0:
+				$Soil.visible = true
+				$Soil/ColorRect.color = map_bean.soil_color
+
+
 func move_forward(speed : float, delta : float) -> void:
-	for iter in layer_list:
-		iter.motion_offset.x -= speed * delta * iter.motion_scale.x
+	for layer_iter in layer_list:
+		layer_iter.motion_offset.x -= speed * delta * layer_iter.motion_scale.x

@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id="Animation_qov7t"]
 resource_name = "AutoFree"
-length = 2.0
+length = 4.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,11 +15,11 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"queue_self"
 }]
 }
 

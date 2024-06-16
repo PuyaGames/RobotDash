@@ -27,3 +27,12 @@ const map_beach_blue_bean : MapBean = preload("res://resources/map/beach_blue_be
 const map_beach_green_bean : MapBean = preload("res://resources/map/beach_green_bean.tres")
 const map_beach_cyan_bean : MapBean = preload("res://resources/map/beach_cyan_bean.tres")
 const map_beach_dusk_bean : MapBean = preload("res://resources/map/beach_dusk_bean.tres")
+# UI
+const sf_dazhuang_run : SpriteFrames = preload("res://resources/ui/sf_dazhuang_run.tres")
+const sf_xiaomei_run : SpriteFrames = preload("res://resources/ui/sf_xiaomei_run.tres")
+const sf_xiaoli_run : SpriteFrames = preload("res://resources/ui/sf_xiaoli_run.tres")
+const sf_sangbiao_run : SpriteFrames = preload("res://resources/ui/sf_sangbiao_run.tres")
+const sf_robot_run : SpriteFrames = preload("res://resources/ui/sf_robot_run.tres")
+const sf_zombie_run : SpriteFrames = preload("res://resources/ui/sf_zombie_run.tres")
+# PackedScene
+const tscn_level : PackedScene = preload("res://scenes/level/level.tscn")

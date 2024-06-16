@@ -1,23 +1,33 @@
 extends Node2D
 class_name Level
 
+@export var enable_main_menu_mode : bool = false
 @export var map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 
 @onready var player : Player = $"Visible/SubViewportContainer/SubViewport/Player"
 @onready var background : ParallaxScrolling = $"Visible/SubViewportContainer/SubViewport/Background"
 @onready var terrain_generator : TerrainGenerator = $"Visible/SubViewportContainer/SubViewport/TerrainGenerator"
 
+var ready_to_game : bool = false
 var odometer : int = 0
 
 
 func _ready() -> void:
+	if enable_main_menu_mode:
+		$CanvasLayer.visible = false
+		player.queue_free()
+	else:
+		$CanvasLayer.visible = true
+		
 	_init_level_map()
 	odometer = player.position.x as int
 	
 
 func _process(delta: float) -> void:
-	background.move_forward(player.movement_speed, delta)
-	terrain_generator.move_forward(player.movement_speed, delta)
+	if ready_to_game == false:
+		return
+		
+	move_forward(player.movement_speed, delta)
 	odometer += player.movement_speed * delta as int
 
 
@@ -36,3 +46,8 @@ func _init_level_map() -> void:
 
 func _on_pause_button_toggled(toggled_on: bool) -> void:
 	get_tree().paused = true
+	
+	
+func move_forward(speed : float, delta : float) -> void:
+	background.move_forward(speed, delta)
+	terrain_generator.move_forward(speed, delta)

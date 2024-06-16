@@ -1,11 +1,27 @@
-extends Control
+extends CanvasLayer
 
 
-# Called when the node enters the scene tree for the first time.
+@onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
+
+var level : Level
+const map_type_pool : Array[Enums.EMapType] = [
+	Enums.EMapType.Halloween_Green,
+	Enums.EMapType.Halloween_Red,
+	Enums.EMapType.Halloween_Blue,
+	Enums.EMapType.Halloween_Orange,
+	Enums.EMapType.Desert_Cactus,
+	Enums.EMapType.Desert_Rock,
+	Enums.EMapType.Desert_Sky,
+	Enums.EMapType.Desert_Dusk
+]
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	level = Preload.tscn_level.instantiate()
+	level.map_type = map_type_pool.pick_random()
+	level.enable_main_menu_mode = true
+	sub_viewport.add_child(level)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	level.move_forward(20.0, delta)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdm0888l813h1"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_rd8rf"]
+[ext_resource type="PackedScene" uid="uid://cpf0i51h6ms7j" path="res://scenes/level/level.tscn" id="2_tud0u"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_rd8rf")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(750, 1624)
+render_target_update_mode = 4
+
+[node name="Level" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_tud0u")]
+enable_main_menu_mode = true

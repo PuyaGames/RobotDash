@@ -23,3 +23,4 @@ short_platform_texture = SubResource("AtlasTexture_4a6de")
 long_platform_texture = SubResource("AtlasTexture_yyte1")
 terrain_texture = ExtResource("6_gxjqd")
 y_offset = 88.0
+soil_color = Color(1, 1, 1, 1)

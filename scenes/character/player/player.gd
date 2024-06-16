@@ -21,6 +21,7 @@ enum EPlayerState
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 
+var ready_to_game : bool = false
 var jump_peak_time : float = 0.5
 var jump_fall_time : float = 0.5
 var jump_height : float = 2.0
@@ -31,7 +32,7 @@ var has_double_jump : bool = false
 var jump_gravity : float
 var jump_velocity : float
 var fall_gravity : float
-var player_state : EPlayerState = EPlayerState.Run
+var player_state : EPlayerState = EPlayerState.Walk
 
 
 func _ready() -> void:
@@ -40,6 +41,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if ready_to_game == false:
+		return
+	
 	position.x = 120.0
 
 	if velocity.y > 0.0:

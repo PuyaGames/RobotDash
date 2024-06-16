@@ -22,3 +22,5 @@ background_textures = Array[Texture2D]([ExtResource("1_84oki"), ExtResource("2_0
 short_platform_texture = SubResource("AtlasTexture_ppp8e")
 long_platform_texture = SubResource("AtlasTexture_hqpqx")
 terrain_texture = ExtResource("6_3ygac")
+y_offset = 0.0
+soil_color = Color(1, 1, 1, 1)

@@ -23,6 +23,7 @@ enum EMapType
 
 enum EPlayerType
 {
+	None,
 	XiaoLi,
 	XiaoMei,
 	DaZhuang,

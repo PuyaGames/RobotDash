@@ -17,11 +17,11 @@ enum EPlayerState
 	Ready
 }
 
-@export var player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
+@export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 
-var ready_to_game : bool = false
+var running : bool = false
 var jump_peak_time : float = 0.5
 var jump_fall_time : float = 0.5
 var jump_height : float = 2.0
@@ -36,12 +36,11 @@ var player_state : EPlayerState = EPlayerState.Walk
 
 
 func _ready() -> void:
-	_init_player()
 	_calculate_movement_parameters()
 
 
 func _physics_process(delta: float) -> void:
-	if ready_to_game == false:
+	if running == false:
 		return
 	
 	position.x = 120.0
@@ -62,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		if player_state == EPlayerState.Fall ||\
 		   player_state == EPlayerState.DoubleJump:
 			reset_jump_state()
-
+			
 	move_and_slide()
 
 
@@ -73,18 +72,23 @@ func _calculate_movement_parameters() -> void:
 	jump_velocity = jump_gravity * jump_peak_time * -1.0
 	
 	
+func init_player(player_type : Enums.EPlayerType) -> void:
+	_player_type = player_type
+	_init_player()
+	
+	
 func _init_player() -> void:
-	if player_type == Enums.EPlayerType.XiaoLi:
+	if _player_type == Enums.EPlayerType.XiaoLi:
 		_set_player_by_bean(Preload.player_xiaoli_bean)
-	elif player_type == Enums.EPlayerType.XiaoMei:
+	elif _player_type == Enums.EPlayerType.XiaoMei:
 		_set_player_by_bean(Preload.player_xiaomei_bean)
-	elif player_type == Enums.EPlayerType.DaZhuang:
+	elif _player_type == Enums.EPlayerType.DaZhuang:
 		_set_player_by_bean(Preload.player_dazhuang_bean)
-	elif player_type == Enums.EPlayerType.SangBiao:
+	elif _player_type == Enums.EPlayerType.SangBiao:
 		_set_player_by_bean(Preload.player_sangbiao_bean)
-	elif player_type == Enums.EPlayerType.Robot:
+	elif _player_type == Enums.EPlayerType.Robot:
 		_set_player_by_bean(Preload.player_robot_bean)
-	elif player_type == Enums.EPlayerType.Zombie:
+	elif _player_type == Enums.EPlayerType.Zombie:
 		_set_player_by_bean(Preload.player_zombie_bean)
 		
 		
@@ -127,9 +131,6 @@ func set_kick_state() -> void:
 func set_shove_state() -> void:
 	player_state = EPlayerState.Shove
 
-func set_ready_state() -> void:
-	player_state = EPlayerState.Ready
-
 
 func jump() -> void:
 	if player_state == EPlayerState.Run:
@@ -163,3 +164,4 @@ func is_can_double_jump() -> bool:
 func reset_jump_state() -> void:
 	set_run_state()
 	has_double_jump = false
+

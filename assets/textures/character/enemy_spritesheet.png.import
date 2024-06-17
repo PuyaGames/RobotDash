@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3vrxnroxcbu4"
-path="res://.godot/imported/curtains.png-f5a25cbc897d336641cfbab203b5832e.ctex"
+uid="uid://8fw4p6f8x54i"
+path="res://.godot/imported/enemy_spritesheet.png-81bb4efeb9cea1ad2d1f805b8df3159f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/scene_manager/shader_patterns/curtains.png"
-dest_files=["res://.godot/imported/curtains.png-f5a25cbc897d336641cfbab203b5832e.ctex"]
+source_file="res://assets/textures/character/enemy_spritesheet.png"
+dest_files=["res://.godot/imported/enemy_spritesheet.png-81bb4efeb9cea1ad2d1f805b8df3159f.ctex"]
 
 [params]
 

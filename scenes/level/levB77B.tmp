@@ -46,53 +46,12 @@ region = Rect2(548, 400, 48, 48)
 atlas = ExtResource("16_370dc")
 region = Rect2(544, 144, 48, 48)
 
-[sub_resource type="Animation" id="Animation_5634y"]
+[sub_resource type="Animation" id="Animation_h0f4t"]
 resource_name = "Opening"
-length = 4.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visible/SubViewportContainer/SubViewport/Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-50, 832), Vector2(120, 832)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visible/SubViewportContainer/SubViewport/Player")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"set_idle_state"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hint")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"show"
-}]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1nq3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fkie"]
 _data = {
-"Opening": SubResource("Animation_5634y")
+"Opening": SubResource("Animation_h0f4t")
 }
 
 [node name="Level" type="Node2D"]
@@ -148,8 +107,8 @@ layer_06_texture = ExtResource("7_unaa6")
 [node name="TerrainGenerator" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("12_ct1ow")]
 
 [node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("13_uqsvg")]
-position = Vector2(-50, 832)
-_player_type = 2
+position = Vector2(-50, 800)
+player_type = 5
 
 [node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")
@@ -230,23 +189,10 @@ metadata/_edit_group_ = true
 [node name="Loading" parent="." instance=ExtResource("17_ew04u")]
 visible = false
 
-[node name="Hint" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="HintButton" type="Button" parent="Hint"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "单击屏幕开始"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_g1nq3")
+"": SubResource("AnimationLibrary_5fkie")
 }
 
 [connection signal="button_down" from="CanvasLayer/JumpButton" to="." method="_on_jump_button_button_down"]
 [connection signal="toggled" from="CanvasLayer/TopPanel/PauseButton" to="." method="_on_pause_button_toggled"]
-[connection signal="button_down" from="Hint/HintButton" to="." method="_on_hint_button_button_down"]

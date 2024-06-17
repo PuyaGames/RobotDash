@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cmeeg816o3qaw"]
+[gd_scene load_steps=35 format=3 uid="uid://cmeeg816o3qaw"]
 
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="1_ac2ss"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_637sq"]
@@ -128,22 +128,6 @@ tracks/0/keys = {
 "values": [14]
 }
 
-[sub_resource type="Animation" id="Animation_7iyff"]
-resource_name = "Ready"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
 [sub_resource type="Animation" id="Animation_3j7ya"]
 resource_name = "Run"
 length = 0.3
@@ -203,7 +187,6 @@ _data = {
 "Idle": SubResource("Animation_esct6"),
 "Jump": SubResource("Animation_8gj1r"),
 "Kick": SubResource("Animation_6kbww"),
-"Ready": SubResource("Animation_7iyff"),
 "Run": SubResource("Animation_3j7ya"),
 "Shove": SubResource("Animation_n6mqa"),
 "Walk": SubResource("Animation_vobpy")
@@ -224,22 +207,11 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_00xuh"]
 animation = &"Jump"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wcdkw"]
-animation = &"Ready"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5x7o"]
 animation = &"Run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_he2hp"]
 animation = &"Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_svfg5"]
-advance_mode = 2
-advance_expression = "player_state == EPlayerState.Ready"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5r4tb"]
-advance_mode = 2
-advance_expression = "player_state == EPlayerState.Run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ybgy4"]
 advance_mode = 2
@@ -284,6 +256,14 @@ advance_expression = "player_state == EPlayerState.Run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7bsuj"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x4gra"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cm8bv"]
+advance_mode = 2
+advance_expression = "player_state == EPlayerState.Run"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2vcd4"]
 states/Cheer/node = SubResource("AnimationNodeAnimation_dxh1y")
 states/Cheer/position = Vector2(1053, 111)
@@ -293,25 +273,23 @@ states/End/position = Vector2(177, -10)
 states/Fall/node = SubResource("AnimationNodeAnimation_nraun")
 states/Fall/position = Vector2(29, 305)
 states/Idle/node = SubResource("AnimationNodeAnimation_ppqfl")
-states/Idle/position = Vector2(810, 209)
+states/Idle/position = Vector2(810, 110.333)
 states/Jump/node = SubResource("AnimationNodeAnimation_00xuh")
 states/Jump/position = Vector2(290, 627)
-states/Ready/node = SubResource("AnimationNodeAnimation_wcdkw")
-states/Ready/position = Vector2(576, 111)
 states/Run/node = SubResource("AnimationNodeAnimation_e5x7o")
 states/Run/position = Vector2(576, 305)
 states/Start/position = Vector2(177, 111)
 states/Walk/node = SubResource("AnimationNodeAnimation_he2hp")
 states/Walk/position = Vector2(371, 111)
-transitions = ["Walk", "Ready", SubResource("AnimationNodeStateMachineTransition_svfg5"), "Ready", "Run", SubResource("AnimationNodeStateMachineTransition_5r4tb"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_bky72"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_jegvv"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_hyoag"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_yofqf"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_7bsuj")]
-graph_offset = Vector2(28, 18)
+transitions = ["Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_bky72"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_jegvv"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_hyoag"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_yofqf"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_7bsuj"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_x4gra"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_cm8bv")]
+graph_offset = Vector2(41, -48)
 
 [node name="Player" instance=ExtResource("1_ac2ss")]
 script = ExtResource("2_637sq")
-player_type = 2
+_player_type = 3
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 25
+frame = 24
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 22)

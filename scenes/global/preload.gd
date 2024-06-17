@@ -36,3 +36,5 @@ const sf_robot_run : SpriteFrames = preload("res://resources/ui/sf_robot_run.tre
 const sf_zombie_run : SpriteFrames = preload("res://resources/ui/sf_zombie_run.tres")
 # PackedScene
 const tscn_level : PackedScene = preload("res://scenes/level/level.tscn")
+const tscn_main_menu : PackedScene = preload("res://scenes/ui/main_menu.tscn")
+const tscn_player : PackedScene = preload("res://scenes/character/player/player.tscn")

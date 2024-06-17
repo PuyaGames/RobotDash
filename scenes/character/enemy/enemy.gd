@@ -12,7 +12,9 @@ var up_gravity : float
 var up_velocity : float
 var down_gravity : float
 
+
 func _ready() -> void:
+	$VisibleOnScreenNotifier2D.show()
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	var timer : SceneTreeTimer = get_tree().create_timer(rng.randf_range(0, 2.0))
 	timer.connect("timeout", Callable(
@@ -43,10 +45,13 @@ func dead() -> void:
 	$AnimationPlayer.play("Rotate")
 	$Sprite2D.texture = dead_texture
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-	velocity.x = rng.randf_range(300.0, 600.0)
+	up_height = rng.randf_range(0.1, 3.0)
+	up_time = rng.randf_range(0.1, 0.4)
+	_calculate_movement_parameters()
+	velocity.x = rng.randf_range(0.1, 1000.0)
 	velocity.y = up_velocity
 	z_index = 100
 	
 	
-	
-
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

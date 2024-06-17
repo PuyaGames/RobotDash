@@ -8,6 +8,6 @@ script = ExtResource("1_x1uor")
 texture_sheet = ExtResource("2_wgg6c")
 jump_peak_time = 0.5
 jump_fall_time = 0.5
-jump_height = 2.5
+jump_height = 2.6
 can_double_jump = false
 movement_speed = 200.0

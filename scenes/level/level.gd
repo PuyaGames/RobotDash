@@ -21,13 +21,11 @@ func _ready() -> void:
 		$Loading.show()
 		player.init_player(_player_type)
 		odometer = player.position.x as int
+		$Loading.connect("loading_finished", Callable(
+			func() -> void: $AnimationPlayer.play("Opening")
+		))
 		
 	_init_level_map()
-	
-	$Loading.connect("loading_finished", Callable(
-		func() -> void: $AnimationPlayer.play("Opening")
-	))
-	
 
 func _process(delta: float) -> void:
 	if player.running == false:

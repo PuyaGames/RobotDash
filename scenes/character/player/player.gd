@@ -91,6 +91,8 @@ func _init_player() -> void:
 	elif _player_type == Enums.EPlayerType.Zombie:
 		_set_player_by_bean(Preload.player_zombie_bean)
 		
+	_calculate_movement_parameters()
+		
 		
 func _set_player_by_bean(player_bean : PlayerBean) -> void:
 	$"Sprite2D".texture = player_bean.texture_sheet

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cknym0csaecsq"]
+
+[ext_resource type="PackedScene" uid="uid://dirltgl1lpjhq" path="res://scenes/character/enemy/enemy.tscn" id="1_3ipap"]
+[ext_resource type="Script" path="res://scenes/test/test.gd" id="1_txfs2"]
+[ext_resource type="Texture2D" uid="uid://dvvury14d87xm" path="res://assets/textures/background/desert/1/5.png" id="2_k1yk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvl1b"]
+size = Vector2(760, 65)
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_txfs2")
+
+[node name="Enemy" parent="." instance=ExtResource("1_3ipap")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k1yk0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(372, 472)
+shape = SubResource("RectangleShape2D_qvl1b")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+offset_left = 285.0
+offset_top = 973.0
+offset_right = 413.0
+offset_bottom = 1069.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "抛射"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

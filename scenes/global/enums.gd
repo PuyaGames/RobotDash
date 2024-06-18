@@ -32,6 +32,12 @@ enum EPlayerType
 	Zombie
 }
 
+enum EHpType
+{
+	Blue,
+	Red
+}
+
 enum EPlatformAssemblyType
 {
 	# Long Long None None

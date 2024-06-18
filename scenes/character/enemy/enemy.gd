@@ -23,7 +23,6 @@ func _ready() -> void:
 	_calculate_movement_parameters()
 	
 
-
 func _physics_process(delta: float) -> void:
 	if velocity.y > 0.0:
 		velocity.y += down_gravity * delta
@@ -42,6 +41,7 @@ func _calculate_movement_parameters() -> void:
 	
 func dead() -> void:
 	$CollisionShape2D.disabled = true
+	$HpComponent.hide()
 	$AnimationPlayer.play("Rotate")
 	$Sprite2D.texture = dead_texture
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()

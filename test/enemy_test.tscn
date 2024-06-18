@@ -11,6 +11,7 @@ size = Vector2(760, 65)
 script = ExtResource("1_47buj")
 
 [node name="Enemy" parent="." instance=ExtResource("2_ujy1m")]
+position = Vector2(200, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_233xl")

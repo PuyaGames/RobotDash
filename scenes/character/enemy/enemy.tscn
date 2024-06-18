@@ -57,8 +57,6 @@ _data = {
 }
 
 [node name="Enemy" instance=ExtResource("1_vera4")]
-position = Vector2(200, 0)
-scale = Vector2(2, 2)
 script = ExtResource("2_th4ml")
 enemy_bean = null
 dead_texture = SubResource("AtlasTexture_tl2kb")
@@ -83,5 +81,8 @@ libraries = {
 visible = false
 position = Vector2(-9.53674e-07, 0)
 scale = Vector2(3.7, 4.2)
+
+[node name="HpComponent" parent="." index="4"]
+hp_type = 1
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

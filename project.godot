@@ -24,7 +24,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Enums="*res://scenes/global/enums.gd"
 Structs="*res://scenes/global/structs.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
-Preload="*res://scenes/global/preload.gd"
+Paths="*res://scenes/global/paths.gd"
 GodotTapTap="*res://addons/GodotTapTapSDK/GodotTapTap.gd"
 Config="*res://scenes/global/config.gd"
 

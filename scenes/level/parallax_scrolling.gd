@@ -130,37 +130,37 @@ func init_background(map_type : Enums.EMapType) -> void:
 		layer_sprite.texture = null
 		
 	if map_type == Enums.EMapType.Halloween_Green:
-		_set_background_by_bean(Preload.map_halloween_green_bean)
+		_set_background_by_bean(load(Paths.map_halloween_green_bean))
 	elif map_type == Enums.EMapType.Halloween_Red:
-		_set_background_by_bean(Preload.map_halloween_red_bean)
+		_set_background_by_bean(load(Paths.map_halloween_red_bean))
 	elif map_type == Enums.EMapType.Halloween_Blue:
-		_set_background_by_bean(Preload.map_halloween_blue_bean)
+		_set_background_by_bean(load(Paths.map_halloween_blue_bean))
 	elif map_type == Enums.EMapType.Halloween_Orange:
-		_set_background_by_bean(Preload.map_halloween_orange_bean)
+		_set_background_by_bean(load(Paths.map_halloween_orange_bean))
 	elif map_type == Enums.EMapType.Sweet_Pink:
-		_set_background_by_bean(Preload.map_sweet_pink_bean)
+		_set_background_by_bean(load(Paths.map_sweet_pink_bean))
 	elif map_type == Enums.EMapType.Sweet_Blue:
-		_set_background_by_bean(Preload.map_sweet_blue_bean)
+		_set_background_by_bean(load(Paths.map_sweet_blue_bean))
 	elif map_type == Enums.EMapType.Sweet_Green:
-		_set_background_by_bean(Preload.map_sweet_green_bean)
+		_set_background_by_bean(load(Paths.map_sweet_green_bean))
 	elif map_type == Enums.EMapType.Sweet_Cyan:
-		_set_background_by_bean(Preload.map_sweet_cyan_bean)
+		_set_background_by_bean(load(Paths.map_sweet_cyan_bean))
 	elif map_type == Enums.EMapType.Desert_Cactus:
-		_set_background_by_bean(Preload.map_desert_cactus_bean)
+		_set_background_by_bean(load(Paths.map_desert_cactus_bean))
 	elif map_type == Enums.EMapType.Desert_Rock:
-		_set_background_by_bean(Preload.map_desert_rock_bean)
+		_set_background_by_bean(load(Paths.map_desert_rock_bean))
 	elif map_type == Enums.EMapType.Desert_Sky:
-		_set_background_by_bean(Preload.map_desert_sky_bean)
+		_set_background_by_bean(load(Paths.map_desert_sky_bean))
 	elif map_type == Enums.EMapType.Desert_Dusk:
-		_set_background_by_bean(Preload.map_desert_dusk_bean)
+		_set_background_by_bean(load(Paths.map_desert_dusk_bean))
 	elif map_type == Enums.EMapType.Beach_Blue:
-		_set_background_by_bean(Preload.map_beach_blue_bean)
+		_set_background_by_bean(load(Paths.map_beach_blue_bean))
 	elif map_type == Enums.EMapType.Beach_Green:
-		_set_background_by_bean(Preload.map_beach_green_bean)
+		_set_background_by_bean(load(Paths.map_beach_green_bean))
 	elif map_type == Enums.EMapType.Beach_Cyan:
-		_set_background_by_bean(Preload.map_beach_cyan_bean)
+		_set_background_by_bean(load(Paths.map_beach_cyan_bean))
 	elif map_type == Enums.EMapType.Beach_Dusk:
-		_set_background_by_bean(Preload.map_beach_dusk_bean)
+		_set_background_by_bean(load(Paths.map_beach_dusk_bean))
 	
 
 func _set_background_by_bean(map_bean : MapBean) -> void:

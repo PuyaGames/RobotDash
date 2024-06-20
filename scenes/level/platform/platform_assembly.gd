@@ -50,18 +50,18 @@ func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> voi
 	
 	if TypeString[0] != 'N':
 		if TypeString[0] == 'L':
-			platform_01 = Preload.tscn_long_platform.instantiate()
+			platform_01 = load(Paths.tscn_long_platform).instantiate()
 		else:
-			platform_01 = Preload.tscn_short_platform.instantiate()
+			platform_01 = load(Paths.tscn_short_platform).instantiate()
 		platform_01.init_platform(_map_type)
 		platform_01.position = Vector2(platform_position.x, platform_position.y)
 		add_child(platform_01)
 		
 	if TypeString[2] != 'N':
 		if TypeString[2] == 'L':
-			platform_02 = Preload.tscn_long_platform.instantiate()
+			platform_02 = load(Paths.tscn_long_platform).instantiate()
 		else:
-			platform_02 = Preload.tscn_short_platform.instantiate()
+			platform_02 = load(Paths.tscn_short_platform).instantiate()
 		platform_02.init_platform(_map_type)
 		platform_02.position = Vector2(platform_position.z, platform_position.w)
 		add_child(platform_02)

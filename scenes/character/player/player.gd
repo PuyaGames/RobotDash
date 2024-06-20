@@ -79,17 +79,17 @@ func init_player(player_type : Enums.EPlayerType) -> void:
 	
 func _init_player() -> void:
 	if _player_type == Enums.EPlayerType.XiaoLi:
-		_set_player_by_bean(Preload.player_xiaoli_bean)
+		_set_player_by_bean(load(Paths.player_xiaoli_bean))
 	elif _player_type == Enums.EPlayerType.XiaoMei:
-		_set_player_by_bean(Preload.player_xiaomei_bean)
+		_set_player_by_bean(load(Paths.player_xiaomei_bean))
 	elif _player_type == Enums.EPlayerType.DaZhuang:
-		_set_player_by_bean(Preload.player_dazhuang_bean)
+		_set_player_by_bean(load(Paths.player_dazhuang_bean))
 	elif _player_type == Enums.EPlayerType.SangBiao:
-		_set_player_by_bean(Preload.player_sangbiao_bean)
+		_set_player_by_bean(load(Paths.player_sangbiao_bean))
 	elif _player_type == Enums.EPlayerType.Robot:
-		_set_player_by_bean(Preload.player_robot_bean)
+		_set_player_by_bean(load(Paths.player_robot_bean))
 	elif _player_type == Enums.EPlayerType.Zombie:
-		_set_player_by_bean(Preload.player_zombie_bean)
+		_set_player_by_bean(load(Paths.player_zombie_bean))
 		
 	_calculate_movement_parameters()
 		

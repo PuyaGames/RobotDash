@@ -9,7 +9,10 @@ class_name Level
 @onready var background : ParallaxScrolling = $Visible/SubViewportContainer/SubViewport/Background
 @onready var terrain_generator : TerrainGenerator = $Visible/SubViewportContainer/SubViewport/TerrainGenerator
 
-var odometer : int = 0
+var odometer : int = 0:
+	set(new_value):
+		odometer = new_value
+		$CanvasLayer/TopPanel/OdometerLabel.text = str(new_value / 20)
 
 
 func _ready() -> void:
@@ -20,7 +23,6 @@ func _ready() -> void:
 		$CanvasLayer.show()
 		$Loading.show()
 		player.init_player(_player_type)
-		odometer = player.position.x as int
 		$Loading.connect("loading_finished", Callable(
 			func() -> void: $AnimationPlayer.play("Opening")
 		))
@@ -32,7 +34,6 @@ func _process(delta: float) -> void:
 		return
 	
 	move_forward(player.movement_speed, delta)
-	odometer += player.movement_speed * delta as int
 
 func _on_jump_button_button_down() -> void:
 	if player.is_can_double_jump():
@@ -54,6 +55,7 @@ func _on_pause_button_toggled(toggled_on: bool) -> void:
 func move_forward(speed : float, delta : float) -> void:
 	background.move_forward(speed, delta)
 	terrain_generator.move_forward(speed, delta)
+	odometer += speed * delta as int
 	
 	
 func init_level(map_type : Enums.EMapType, player_type : Enums.EPlayerType) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqy5y0gdl1cun"]
+[gd_scene load_steps=6 format=3 uid="uid://bqy5y0gdl1cun"]
 
 [ext_resource type="PackedScene" uid="uid://b23g0ktdrkovh" path="res://scenes/level/platform/platform.tscn" id="1_33fpo"]
 [ext_resource type="Texture2D" uid="uid://bx5rfq6tisiht" path="res://assets/textures/background/halloween/1_game_background/layers/7.png" id="2_y74v3"]
+[ext_resource type="PackedScene" uid="uid://hekpvepd2pmj" path="res://scenes/level/enemy_spawn_path.tscn" id="3_fx0of"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hv7la"]
 atlas = ExtResource("2_y74v3")
@@ -18,3 +19,6 @@ texture = SubResource("AtlasTexture_hv7la")
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(320, 16)
 shape = SubResource("RectangleShape2D_54u5h")
+
+[node name="EnemySpawnPath" parent="." index="2" instance=ExtResource("3_fx0of")]
+points = PackedVector2Array(0, -24, 640, -24)

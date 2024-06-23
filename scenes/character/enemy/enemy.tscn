@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="Enemy" instance=ExtResource("1_vera4")]
+collision_layer = 2
 script = ExtResource("2_th4ml")
 enemy_bean = null
 dead_texture = SubResource("AtlasTexture_tl2kb")
@@ -65,6 +66,7 @@ dead_texture = SubResource("AtlasTexture_tl2kb")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_30b5q")
+flip_h = true
 hframes = 1
 vframes = 1
 

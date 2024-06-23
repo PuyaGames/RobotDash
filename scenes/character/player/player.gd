@@ -33,6 +33,7 @@ var jump_gravity : float
 var jump_velocity : float
 var fall_gravity : float
 var player_state : EPlayerState = EPlayerState.Walk
+var facing_enemy : bool = false
 
 
 func _ready() -> void:
@@ -166,4 +167,8 @@ func is_can_double_jump() -> bool:
 func reset_jump_state() -> void:
 	set_run_state()
 	has_double_jump = false
+	
+	
+func attack() -> void:
+	pass
 

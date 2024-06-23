@@ -33,7 +33,10 @@ func _process(delta: float) -> void:
 	if player.running == false:
 		return
 	
-	move_forward(player.movement_speed, delta)
+	if player.facing_enemy:
+		pass
+	else:
+		move_forward(player.movement_speed, delta)
 
 func _on_jump_button_button_down() -> void:
 	if player.is_can_double_jump():

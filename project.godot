@@ -85,6 +85,10 @@ space={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="Enemy"
+
 [phantom_camera]
 
 tips/show_jitter_tips=false

@@ -1,4 +1,5 @@
 extends Character
+class_name Enemy
 
 
 @export var enemy_bean : EnemyBean

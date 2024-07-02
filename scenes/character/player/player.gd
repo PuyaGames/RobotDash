@@ -20,6 +20,7 @@ enum EPlayerState
 @export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
+@onready var ray_cast_2d : RayCast2D = $RayCast2D
 
 var running : bool = false
 var jump_peak_time : float = 0.5
@@ -62,6 +63,12 @@ func _physics_process(delta: float) -> void:
 		if player_state == EPlayerState.Fall ||\
 		   player_state == EPlayerState.DoubleJump:
 			reset_jump_state()
+			
+	if ray_cast_2d.is_colliding():
+		facing_enemy = true
+		attack()
+	else:
+		facing_enemy = false
 			
 	move_and_slide()
 
@@ -170,5 +177,20 @@ func reset_jump_state() -> void:
 	
 	
 func attack() -> void:
-	pass
+	var attack_state_pool : Array[EPlayerState] = [
+		EPlayerState.Attack,
+		EPlayerState.Kick,
+		EPlayerState.Shove
+	]
+	
+	player_state = attack_state_pool.pick_random()
+	var enemy : Enemy = ray_cast_2d.get_collider() as Enemy
+	if enemy != null:
+		enemy.dead()
+	
+	
+func reset_attack() -> void:
+	player_state = EPlayerState.Run
+
+
 

@@ -21,4 +21,4 @@ position = Vector2(0, 24)
 shape = SubResource("CircleShape2D_f0hh6")
 
 [node name="HpComponent" parent="." instance=ExtResource("3_rknby")]
-position = Vector2(-36, -92)
+position = Vector2(0, -64)

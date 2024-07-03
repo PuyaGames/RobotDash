@@ -21,6 +21,7 @@ enum EPlayerState
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 @onready var ray_cast_2d : RayCast2D = $RayCast2D
+@onready var hp_component: Node2D = $HpComponent
 
 var running : bool = false
 var jump_peak_time : float = 0.5
@@ -183,10 +184,17 @@ func attack() -> void:
 		EPlayerState.Shove
 	]
 	
-	player_state = attack_state_pool.pick_random()
 	var enemy : Enemy = ray_cast_2d.get_collider() as Enemy
-	if enemy != null:
+	if enemy == null:
+		return
+		
+	if get_hp() > enemy.get_hp():
+		player_state = attack_state_pool.pick_random()
 		enemy.dead()
+	elif get_hp() < enemy.get_hp():
+		player_state = EPlayerState.Idle
+	else:
+		player_state = EPlayerState.Idle
 	
 	
 func reset_attack() -> void:

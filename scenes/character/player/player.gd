@@ -14,7 +14,8 @@ enum EPlayerState
 	Cheer,
 	Kick,
 	Shove,
-	Ready
+	Ready,
+	Dead
 }
 
 @export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
@@ -67,7 +68,8 @@ func _physics_process(delta: float) -> void:
 			
 	if ray_cast_2d.is_colliding():
 		facing_enemy = true
-		attack()
+		if player_state != EPlayerState.Dead:
+			attack()
 	else:
 		facing_enemy = false
 			
@@ -192,13 +194,22 @@ func attack() -> void:
 		player_state = attack_state_pool.pick_random()
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():
-		player_state = EPlayerState.Idle
+		dead()
+		player_state = EPlayerState.Dead
 	else:
 		player_state = EPlayerState.Idle
 	
 	
 func reset_attack() -> void:
 	player_state = EPlayerState.Run
-
-
-
+	
+	
+func dead() -> void:
+	$CollisionShape2D.disabled = true
+	$HpComponent.hide()
+	jump_height *= 0.5
+	jump_peak_time *= 0.6
+	jump_fall_time *= 0.4
+	_calculate_movement_parameters()
+	velocity.y = jump_velocity
+	player_state = EPlayerState.Dead

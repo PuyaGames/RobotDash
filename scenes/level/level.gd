@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	if player.running == false:
 		return
 	
-	if player.facing_enemy:
+	if player.facing_enemy || player.player_state == player.EPlayerState.Dead:
 		pass
 	else:
 		move_forward(player.movement_speed, delta)

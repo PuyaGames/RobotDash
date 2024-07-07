@@ -12,6 +12,7 @@ var new_value : int
 
 
 func _ready() -> void:
+	$Label.text = str(hp)
 	if hp_type == Enums.EHpType.Blue:
 		$Label.add_theme_color_override("font_color", blue)
 	else:
@@ -24,7 +25,6 @@ func add_hp(hp_comp : HpComponent) -> void:
 	
 	
 func reduce_hp(value : int) -> void:
-	
 	$AnimationPlayer.play("Updated")
 	
 	

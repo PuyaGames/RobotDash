@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03fg3"]
 
 [node name="Platform" type="StaticBody2D"]
+collision_mask = 6
 script = ExtResource("1_br3nh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

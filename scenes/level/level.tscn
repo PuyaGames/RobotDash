@@ -95,8 +95,9 @@ _data = {
 "Opening": SubResource("Animation_5634y")
 }
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_jeg3s")
+_player_type = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(375, 812)
@@ -150,7 +151,7 @@ layer_06_texture = ExtResource("7_unaa6")
 
 [node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("13_uqsvg")]
 position = Vector2(-50, 832)
-_player_type = 2
+_player_type = 3
 
 [node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")

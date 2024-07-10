@@ -3,8 +3,9 @@ class_name Enemy
 
 
 @export var enemy_bean : EnemyBean
-
 @export var dead_texture : AtlasTexture
+
+@onready var hp_component: HpComponent = $HpComponent
 
 var up_time : float = 0.4
 var down_time : float = 0.2
@@ -42,7 +43,6 @@ func _calculate_movement_parameters() -> void:
 	
 func dead() -> void:
 	$CollisionShape2D.disabled = true
-	$HpComponent.hide()
 	$AnimationPlayer.play("Rotate")
 	$Sprite2D.texture = dead_texture
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()

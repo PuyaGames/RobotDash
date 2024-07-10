@@ -53,7 +53,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y += fall_gravity * delta
 		if not is_on_floor() &&\
 		(player_state == EPlayerState.Jump ||\
-		 player_state == EPlayerState.Run):
+		 player_state == EPlayerState.DoubleJump ||\
+		 player_state == EPlayerState.Run ||\
+		 player_state == EPlayerState.Attack ||\
+		 player_state == EPlayerState.Shove ||\
+		 player_state == EPlayerState.Kick):
 			set_fall_state()
 	else:
 		velocity.y += jump_gravity * delta
@@ -72,8 +76,9 @@ func _physics_process(delta: float) -> void:
 			attack()
 	else:
 		facing_enemy = false
-			
+		
 	move_and_slide()
+	#print_debug(EPlayerState.keys()[player_state])
 
 
 func _calculate_movement_parameters() -> void:
@@ -192,6 +197,7 @@ func attack() -> void:
 		
 	if get_hp() > enemy.get_hp():
 		player_state = attack_state_pool.pick_random()
+		hp_component.add_hp(enemy.hp_component)
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():
 		dead()

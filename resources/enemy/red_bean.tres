@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyBean" load_steps=5 format=3 uid="uid://bo10aeo4t555l"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_pdyu7"]
+[ext_resource type="Script" path="res://scenes/resource/enemy_bean.gd" id="2_wjg6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftyfs"]
+atlas = ExtResource("1_pdyu7")
+region = Rect2(1788, 606, 39, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq4vf"]
+atlas = ExtResource("1_pdyu7")
+region = Rect2(1862, 461, 39, 45)
+
+[resource]
+script = ExtResource("2_wjg6p")
+idle_texture = SubResource("AtlasTexture_eq4vf")
+dead_texture = SubResource("AtlasTexture_ftyfs")

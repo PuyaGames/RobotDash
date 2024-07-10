@@ -3,13 +3,22 @@ extends Node
 
 const tscn_short_platform : String = "res://scenes/level/platform/short_platform.tscn"
 const tscn_long_platform : String = "res://scenes/level/platform/long_platform.tscn"
-# Player
+# Character
 const player_dazhuang_bean : String = "res://resources/player/dazhuang_bean.tres"
 const player_robot_bean : String = "res://resources/player/robot_bean.tres"
 const player_sangbiao_bean : String = "res://resources/player/sangbiao_bean.tres"
 const player_xiaoli_bean : String = "res://resources/player/xiaoli_bean.tres"
 const player_xiaomei_bean : String = "res://resources/player/xiaomei_bean.tres"
 const player_zombie_bean : String = "res://resources/player/zombie_bean.tres"
+const enemy_grey_bean : String = "res://resources/enemy/grey_bean.tres"
+const enemy_red_bean : String = "res://resources/enemy/red_bean.tres"
+const enemy_green_bean : String = "res://resources/enemy/green_bean.tres"
+const enemy_blue_bean : String = "res://resources/enemy/blue_bean.tres"
+const enemy_black_01_bean : String = "res://resources/enemy/black_01_bean.tres"
+const enemy_black_02_bean : String = "res://resources/enemy/black_02_bean.tres"
+const enemy_black_03_bean : String = "res://resources/enemy/black_03_bean.tres"
+const enemy_black_04_bean : String = "res://resources/enemy/black_04_bean.tres"
+const enemy_black_05_bean : String = "res://resources/enemy/black_05_bean.tres"
 # Map
 const map_halloween_green_bean : String = "res://resources/map/halloween_green_bean.tres"
 const map_halloween_red_bean : String = "res://resources/map/halloween_red_bean.tres"

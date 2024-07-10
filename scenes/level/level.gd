@@ -12,7 +12,7 @@ class_name Level
 var odometer : int = 0:
 	set(new_value):
 		odometer = new_value
-		$CanvasLayer/TopPanel/OdometerLabel.text = str(new_value / 20)
+		$CanvasLayer/TopPanel/OdometerLabel.text = str(int(new_value * 0.05))
 
 
 func _ready() -> void:

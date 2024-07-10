@@ -10,7 +10,6 @@ enum EPlayerState
 	DoubleJump,
 	Fall,
 	Idle,
-	Attack,
 	Cheer,
 	Kick,
 	Shove,
@@ -55,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		(player_state == EPlayerState.Jump ||\
 		 player_state == EPlayerState.DoubleJump ||\
 		 player_state == EPlayerState.Run ||\
-		 player_state == EPlayerState.Attack ||\
 		 player_state == EPlayerState.Shove ||\
 		 player_state == EPlayerState.Kick):
 			set_fall_state()
@@ -137,9 +135,6 @@ func set_fall_state() -> void:
 func set_idle_state() -> void:
 	player_state = EPlayerState.Idle
 
-func set_attack_state() -> void:
-	player_state = EPlayerState.Attack
-
 func set_cheer_state() -> void:
 	player_state = EPlayerState.Cheer
 
@@ -186,7 +181,6 @@ func reset_jump_state() -> void:
 	
 func attack() -> void:
 	var attack_state_pool : Array[EPlayerState] = [
-		EPlayerState.Attack,
 		EPlayerState.Kick,
 		EPlayerState.Shove
 	]
@@ -196,7 +190,8 @@ func attack() -> void:
 		return
 		
 	if get_hp() > enemy.get_hp():
-		player_state = attack_state_pool.pick_random()
+		if is_on_floor():
+			player_state = attack_state_pool.pick_random()
 		hp_component.add_hp(enemy.hp_component)
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():

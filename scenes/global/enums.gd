@@ -34,7 +34,16 @@ enum EPlayerType
 
 enum EEnemyType
 {
-	
+	None,
+	Grey,
+	Green,
+	Red,
+	Blue,
+	BlackOne,
+	BlackTwo,
+	BlackThree,
+	BlackFour,
+	BlackFive
 }
 
 enum EHpType

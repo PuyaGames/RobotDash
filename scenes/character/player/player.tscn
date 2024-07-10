@@ -414,7 +414,7 @@ script = ExtResource("2_637sq")
 _player_type = 1
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 42
+frame = 37
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

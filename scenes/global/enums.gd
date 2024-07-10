@@ -32,6 +32,11 @@ enum EPlayerType
 	Zombie
 }
 
+enum EEnemyType
+{
+	
+}
+
 enum EHpType
 {
 	Blue,

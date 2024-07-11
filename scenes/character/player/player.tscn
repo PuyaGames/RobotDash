@@ -338,27 +338,27 @@ advance_expression = "player_state == EPlayerState.Dead"
 states/Cheer/node = SubResource("AnimationNodeAnimation_dxh1y")
 states/Cheer/position = Vector2(1053, 111)
 states/Dead/node = SubResource("AnimationNodeAnimation_xksya")
-states/Dead/position = Vector2(591, 627)
+states/Dead/position = Vector2(597.667, 773.667)
 states/DoubleJump/node = SubResource("AnimationNodeAnimation_kg6cg")
-states/DoubleJump/position = Vector2(38, 627)
+states/DoubleJump/position = Vector2(44.6667, 773.667)
 states/End/position = Vector2(202, -46)
 states/Fall/node = SubResource("AnimationNodeAnimation_nraun")
-states/Fall/position = Vector2(29, 305)
+states/Fall/position = Vector2(35.6667, 451.667)
 states/Idle/node = SubResource("AnimationNodeAnimation_ppqfl")
 states/Idle/position = Vector2(810, 110.333)
 states/Jump/node = SubResource("AnimationNodeAnimation_00xuh")
-states/Jump/position = Vector2(290, 627)
+states/Jump/position = Vector2(296.667, 773.667)
 states/Kick/node = SubResource("AnimationNodeAnimation_yihkh")
-states/Kick/position = Vector2(1028, 312)
+states/Kick/position = Vector2(1053.04, 760)
 states/Run/node = SubResource("AnimationNodeAnimation_e5x7o")
-states/Run/position = Vector2(591, 312)
+states/Run/position = Vector2(597.667, 458.667)
 states/Shove/node = SubResource("AnimationNodeAnimation_35c57")
-states/Shove/position = Vector2(1028, 531)
+states/Shove/position = Vector2(1062.22, 453.222)
 states/Start/position = Vector2(202, 112.333)
 states/Walk/node = SubResource("AnimationNodeAnimation_he2hp")
 states/Walk/position = Vector2(509, 113.333)
 transitions = ["Run", "Jump", SubResource("AnimationNodeStateMachineTransition_ybgy4"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_6mnk1"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_7txpd"), "Run", "Fall", SubResource("AnimationNodeStateMachineTransition_dyxu6"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_yqgga"), "Idle", "Cheer", SubResource("AnimationNodeStateMachineTransition_0jb0c"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_bky72"), "Jump", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_jegvv"), "Fall", "DoubleJump", SubResource("AnimationNodeStateMachineTransition_hyoag"), "DoubleJump", "Run", SubResource("AnimationNodeStateMachineTransition_yofqf"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_7bsuj"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_x4gra"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_cm8bv"), "Run", "Kick", SubResource("AnimationNodeStateMachineTransition_evymt"), "Run", "Shove", SubResource("AnimationNodeStateMachineTransition_kgyx3"), "Shove", "Run", SubResource("AnimationNodeStateMachineTransition_ujwg8"), "Kick", "Run", SubResource("AnimationNodeStateMachineTransition_woi78"), "Run", "Dead", SubResource("AnimationNodeStateMachineTransition_5bdy4")]
-graph_offset = Vector2(89, -58)
+graph_offset = Vector2(-299, 88)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ja8q"]
 radius = 58.0
@@ -369,7 +369,7 @@ script = ExtResource("2_637sq")
 _player_type = 1
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 38
+frame = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

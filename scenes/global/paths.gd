@@ -19,6 +19,17 @@ const enemy_black_02_bean : String = "res://resources/enemy/black_02_bean.tres"
 const enemy_black_03_bean : String = "res://resources/enemy/black_03_bean.tres"
 const enemy_black_04_bean : String = "res://resources/enemy/black_04_bean.tres"
 const enemy_black_05_bean : String = "res://resources/enemy/black_05_bean.tres"
+const enemy_path_table : Dictionary = {
+	Enums.EEnemyType.Grey : enemy_grey_bean,
+	Enums.EEnemyType.Green : enemy_green_bean,
+	Enums.EEnemyType.Red : enemy_red_bean,
+	Enums.EEnemyType.Blue : enemy_blue_bean,
+	Enums.EEnemyType.BlackOne : enemy_black_01_bean,
+	Enums.EEnemyType.BlackTwo : enemy_black_02_bean,
+	Enums.EEnemyType.BlackThree : enemy_black_03_bean,
+	Enums.EEnemyType.BlackFour : enemy_black_04_bean,
+	Enums.EEnemyType.BlackFive : enemy_black_05_bean
+}
 # Map
 const map_halloween_green_bean : String = "res://resources/map/halloween_green_bean.tres"
 const map_halloween_red_bean : String = "res://resources/map/halloween_red_bean.tres"

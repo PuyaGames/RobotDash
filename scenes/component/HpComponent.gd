@@ -30,7 +30,7 @@ func add_hp(target_hp_comp : HpComponent) -> void:
 	level.add_child(new_hp_comp)
 	var tween : Tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(new_hp_comp, "position", global_position, 0.12)
-	tween.tween_property(new_hp_comp, "scale", Vector2(0.8, 0.8), 0.12)
+	#tween.tween_property(new_hp_comp, "scale", Vector2(0.8, 0.8), 0.12)
 	tween.finished.connect(Callable(
 		func() -> void:
 			$AnimationPlayer.play("Updated")

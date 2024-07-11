@@ -35,7 +35,6 @@ var jump_gravity : float
 var jump_velocity : float
 var fall_gravity : float
 var player_state : EPlayerState = EPlayerState.Walk
-var facing_enemy : bool = false
 
 
 func _ready() -> void:
@@ -53,9 +52,9 @@ func _physics_process(delta: float) -> void:
 		if not is_on_floor() &&\
 		(player_state == EPlayerState.Jump ||\
 		 player_state == EPlayerState.DoubleJump ||\
-		 player_state == EPlayerState.Run ||\
-		 player_state == EPlayerState.Shove ||\
-		 player_state == EPlayerState.Kick):
+		 player_state == EPlayerState.Run||\
+		 player_state == EPlayerState.Kick||\
+		 player_state == EPlayerState.Shove):
 			set_fall_state()
 	else:
 		velocity.y += jump_gravity * delta
@@ -69,14 +68,11 @@ func _physics_process(delta: float) -> void:
 			reset_jump_state()
 			
 	if ray_cast_2d.is_colliding():
-		facing_enemy = true
-		if player_state != EPlayerState.Dead:
+		if is_on_floor() && player_state != EPlayerState.Dead:
 			attack()
-	else:
-		facing_enemy = false
+		
 		
 	move_and_slide()
-	#print_debug(EPlayerState.keys()[player_state])
 
 
 func _calculate_movement_parameters() -> void:
@@ -190,8 +186,7 @@ func attack() -> void:
 		return
 		
 	if get_hp() > enemy.get_hp():
-		if is_on_floor():
-			player_state = attack_state_pool.pick_random()
+		player_state = attack_state_pool.pick_random()
 		hp_component.add_hp(enemy.hp_component)
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():
@@ -201,7 +196,7 @@ func attack() -> void:
 		player_state = EPlayerState.Idle
 	
 	
-func reset_attack() -> void:
+func reset_attack_state() -> void:
 	player_state = EPlayerState.Run
 	
 	

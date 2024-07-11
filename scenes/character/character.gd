@@ -3,4 +3,4 @@ class_name Character
 
 
 func get_hp() -> int:
-	return $HpComponent.hp
+	return $HpNumber.hp

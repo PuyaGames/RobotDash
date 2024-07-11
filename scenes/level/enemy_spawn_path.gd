@@ -17,6 +17,7 @@ func spawn_enemy(current_odometer : int) -> void:
 		
 	var owner_platform : Platform2D = owner as Platform2D
 	var positions : Array[Vector2]
+	
 	if owner_platform.type == 0:
 		positions = _calculate_spawn_positions(4)
 	else:

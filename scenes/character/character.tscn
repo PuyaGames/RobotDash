@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_o6o0n"]
 [ext_resource type="Texture2D" uid="uid://b27be3wogwqki" path="res://assets/textures/character/character_robot_sheetHD.png" id="3_ncflx"]
-[ext_resource type="PackedScene" uid="uid://pocendsybwgo" path="res://scenes/component/HpComponent.tscn" id="3_rknby"]
+[ext_resource type="PackedScene" uid="uid://pocendsybwgo" path="res://scenes/component/hp_number.tscn" id="3_rs4kr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0hh6"]
 radius = 56.5685
@@ -20,5 +20,5 @@ vframes = 5
 position = Vector2(0, 24)
 shape = SubResource("CircleShape2D_f0hh6")
 
-[node name="HpComponent" parent="." instance=ExtResource("3_rknby")]
+[node name="HpNumber" parent="." instance=ExtResource("3_rs4kr")]
 position = Vector2(0, -64)

@@ -21,7 +21,7 @@ enum EPlayerState
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 @onready var ray_cast_2d : RayCast2D = $RayCast2D
-@onready var hp_component: Node2D = $HpComponent
+@onready var hp_number : Node2D = $HpNumber
 
 var running : bool = false
 var jump_peak_time : float = 0.5
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	if running == false:
 		return
 	
-	position.x = 120.0
+	position.x = 160.0
 
 	if velocity.y > 0.0:
 		velocity.y += fall_gravity * delta
@@ -187,7 +187,7 @@ func attack() -> void:
 		
 	if get_hp() > enemy.get_hp():
 		player_state = attack_state_pool.pick_random()
-		hp_component.add_hp(enemy.hp_component)
+		hp_number.add_hp(enemy.hp_number)
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():
 		dead()

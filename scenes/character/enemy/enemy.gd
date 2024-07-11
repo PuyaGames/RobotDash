@@ -4,7 +4,7 @@ class_name Enemy
 
 @export var _enemy_type : Enums.EEnemyType = Enums.EEnemyType.Grey
 
-@onready var hp_component: HpComponent = $HpComponent
+@onready var hp_number : HpNumber = $HpNumber
 
 var _dead_texture : AtlasTexture
 var up_time : float = 0.4

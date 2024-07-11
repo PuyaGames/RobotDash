@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://pocendsybwgo"]
 
-[ext_resource type="Script" path="res://scenes/component/HpComponent.gd" id="1_203m7"]
+[ext_resource type="Script" path="res://scenes/component/hp_number.gd" id="1_dmq3h"]
 
 [sub_resource type="Animation" id="Animation_f5c37"]
 resource_name = "Updated"
@@ -38,8 +38,8 @@ _data = {
 "Updated": SubResource("Animation_f5c37")
 }
 
-[node name="HpComponent" type="Node2D"]
-script = ExtResource("1_203m7")
+[node name="HpNumber" type="Node2D"]
+script = ExtResource("1_dmq3h")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8

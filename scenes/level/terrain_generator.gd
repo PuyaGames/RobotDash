@@ -35,7 +35,9 @@ func move_forward(speed : float, delta : float) -> void:
 	update_trigger_position_x = terrain_root_list[1].position.x
 	if update_trigger_position_x < 0.0 - update_trigger_offset:
 		terrain_root_list[0].position.x = terrain_root_list[2].position.x + terrain_length
+		# Regenerate terrain and respawn enemies
 		terrain_list[0].random_regenerate_platform_assembly()
+		terrain_list[0].spawn_enemies()
 		terrain_generating_count += 1
 		temp_terrain_root = terrain_root_list[0]
 		temp_terrain = terrain_list[0]

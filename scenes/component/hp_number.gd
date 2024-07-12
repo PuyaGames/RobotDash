@@ -3,7 +3,8 @@ class_name HpNumber
 
 
 @export var hp_type : Enums.EHpType = Enums.EHpType.Blue
-@export var hp : int = 100:
+
+var hp : int = 100:
 	set(new_value):
 		hp = new_value
 		$Label.text = str(new_value)

@@ -36,7 +36,6 @@ func _ready() -> void:
 	regenerate(platform_assembly_type)
 	
 
-
 func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> void:
 	if platform_01 != null:
 		platform_01.queue_free()
@@ -73,3 +72,10 @@ func init_platform_assembly(map_type : Enums.EMapType) -> void:
 		platform_01.init_platform(map_type)
 	if platform_02 != null:
 		platform_02.init_platform(map_type)
+		
+		
+func spawn_enemies() -> void:
+	if platform_01 != null:
+		platform_01.spawn_enemies()
+	if platform_02 != null:
+		platform_02.spawn_enemies()

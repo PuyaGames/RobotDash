@@ -18,6 +18,7 @@ enum EPlayerState
 }
 
 @export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
+@export var hp : int = 100
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 @onready var ray_cast_2d : RayCast2D = $RayCast2D
@@ -38,6 +39,7 @@ var player_state : EPlayerState = EPlayerState.Walk
 
 
 func _ready() -> void:
+	$HpNumber.hp = hp
 	_calculate_movement_parameters()
 
 

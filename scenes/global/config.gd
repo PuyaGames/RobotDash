@@ -32,6 +32,6 @@ var platform_assembly_type_pool : Array[Enums.EPlatformAssemblyType]
 func _ready() -> void:
 	for key : int in Enums.EPlatformAssemblyType.values():
 		var value : float = platform_assembly_occurrence_rate_dict[key]
-		for i in range(1, (value * 10) + 1):
+		for i in range(value * 10):
 			platform_assembly_type_pool.append(key)
 	platform_assembly_type_pool.shuffle()

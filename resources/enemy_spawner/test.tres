@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemySpawnConfig" load_steps=2 format=3 uid="uid://b0dbnic0sgh4r"]
+
+[ext_resource type="Script" path="res://scenes/resource/enemy_spawn_config.gd" id="1_6p3ac"]
+
+[resource]
+script = ExtResource("1_6p3ac")
+enemy_type_list = Array[int]([2, 3, 1])
+enemy_occurrence_rate_dict = {
+"BlackFive": 0.4,
+"BlackFour": 0.4,
+"BlackOne": 0.4,
+"BlackThree": 0.4,
+"BlackTwo": 0.4,
+"Blue": 0.4,
+"Green": 1.0,
+"Grey": 1.0,
+"Red": 1.0
+}

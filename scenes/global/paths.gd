@@ -19,7 +19,7 @@ const enemy_black_02_bean : String = "res://resources/enemy/black_02_bean.tres"
 const enemy_black_03_bean : String = "res://resources/enemy/black_03_bean.tres"
 const enemy_black_04_bean : String = "res://resources/enemy/black_04_bean.tres"
 const enemy_black_05_bean : String = "res://resources/enemy/black_05_bean.tres"
-const enemy_path_table : Dictionary = {
+const enemy_path_dict : Dictionary = {
 	Enums.EEnemyType.Grey : enemy_grey_bean,
 	Enums.EEnemyType.Green : enemy_green_bean,
 	Enums.EEnemyType.Red : enemy_red_bean,

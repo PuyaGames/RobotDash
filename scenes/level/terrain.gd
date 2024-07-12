@@ -8,6 +8,11 @@ class_name Terrain
 @onready var platform_assembly_02 : PlatformAssembly = $"PlatformAssembly2"
 
 
+func spawn_enemies() -> void:
+	platform_assembly_01.spawn_enemies()
+	platform_assembly_02.spawn_enemies()
+
+
 func regenerate_platform_assemply(type_01 : Enums.EPlatformAssemblyType, type_02 : Enums.EPlatformAssemblyType) -> void:
 	platform_assembly_01.regenerate(type_01)
 	platform_assembly_02.regenerate(type_02)

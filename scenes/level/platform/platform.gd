@@ -39,7 +39,12 @@ func init_platform(map_type : Enums.EMapType) -> void:
 	elif map_type == Enums.EMapType.Beach_Dusk:
 		_set_platform_by_bean(type, load(Paths.map_beach_dusk_bean))
 	
-		
+	
+func spawn_enemies() -> void:
+	if has_node("EnemySpawnPath"):
+		print("Yes Platform")
+	
+	
 func _set_platform_by_bean(platform_type : int, map_bean : MapBean) -> void:
 	if platform_type == 0:
 		$Sprite2D.texture = map_bean.long_platform_texture

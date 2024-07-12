@@ -3,6 +3,7 @@ class_name Enemy
 
 
 @export var _enemy_type : Enums.EEnemyType = Enums.EEnemyType.Grey
+@export var hp : int = 100
 
 @onready var hp_number : HpNumber = $HpNumber
 
@@ -17,6 +18,8 @@ var down_gravity : float
 
 func _ready() -> void:
 	$VisibleOnScreenNotifier2D.show()
+	$HpNumber.hp = hp
+	
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	var timer : SceneTreeTimer = get_tree().create_timer(rng.randf_range(0, 2.0))
 	timer.connect("timeout", Callable(

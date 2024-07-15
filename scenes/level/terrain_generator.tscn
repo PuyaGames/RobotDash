@@ -9,6 +9,7 @@ script = ExtResource("1_vufd6")
 [node name="TerrainRoot1" type="Node2D" parent="."]
 
 [node name="Terrain1" parent="TerrainRoot1" instance=ExtResource("2_rp6gl")]
+first_terrain = true
 metadata/_edit_vertical_guides_ = [0.0]
 metadata/_edit_horizontal_guides_ = [468.0]
 

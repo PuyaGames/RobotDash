@@ -30,3 +30,16 @@ metadata/_edit_horizontal_guides_ = [205.0]
 position = Vector2(1146, 436)
 metadata/_edit_vertical_guides_ = [-45.0]
 metadata/_edit_horizontal_guides_ = [205.0]
+
+[node name="EnterScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(72, 952)
+scale = Vector2(7.2, 4.8)
+
+[node name="ExitScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(1712, 952)
+scale = Vector2(7.2, 4.8)
+
+[connection signal="screen_entered" from="EnterScreenNotifier2D" to="." method="_on_enter_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="ExitScreenNotifier2D" to="." method="_on_exit_screen_notifier_2d_screen_exited"]

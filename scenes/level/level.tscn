@@ -149,9 +149,10 @@ layer_06_texture = ExtResource("7_unaa6")
 
 [node name="TerrainGenerator" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("12_ct1ow")]
 
-[node name="Player" parent="Visible/SubViewportContainer/SubViewport" instance=ExtResource("13_uqsvg")]
+[node name="Player" parent="Visible/SubViewportContainer/SubViewport" groups=["player"] instance=ExtResource("13_uqsvg")]
 position = Vector2(-50, 832)
 _player_type = 3
+hp = 10
 
 [node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")

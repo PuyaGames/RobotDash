@@ -15,9 +15,11 @@ var update_trigger_offset : float = 20.0
 var terrain_generating_count : int = 0
 var terrain_root_list : Array[Node2D] = []
 var terrain_list : Array[Node2D] = []
+var level : Level
 
 
 func _ready() -> void:
+	level = get_tree().get_first_node_in_group("level") as Level
 	terrain_root_list = [terrain_root_01, terrain_root_02, terrain_root_03]
 	terrain_list = [terrain_01, terrain_02, terrain_03]
 	terrain_01.regenerate_platform_assemply_01(Enums.EPlatformAssemblyType.S_S_R_R)
@@ -35,9 +37,7 @@ func move_forward(speed : float, delta : float) -> void:
 	update_trigger_position_x = terrain_root_list[1].position.x
 	if update_trigger_position_x < 0.0 - update_trigger_offset:
 		terrain_root_list[0].position.x = terrain_root_list[2].position.x + terrain_length
-		# Regenerate terrain and respawn enemies
 		terrain_list[0].random_regenerate_platform_assembly()
-		terrain_list[0].spawn_enemies()
 		terrain_generating_count += 1
 		temp_terrain_root = terrain_root_list[0]
 		temp_terrain = terrain_list[0]

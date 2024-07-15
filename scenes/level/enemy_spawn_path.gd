@@ -1,25 +1,28 @@
 extends Line2D
+class_name EnemySpawnPath
 
 
 @export var spawn_config : EnemySpawnConfig
 
 var tscn_enemy : PackedScene
 var enemy_type_pool : Array[Enums.EEnemyType]
+var existing_enemy_list : Array[Enemy]
+var player : Player
 
 
 func _ready() -> void:
 	tscn_enemy = load("res://scenes/character/enemy/enemy.tscn")
+	player = get_tree().get_first_node_in_group("player") as Player
 	
 	for enemy_type in spawn_config.enemy_type_list:
 		var key : String = Enums.EEnemyType.keys()[enemy_type]
 		var value : float = spawn_config.enemy_occurrence_rate_dict[key]
 		for i in range(value * 10):
 			enemy_type_pool.append(enemy_type)
-			
 	enemy_type_pool.shuffle()
 
 
-func spawn_enemy(current_odometer : int) -> void:
+func spawn_enemies() -> void:
 	if points.size() != 2:
 		return
 		
@@ -31,16 +34,24 @@ func spawn_enemy(current_odometer : int) -> void:
 	else:
 		positions = _calculate_spawn_positions(2)
 	
-	for pos in positions:
+	for i in positions.size():
 		var enemy : Enemy = tscn_enemy.instantiate()
 		enemy.init_enemy(enemy_type_pool.pick_random())
-		enemy.hp = int(sin(current_odometer) + current_odometer)
-		enemy.position = pos
+		enemy.hp = randi_range(int(player.hp * 0.8), int(player.hp * 1.2))
+		enemy.position = positions[i]
+		existing_enemy_list.append(enemy)
 		add_child(enemy)
+		
+		
+func clear_enemies() -> void:
+	for enemy in existing_enemy_list:
+		if enemy != null:
+			enemy.queue_free()
+	existing_enemy_list.clear()
 	
 	
 func _calculate_spawn_positions(spawn_number : int) -> Array[Vector2]:
-	var positions : Array[Vector2]
+	var positions : Array[Vector2] = []
 	
 	var point_left : Vector2 = points[0]
 	var point_right : Vector2 = points[1]

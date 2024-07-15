@@ -8,9 +8,24 @@ class_name Terrain
 @onready var platform_assembly_02 : PlatformAssembly = $"PlatformAssembly2"
 
 
+func _ready() -> void:
+	var level : Level = get_tree().get_first_node_in_group("level") as Level
+	if level.enable_main_menu_mode:
+		$EnterScreenNotifier2D.hide()
+		$ExitScreenNotifier2D.hide()
+	else:
+		$EnterScreenNotifier2D.show()
+		$ExitScreenNotifier2D.show()
+	
+	
 func spawn_enemies() -> void:
 	platform_assembly_01.spawn_enemies()
 	platform_assembly_02.spawn_enemies()
+	
+	
+func clear_enemies() -> void:
+	platform_assembly_01.clear_enemies()
+	platform_assembly_02.clear_enemies()
 
 
 func regenerate_platform_assemply(type_01 : Enums.EPlatformAssemblyType, type_02 : Enums.EPlatformAssemblyType) -> void:
@@ -78,3 +93,15 @@ func init_terrain(map_type : Enums.EMapType) -> void:
 func _set_terrain_by_bean(map_bean : MapBean) -> void:
 	$Sprite2D.texture = map_bean.terrain_texture
 	$Sprite2D.position.y = map_bean.y_offset
+
+
+func _on_enter_screen_notifier_2d_screen_entered() -> void:
+	if first_terrain:
+		platform_assembly_02.spawn_enemies()
+		first_terrain = false
+	else:
+		spawn_enemies()
+
+
+func _on_exit_screen_notifier_2d_screen_exited() -> void:
+	clear_enemies()

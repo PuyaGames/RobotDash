@@ -204,7 +204,7 @@ func reset_attack_state() -> void:
 	
 func dead() -> void:
 	$CollisionShape2D.disabled = true
-	$HpComponent.hide()
+	$HpNumber.hide()
 	jump_height *= 0.5
 	jump_peak_time *= 0.6
 	jump_fall_time *= 0.4

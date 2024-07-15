@@ -39,7 +39,7 @@ func add_hp(target_hp_number : HpNumber) -> void:
 	))
 	
 	
-func reduce_hp(value : int) -> void:
+func reduce_hp(_value : int) -> void:
 	$AnimationPlayer.play("Updated")
 	
 	

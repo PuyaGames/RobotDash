@@ -79,3 +79,10 @@ func spawn_enemies() -> void:
 		platform_01.spawn_enemies()
 	if platform_02 != null:
 		platform_02.spawn_enemies()
+		
+		
+func clear_enemies() -> void:
+	if platform_01 != null:
+		platform_01.clear_enemies()
+	if platform_02 != null:
+		platform_02.clear_enemies()

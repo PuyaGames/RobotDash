@@ -11,6 +11,7 @@ const offset_x : float = long_platform_length - short_platform_length
 var platform_01 : Platform2D = null
 var platform_02 : Platform2D = null
 var _map_type : Enums.EMapType
+var enable_spawn_enemies : bool = true
 
 const platform_position_dict : Dictionary = {
 	Enums.EPlatformAssemblyType.L_L_N_N : Vector4(0.0, 0.0, 0.0, 232.0),
@@ -34,6 +35,13 @@ const platform_position_dict : Dictionary = {
 
 func _ready() -> void:
 	regenerate(platform_assembly_type)
+	var level : Level = get_tree().get_first_node_in_group("level") as Level
+	if level.enable_main_menu_mode:
+		$EnterScreenNotifier2D.hide()
+		$ExitScreenNotifier2D.hide()
+	else:
+		$EnterScreenNotifier2D.show()
+		$ExitScreenNotifier2D.show()
 	
 
 func regenerate(new_platform_assembly_type : Enums.EPlatformAssemblyType) -> void:
@@ -86,3 +94,14 @@ func clear_enemies() -> void:
 		platform_01.clear_enemies()
 	if platform_02 != null:
 		platform_02.clear_enemies()
+
+
+func _on_enter_screen_notifier_2d_screen_entered() -> void:
+	if enable_spawn_enemies:
+		spawn_enemies()
+	else:
+		enable_spawn_enemies = true
+
+
+func _on_exit_screen_notifier_2d_screen_exited() -> void:
+	clear_enemies()

@@ -391,10 +391,10 @@ radius = 58.0
 collision_layer = 4
 script = ExtResource("2_637sq")
 _player_type = 1
-hp = 100
+start_hp = 10
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 41
+frame = 39
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

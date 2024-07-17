@@ -30,14 +30,17 @@ func spawn_enemies() -> void:
 	var positions : Array[Vector2]
 	
 	if owner_platform.type == 0:
-		positions = _calculate_spawn_positions(4)
-	else:
 		positions = _calculate_spawn_positions(2)
+	else:
+		positions = _calculate_spawn_positions(1)
 	
 	for i in positions.size():
 		var enemy : Enemy = tscn_enemy.instantiate()
 		enemy.init_enemy(enemy_type_pool.pick_random())
-		enemy.hp = randi_range(int(player.hp * 0.8), int(player.hp * 1.2))
+		var enemy_start_hp : int = randi_range(int(player.get_hp() * 0.8), int(player.get_hp() * 1.4))
+		if enemy_start_hp < player.get_hp():
+			enemy_start_hp = enemy_start_hp * 0.1 + 1
+		enemy.hp = enemy_start_hp
 		enemy.position = positions[i]
 		existing_enemy_list.append(enemy)
 		add_child(enemy)

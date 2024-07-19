@@ -1,4 +1,4 @@
-# StyleDash
+# RobotDash
 A 2D running game made with Godot Engine
 
 # Environment

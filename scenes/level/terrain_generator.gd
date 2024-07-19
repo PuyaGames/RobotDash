@@ -53,3 +53,4 @@ func init_terrain_generator(map_type : Enums.EMapType) -> void:
 	terrain_01.init_terrain(map_type)
 	terrain_02.init_terrain(map_type)
 	terrain_03.init_terrain(map_type)
+	

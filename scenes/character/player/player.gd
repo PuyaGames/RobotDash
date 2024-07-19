@@ -17,7 +17,7 @@ enum EPlayerState
 	Dead
 }
 
-@export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
+@export var _player_type : Enums.EPlayerType = Enums.EPlayerType.Robot
 @export var start_hp : int = 10
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"

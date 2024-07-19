@@ -38,7 +38,7 @@ theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 100
-text = "风 格 快 跑"
+text = "机 器 人 快 跑"
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(400, 400)

@@ -1,0 +1,164 @@
+[gd_scene load_steps=4 format=3 uid="uid://cikowdx8g5fta"]
+
+[ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
+atlas = ExtResource("1_jcbcx")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0rf6"]
+texture = SubResource("AtlasTexture_sv45o")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[node name="MainUi" type="CanvasLayer"]
+
+[node name="Mask" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="TitleLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.0
+offset_top = 100.0
+offset_right = 296.0
+offset_bottom = 245.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "机 器 人 快 跑"
+
+[node name="Settings" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_top = 324.0
+offset_bottom = 744.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -145.0
+offset_right = 400.0
+offset_bottom = 145.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
+theme_override_font_sizes/font_size = 50
+text = "设置"
+horizontal_alignment = 1
+
+[node name="MusicButton" type="Button" parent="Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "音乐：开"
+icon_alignment = 2
+
+[node name="SoundButton" type="Button" parent="Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "声效：开"
+icon_alignment = 2
+
+[node name="Starter" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -624.0
+offset_right = 400.0
+offset_bottom = -224.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Starter"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -145.0
+offset_right = 400.0
+offset_bottom = 145.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="Starter/VBoxContainer"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "开始游戏"
+icon_alignment = 2
+
+[node name="RanklistButton" type="Button" parent="Starter/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "排行榜"
+icon_alignment = 2
+
+[node name="SettingsButton" type="Button" parent="Starter/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "设置"
+icon_alignment = 2
+
+[node name="Ranklist" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ranklist"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -155.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20

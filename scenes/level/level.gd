@@ -9,11 +9,6 @@ class_name Level
 @onready var background : ParallaxScrolling = $Visible/SubViewportContainer/SubViewport/Background
 @onready var terrain_generator : TerrainGenerator = $Visible/SubViewportContainer/SubViewport/TerrainGenerator
 
-var odometer : int = 0:
-	set(new_value):
-		odometer = new_value
-		$CanvasLayer/TopPanel/OdometerLabel.text = str(int(new_value * 0.05))
-
 
 func _ready() -> void:
 	if enable_main_menu_mode:
@@ -59,7 +54,6 @@ func _on_pause_button_toggled(toggled_on: bool) -> void:
 func move_forward(speed : float, delta : float) -> void:
 	background.move_forward(speed, delta)
 	terrain_generator.move_forward(speed, delta)
-	odometer += speed * delta as int
 	
 	
 func init_level(map_type : Enums.EMapType, player_type : Enums.EPlayerType) -> void:

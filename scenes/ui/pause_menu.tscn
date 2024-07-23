@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds3bjvdn31k7"]
+
+[ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_4p0yk"]
+[ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="2_dhib0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
+atlas = ExtResource("2_dhib0")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct8wt"]
+texture = SubResource("AtlasTexture_sv45o")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1pr0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6ecg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wmh5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovd1r"]
+atlas = ExtResource("2_dhib0")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8o1gx"]
+texture = SubResource("AtlasTexture_ovd1r")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+expand_margin_top = 20.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_4p0yk")
+
+[node name="Mask" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -170.0
+offset_right = 200.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ct8wt")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m1pr0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o6ecg")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "设置"
+
+[node name="ShopButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m1pr0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1wmh5")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/ShopButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -27.5
+offset_right = 40.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "商城"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Settings" type="Panel" parent="Panel/VBoxContainer/TabContainer"]
+custom_minimum_size = Vector2(600, 476)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8o1gx")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MusicButton" type="Button" parent="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "音乐：开"
+icon_alignment = 2
+
+[node name="SoundButton" type="Button" parent="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "声效：开"
+icon_alignment = 2
+
+[node name="Shop" type="Panel" parent="Panel/VBoxContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(600, 476)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8o1gx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/TabContainer/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_button_down"]

@@ -26,7 +26,3 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	level.move_forward(20.0, delta)
-
-
-func _on_play_button_button_down() -> void:
-	get_tree().change_scene_to_file(Paths.tscn_level)

@@ -1,47 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://beu0o0f1xy3w3"]
+[gd_scene load_steps=2 format=3 uid="uid://beu0o0f1xy3w3"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_fma4k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrfi6"]
+[ext_resource type="Script" path="res://scenes/ui/ranklist_item.gd" id="1_vsvoy"]
 
 [node name="RanklistItem" type="Panel"]
 clip_contents = true
+custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
-script = ExtResource("1_fma4k")
+script = ExtResource("1_vsvoy")
+rank_number = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
+[node name="RankNumberLabel" type="Label" parent="."]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xrfi6")
-
-[node name="RankNumberLabel" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 102.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 30
 text = "第1名"
 
-[node name="IdLabel" type="Label" parent="HBoxContainer"]
+[node name="IdLabel" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
+offset_left = 200.0
+offset_top = 23.0
+offset_right = 506.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 30
 text = "买辣椒不用券#114514"
 
-[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 2
+offset_left = 624.0
+offset_top = 23.0
+offset_right = 726.0
+offset_bottom = 67.0
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 30
 text = "2646米"
-
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_xrfi6")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv81cr6de4lgc"]
+
+[ext_resource type="Texture2D" uid="uid://b83rq685fynpw" path="res://assets/textures/background/desert/2/background.png" id="1_sdrgc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gehgu"]
+atlas = ExtResource("1_sdrgc")
+region = Rect2(600, 600, 750, 90)
+
+[node name="MapThemeItem" type="Button"]
+clip_contents = true
+custom_minimum_size = Vector2(750, 90)
+offset_right = 750.0
+offset_bottom = 90.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gehgu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "沙漠（一）"

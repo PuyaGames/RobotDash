@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cikowdx8g5fta"]
+[gd_scene load_steps=8 format=3 uid="uid://cikowdx8g5fta"]
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_ui.gd" id="1_jv4cg"]
@@ -15,6 +15,8 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nehlg"]
 
 [node name="MainUi" type="CanvasLayer"]
 script = ExtResource("1_jv4cg")
@@ -260,5 +262,11 @@ theme_override_font_sizes/font_size = 50
 text = "选择地图主题"
 horizontal_alignment = 1
 
-[node name="MapThemeItem" parent="PickMapTheme/VBoxContainer" instance=ExtResource("4_fps3r")]
+[node name="VScrollBar" type="VScrollBar" parent="PickMapTheme/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+theme_override_styles/scroll = SubResource("StyleBoxEmpty_nehlg")
+
+[node name="MapThemeItem" parent="PickMapTheme/VBoxContainer/VScrollBar" instance=ExtResource("4_fps3r")]
+layout_mode = 0

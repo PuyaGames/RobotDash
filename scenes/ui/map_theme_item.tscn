@@ -1,16 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv81cr6de4lgc"]
 
-[ext_resource type="Texture2D" uid="uid://b83rq685fynpw" path="res://assets/textures/background/desert/2/background.png" id="1_sdrgc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gehgu"]
-atlas = ExtResource("1_sdrgc")
-region = Rect2(600, 600, 750, 90)
+[ext_resource type="Texture2D" uid="uid://cun6e04gilp50" path="res://resources/ui/map_theme/beach_04.atlastex" id="1_6bftf"]
+[ext_resource type="Script" path="res://scenes/ui/map_theme_item.gd" id="1_6dc00"]
 
 [node name="MapThemeItem" type="Button"]
 clip_contents = true
 custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
+script = ExtResource("1_6dc00")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.6)
@@ -20,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_gehgu")
+texture = ExtResource("1_6bftf")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

@@ -3,23 +3,12 @@ extends CanvasLayer
 
 @onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
 
-const map_type_pool : Array[Enums.EMapType] = [
-	Enums.EMapType.Halloween_Green,
-	Enums.EMapType.Halloween_Red,
-	Enums.EMapType.Halloween_Blue,
-	Enums.EMapType.Halloween_Orange,
-	Enums.EMapType.Desert_Cactus,
-	Enums.EMapType.Desert_Rock,
-	Enums.EMapType.Desert_Sky,
-	Enums.EMapType.Desert_Dusk
-]
-
 var level : Level
 
 
 func _ready() -> void:
 	level = load(Paths.tscn_level).instantiate()
-	level.init_level(map_type_pool.pick_random(), Enums.EPlayerType.None)
+	level.init_level(Enums.EMapType.values().pick_random(), Enums.EPlayerType.None)
 	level.enable_main_menu_mode = true
 	sub_viewport.add_child(level)
 

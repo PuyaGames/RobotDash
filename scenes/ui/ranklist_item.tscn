@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://beu0o0f1xy3w3"]
+[gd_scene load_steps=2 format=3 uid="uid://beu0o0f1xy3w3"]
+
+[ext_resource type="Script" path="res://scenes/ui/ranklist_item.gd" id="1_48r6y"]
 
 [node name="RanklistItem" type="Panel"]
 clip_contents = true
 custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
+script = ExtResource("1_48r6y")
 
 [node name="RankNumberLabel" type="Label" parent="."]
 layout_mode = 2

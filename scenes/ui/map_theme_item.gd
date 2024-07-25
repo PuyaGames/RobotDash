@@ -3,6 +3,9 @@ extends Button
 class_name MapThemeItem
 
 
+signal clicked(map_type : Enums.EMapType)
+
+
 @export var type : Enums.EMapType = Enums.EMapType.Halloween_Green:
 	set(new_value):
 		type = new_value
@@ -67,7 +70,19 @@ func _ready() -> void:
 	if locked:
 		disabled = true
 		$Locked.show()
+		$Button.show()
+	else:
+		disabled = false
+		$Locked.hide()
+		$TextureRect.modulate = Color.WHITE
+		$Button.hide()
 
 
 func _on_button_button_down() -> void:
-	pass # Replace with function body.
+	print_debug("Unlocked")
+
+
+func _on_button_down() -> void:
+	clicked.emit(type)
+	set_selected(true)
+	

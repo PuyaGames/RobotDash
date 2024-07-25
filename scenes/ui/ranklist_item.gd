@@ -30,7 +30,7 @@ func _ready() -> void:
 		enable_scrolling = true
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enable_scrolling:
 		id_label.position.x -= 1.0
 		if id_label.position.x < (id_label.size.x * -1):

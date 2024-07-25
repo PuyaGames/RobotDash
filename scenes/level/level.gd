@@ -14,6 +14,7 @@ func _ready() -> void:
 	if enable_main_menu_mode:
 		$CanvasLayer.hide()
 		$Loading.hide()
+		$Camera2D/PhantomCameraHost.queue_free()
 	else:
 		$CanvasLayer.show()
 		$Loading.show()

@@ -1,30 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv81cr6de4lgc"]
+[gd_scene load_steps=8 format=3 uid="uid://cv81cr6de4lgc"]
 
 [ext_resource type="Script" path="res://scenes/ui/map_theme_item.gd" id="1_6dc00"]
 [ext_resource type="Texture2D" uid="uid://bhpwsu4xxkp0x" path="res://resources/ui/map_theme/halloween_01.atlastex" id="2_4870s"]
 [ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="3_4rqm8"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="4_3yg4t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rqtb"]
 atlas = ExtResource("3_4rqm8")
 region = Rect2(1332, 444, 64, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ewli"]
-draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.956863, 0.956863, 0.956863, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3540w"]
+shader = ExtResource("4_3yg4t")
+shader_parameter/width = 8.0
+shader_parameter/outline_color = Color(0, 0, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvu02"]
+atlas = ExtResource("3_4rqm8")
+region = Rect2(891, 595, 59, 61)
 
 [node name="MapThemeItem" type="Button"]
 clip_contents = true
 custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
+disabled = true
 script = ExtResource("1_6dc00")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.4)
+modulate = Color(1, 1, 1, 0.2)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,16 +43,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -12.0
-offset_right = 20.0
-offset_bottom = 12.0
+offset_left = -80.0
+offset_top = -29.5
+offset_right = 80.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
 theme_override_font_sizes/font_size = 40
-text = "万圣节（一）"
+text = "主题名称"
+horizontal_alignment = 1
 
 [node name="Locked" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -64,17 +72,25 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("AtlasTexture_3rqtb")
 
-[node name="Selected" type="Panel" parent="."]
+[node name="Selected" type="TextureRect" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_3540w")
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -30.5
+offset_right = -20.0
+offset_bottom = 30.5
+grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8ewli")
+texture = SubResource("AtlasTexture_lvu02")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -83,4 +99,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

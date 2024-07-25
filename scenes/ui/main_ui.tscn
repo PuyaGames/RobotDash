@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cikowdx8g5fta"]
+[gd_scene load_steps=15 format=3 uid="uid://cikowdx8g5fta"]
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_ui.gd" id="1_jv4cg"]
@@ -17,16 +17,162 @@ texture_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bywl2"]
 
+[sub_resource type="Animation" id="Animation_lposd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(750, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Starter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickMapTheme:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1004)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ranklist:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1624)]
+}
+
+[sub_resource type="Animation" id="Animation_6f2ff"]
+resource_name = "settings_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(750, 360), Vector2(350, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_txwlv"]
+resource_name = "ranklist_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ranklist:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 1624), Vector2(0, 324)]
+}
+
+[sub_resource type="Animation" id="Animation_ix4sr"]
+resource_name = "pick_map_theme_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PickMapTheme:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, -1004), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_damr1"]
+_data = {
+"RESET": SubResource("Animation_lposd"),
+"pick_map_theme_enter": SubResource("Animation_ix4sr"),
+"ranklist_enter": SubResource("Animation_txwlv"),
+"settings_enter": SubResource("Animation_6f2ff")
+}
+
+[sub_resource type="Animation" id="Animation_4r7hg"]
+resource_name = "starter_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(-400, 1000), Vector2(0, 1000)]
+}
+
+[sub_resource type="Animation" id="Animation_eyntu"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xurv"]
+_data = {
+"RESET": SubResource("Animation_eyntu"),
+"starter_enter": SubResource("Animation_4r7hg")
+}
+
 [node name="MainUi" type="CanvasLayer"]
 script = ExtResource("1_jv4cg")
 
-[node name="Mask" type="ColorRect" parent="."]
+[node name="UnderLayer" type="Button" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.4)
+focus_mode = 0
+keep_pressed_outside = true
 
 [node name="TitleLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -181,30 +327,39 @@ layout_mode = 2
 
 [node name="2" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 2
 
 [node name="3" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 3
 
 [node name="4" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 4
 
 [node name="5" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 5
 
 [node name="6" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 6
 
 [node name="7" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 7
 
 [node name="8" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 8
 
 [node name="9" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 9
 
 [node name="10" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
+rank_number = 10
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Ranklist/VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
@@ -231,16 +386,14 @@ theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 32
 text = "2646"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="PickMapTheme" type="Panel" parent="."]
-custom_minimum_size = Vector2(750, 750)
+custom_minimum_size = Vector2(750, 960)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -375.0
+offset_top = -1004.0
 offset_right = 375.0
-offset_bottom = 800.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
@@ -282,6 +435,22 @@ theme_override_font_sizes/font_size = 60
 text = "开始"
 
 [node name="HSeparator2" type="HSeparator" parent="PickMapTheme/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bywl2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_damr1")
+}
+
+[node name="AnimPlayerForStarter" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0xurv")
+}
+
+[connection signal="button_down" from="UnderLayer" to="." method="_on_under_layer_button_down"]
+[connection signal="button_down" from="Starter/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="Starter/VBoxContainer/RanklistButton" to="." method="_on_ranklist_button_button_down"]
+[connection signal="button_down" from="Starter/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
+[connection signal="button_down" from="PickMapTheme/VBoxContainer/StartButton" to="." method="_on_start_button_button_down"]

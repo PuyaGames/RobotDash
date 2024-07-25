@@ -39,7 +39,7 @@ func spawn_enemies() -> void:
 		enemy.init_enemy(enemy_type_pool.pick_random())
 		var enemy_start_hp : int = randi_range(int(player.get_hp() * 0.8), int(player.get_hp() * 1.4))
 		if enemy_start_hp < player.get_hp():
-			enemy_start_hp = enemy_start_hp * 0.1 + 1
+			enemy_start_hp = int(enemy_start_hp * 0.1) + 1
 		enemy.hp = enemy_start_hp
 		enemy.position = positions[i]
 		existing_enemy_list.append(enemy)

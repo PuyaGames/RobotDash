@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv81cr6de4lgc"]
+[gd_scene load_steps=6 format=3 uid="uid://cv81cr6de4lgc"]
 
-[ext_resource type="Texture2D" uid="uid://cun6e04gilp50" path="res://resources/ui/map_theme/beach_04.atlastex" id="1_6bftf"]
 [ext_resource type="Script" path="res://scenes/ui/map_theme_item.gd" id="1_6dc00"]
+[ext_resource type="Texture2D" uid="uid://bhpwsu4xxkp0x" path="res://resources/ui/map_theme/halloween_01.atlastex" id="2_4870s"]
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="3_4rqm8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rqtb"]
+atlas = ExtResource("3_4rqm8")
+region = Rect2(1332, 444, 64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ewli"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.956863, 0.956863, 0.956863, 1)
 
 [node name="MapThemeItem" type="Button"]
 clip_contents = true
@@ -11,14 +24,14 @@ offset_bottom = 90.0
 script = ExtResource("1_6dc00")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.6)
+modulate = Color(1, 1, 1, 0.4)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_6bftf")
+texture = ExtResource("2_4870s")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -34,4 +47,40 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "沙漠（一）"
+text = "万圣节（一）"
+
+[node name="Locked" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -32.0
+offset_right = -20.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_3rqtb")
+
+[node name="Selected" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ewli")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

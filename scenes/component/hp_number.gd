@@ -12,10 +12,14 @@ var hp : int = 100:
 const red : Color = Color8(255, 28, 0)
 const blue : Color = Color8(20, 50, 255)
 
+var level : Level
 var new_hp_value : int
 
 
 func _ready() -> void:
+	var main : Main = get_tree().get_first_node_in_group("main") as Main
+	level = main.active_level
+	
 	if hp_type == Enums.EHpType.Blue:
 		$Label.add_theme_color_override("font_color", blue)
 	else:
@@ -27,7 +31,6 @@ func add_hp(target_hp_number : HpNumber) -> void:
 	var new_hp_comp : HpNumber = target_hp_number.duplicate()
 	target_hp_number.hide()
 	new_hp_comp.position = target_hp_number.global_position
-	var level : Level = get_tree().get_first_node_in_group("level")
 	level.add_child(new_hp_comp)
 	var tween : Tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(new_hp_comp, "position", global_position, 0.12)

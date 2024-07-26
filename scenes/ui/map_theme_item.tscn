@@ -11,7 +11,7 @@ region = Rect2(1332, 444, 64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3540w"]
 shader = ExtResource("4_3yg4t")
-shader_parameter/width = 8.0
+shader_parameter/width = 6.0
 shader_parameter/outline_color = Color(0, 0, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvu02"]
@@ -57,7 +57,6 @@ text = "主题名称"
 horizontal_alignment = 1
 
 [node name="Locked" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -90,7 +89,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_lvu02")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

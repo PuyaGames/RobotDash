@@ -13,7 +13,7 @@ signal clicked(map_type : Enums.EMapType)
 		$TextureRect.texture = load(map_theme_data.tex_path)
 		$Label.text = map_theme_data.label
 		
-var locked : bool = true
+var locked : bool = false
 
 class MapThemeData:
 	var label : String

@@ -44,14 +44,14 @@ func spawn_enemies() -> void:
 	var enemy_spawn_path : EnemySpawnPath
 	if has_node("EnemySpawnPath"):
 		enemy_spawn_path = get_node("EnemySpawnPath")
-	enemy_spawn_path.spawn_enemies()
+		enemy_spawn_path.spawn_enemies()
 	
 	
 func clear_enemies() -> void:
 	var enemy_spawn_path : EnemySpawnPath
 	if has_node("EnemySpawnPath"):
 		enemy_spawn_path = get_node("EnemySpawnPath")
-	enemy_spawn_path.clear_enemies()
+		enemy_spawn_path.clear_enemies()
 	
 	
 func _set_platform_by_bean(platform_type : int, map_bean : MapBean) -> void:

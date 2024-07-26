@@ -12,7 +12,6 @@ var player : Player
 
 func _ready() -> void:
 	tscn_enemy = load("res://scenes/character/enemy/enemy.tscn")
-	player = get_tree().get_first_node_in_group("player") as Player
 	
 	for enemy_type in spawn_config.enemy_type_list:
 		var key : String = Enums.EEnemyType.keys()[enemy_type]
@@ -20,6 +19,10 @@ func _ready() -> void:
 		for i in range(value * 10):
 			enemy_type_pool.append(enemy_type)
 	enemy_type_pool.shuffle()
+	
+	await get_tree().create_timer(2.0).timeout
+	var main : Main = get_tree().get_first_node_in_group("main") as Main
+	player = main.active_level.player
 
 
 func spawn_enemies() -> void:

@@ -11,6 +11,8 @@ var selected_map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 
 
 func _ready() -> void:
+	$AnimationPlayer.play("RESET")
+	$AnimPlayerForStarter.play("RESET")
 	var tscn_map_theme_item : PackedScene = load("res://scenes/ui/map_theme_item.tscn")
 	for map_type : Enums.EMapType in Enums.EMapType.values():
 		var map_theme_item : MapThemeItem = tscn_map_theme_item.instantiate()
@@ -73,4 +75,5 @@ func _on_start_button_button_down() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
 	for node in main.get_children():
 		node.queue_free()
+	main.active_level = level
 	main.add_child(level)

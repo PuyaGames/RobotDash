@@ -35,9 +35,11 @@ const platform_position_dict : Dictionary = {
 
 func _ready() -> void:
 	regenerate(platform_assembly_type)
-	await get_tree().create_timer(2000).timeout
-	var level : Level = get_tree().get_first_node_in_group("level") as Level
-	if level.enable_main_menu_mode:
+	
+	await get_tree().create_timer(2.0).timeout
+	var main : Main = get_tree().get_first_node_in_group("main") as Main
+	
+	if main.active_level.enable_main_menu_mode:
 		$EnterScreenNotifier2D.hide()
 		$ExitScreenNotifier2D.hide()
 	else:

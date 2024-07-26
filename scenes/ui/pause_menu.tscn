@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds3bjvdn31k7"]
+[gd_scene load_steps=13 format=3 uid="uid://ds3bjvdn31k7"]
 
 [ext_resource type="Script" path="res://scenes/ui/pause_menu.gd" id="1_4p0yk"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="2_dhib0"]
@@ -31,8 +31,48 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_lfqhv"]
+resource_name = "Enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3bgds"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sc7y"]
+_data = {
+"Enter": SubResource("Animation_lfqhv"),
+"RESET": SubResource("Animation_3bgds")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_4p0yk")
 
 [node name="Mask" type="ColorRect" parent="."]
@@ -43,8 +83,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(600, 600)
 anchors_preset = 8
@@ -52,12 +90,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -170.0
-offset_right = 200.0
-offset_bottom = 170.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 6.28319
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(300, 300)
+size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ct8wt")
 metadata/_edit_group_ = true
 
@@ -178,5 +220,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ContinueButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "继续游戏"
+icon_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3sc7y")
+}
+
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_down"]

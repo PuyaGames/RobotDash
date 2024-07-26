@@ -49,6 +49,7 @@ func _init_level_map() -> void:
 
 func _on_pause_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		add_child(load("res://scenes/ui/pause_menu.tscn").instantiate())
 		get_tree().paused = true
 	
 	

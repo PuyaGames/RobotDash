@@ -19,6 +19,8 @@ func _ready() -> void:
 		$CanvasLayer.show()
 		$Loading.show()
 		player.init_player(_player_type)
+		player.connect("on_dead", _popup_defeat_menu)
+		player.connect("on_revive", _show_hint)
 		$Loading.connect("loading_finished", Callable(
 			func() -> void: $AnimationPlayer.play("Opening")
 		))
@@ -67,4 +69,14 @@ func _on_hint_button_button_down() -> void:
 	player.running = true
 	player.set_run_state()
 	$Hint.hide()
-	$Hint.queue_free()
+	
+	
+func _popup_defeat_menu() -> void:
+	var tscn_defeat_menu : PackedScene = load("res://scenes/ui/defeat_menu.tscn")
+	var defeat_menu : CanvasLayer = tscn_defeat_menu.instantiate()
+	defeat_menu.init_defeat_menu(player)
+	add_child(defeat_menu)
+	
+	
+func _show_hint() -> void:
+	$Hint.show()

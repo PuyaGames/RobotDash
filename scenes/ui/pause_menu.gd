@@ -16,11 +16,6 @@ func _ready() -> void:
 	$AnimationPlayer.play("Enter")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_settings_button_button_down() -> void:
 	settings_button.disabled = true
 	settings_label.add_theme_color_override(

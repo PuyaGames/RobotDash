@@ -2,6 +2,10 @@ extends Character
 class_name Player
 
 
+signal on_dead
+signal on_revive
+
+
 enum EPlayerState
 {
 	Walk,
@@ -23,6 +27,13 @@ enum EPlayerState
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 @onready var ray_cast_2d : RayCast2D = $RayCast2D
 @onready var hp_number : Node2D = $HpNumber
+
+var jump_height_bak : float
+var jump_peak_time_bak : float
+var jump_fall_time_bak : float
+const death_jump_height : float = 1.0
+const death_jump_peak_time : float = 0.3
+const death_jump_fall_time : float = 0.2
 
 var running : bool = false
 var jump_peak_time : float = 0.5
@@ -204,12 +215,27 @@ func reset_attack_state() -> void:
 func dead() -> void:
 	$CollisionShape2D.disabled = true
 	$HpNumber.hide()
-	jump_height *= 0.5
-	jump_peak_time *= 0.6
-	jump_fall_time *= 0.4
+	jump_height_bak = jump_height
+	jump_peak_time_bak = jump_peak_time
+	jump_fall_time_bak = jump_fall_time
+	jump_height = death_jump_height
+	jump_peak_time = death_jump_peak_time
+	jump_fall_time = death_jump_fall_time
 	_calculate_movement_parameters()
 	velocity.y = jump_velocity
 	player_state = EPlayerState.Dead
+	on_dead.emit()
+	
+	
+func revive() -> void:
+	$CollisionShape2D.disabled = false
+	$HpNumber.show()
+	jump_height = jump_height_bak
+	jump_peak_time = jump_peak_time_bak
+	jump_fall_time = jump_fall_time_bak
+	_calculate_movement_parameters()
+	player_state = EPlayerState.Idle
+	position = Vector2(160.0, 832.0)
 	
 	
 func get_hp() -> int:

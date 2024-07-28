@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name MainMenu
 
 
 @onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
@@ -17,3 +18,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	level.move_forward(20.0, delta)
+	
+	
+func hide_all() -> void:
+	hide()
+	$MainUi.hide()
+	
+	
+func show_all() -> void:
+	show()
+	$MainUi.show()

@@ -19,7 +19,4 @@ func _on_revive_button_button_down() -> void:
 
 func _on_main_menu_button_button_down() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
-	for node in main.get_children():
-		node.queue_free()
-	var main_menu : PackedScene = load(Paths.tscn_main_menu)
-	main.add_child(main_menu.instantiate())
+	main.open_main_menu()

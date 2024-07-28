@@ -206,6 +206,15 @@ theme_override_font_sizes/font_size = 40
 text = "声效：开"
 icon_alignment = 2
 
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "返回主菜单"
+icon_alignment = 2
+
 [node name="Shop" type="Panel" parent="Panel/VBoxContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(600, 476)

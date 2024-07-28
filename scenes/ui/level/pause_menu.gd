@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name UI_PauseMenu
 
 
 signal on_continue

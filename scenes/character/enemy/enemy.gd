@@ -85,7 +85,7 @@ func dead() -> void:
 	up_height = rng.randf_range(0.1, 3.0)
 	up_time = rng.randf_range(0.1, 0.4)
 	_calculate_movement_parameters()
-	velocity.x = rng.randf_range(0.1, 1000.0)
+	velocity.x = rng.randf_range(600.0, 1000.0)
 	velocity.y = up_velocity
 	z_index = 100
 	

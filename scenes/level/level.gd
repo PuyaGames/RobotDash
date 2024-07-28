@@ -9,6 +9,11 @@ class_name Level
 @onready var background : ParallaxScrolling = $Visible/SubViewportContainer/SubViewport/Background
 @onready var terrain_generator : TerrainGenerator = $Visible/SubViewportContainer/SubViewport/TerrainGenerator
 
+var timer_60s : int = 60:
+	set(new_value):
+		timer_60s = new_value
+		$CanvasLayer/TopPanel/Timer.text = str(new_value)
+
 
 func _ready() -> void:
 	if enable_main_menu_mode:
@@ -16,8 +21,8 @@ func _ready() -> void:
 	else:
 		$CanvasLayer.show()
 		player.init_player(_player_type)
-		player.connect("on_dead", _popup_defeat_menu)
-		player.connect("on_revive", _show_hint)
+		player.connect("on_dead", _on_player_dead)
+		player.connect("on_revive", _on_player_revive)
 		$AnimationPlayer.play("Opening")
 		
 	_init_level_map()
@@ -46,8 +51,14 @@ func _init_level_map() -> void:
 
 func _on_pause_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		add_child(load("res://scenes/ui/level/pause_menu.tscn").instantiate())
+		var pause_menu : UI_PauseMenu = load("res://scenes/ui/level/pause_menu.tscn").instantiate()
+		pause_menu.on_continue.connect(_update_pause_button)
+		add_child(pause_menu)
 		get_tree().paused = true
+	
+	
+func _update_pause_button() -> void:
+	$CanvasLayer/TopPanel/PauseButton.button_pressed = false
 	
 	
 func move_forward(speed : float, delta : float) -> void:
@@ -64,16 +75,23 @@ func _on_hint_button_button_down() -> void:
 	player.running = true
 	player.set_run_state()
 	$Hint.hide()
+	$Timer.start()
 	
 	
-func _popup_defeat_menu() -> void:
+func _on_player_dead() -> void:
+	$Timer.stop()
 	var tscn_defeat_menu : PackedScene = load("res://scenes/ui/level/defeat_menu.tscn")
 	var defeat_menu : CanvasLayer = tscn_defeat_menu.instantiate()
 	defeat_menu.init_defeat_menu(self)
 	add_child(defeat_menu)
 	
 	
-func _show_hint() -> void:
+func _on_player_revive() -> void:
 	$Hint.show()
 	
 	
+func _on_timer_timeout() -> void:
+	if timer_60s > 0:
+		timer_60s -= 1
+	else:
+		pass

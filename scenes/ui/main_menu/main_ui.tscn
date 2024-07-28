@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cikowdx8g5fta"]
+[gd_scene load_steps=15 format=3 uid="uid://cikowdx8g5fta"]
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_ui.gd" id="1_jv4cg"]
@@ -16,8 +16,6 @@ texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bywl2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhayw"]
 
 [sub_resource type="Animation" id="Animation_lposd"]
 length = 0.001
@@ -427,6 +425,7 @@ horizontal_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="PickMapTheme/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PickMapTheme/VBoxContainer/ScrollContainer"]
 layout_mode = 2
@@ -449,11 +448,6 @@ text = "开始"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bywl2")
-
-[node name="HSeparator3" type="HSeparator" parent="PickMapTheme/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_uhayw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

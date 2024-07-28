@@ -51,6 +51,9 @@ var level : Level
 
 
 func _ready() -> void:
+	$CollisionShape2D.show()
+	$RayCast2D.show()
+	$VisibleOnScreenNotifier2D.show()
 	$HpNumber.hp = start_hp
 	level = get_tree().get_first_node_in_group("level") as Level
 	_calculate_movement_parameters()
@@ -258,4 +261,5 @@ func guess(faced_enemy : Enemy) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	player_state = EPlayerState.Dead
+	if player_state == EPlayerState.Dead:
+		player_state = EPlayerState.Idle

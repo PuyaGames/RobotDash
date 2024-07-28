@@ -69,12 +69,12 @@ func _on_under_layer_button_down() -> void:
 
 
 func _on_start_button_button_down() -> void:
-	var tscn_level : PackedScene = load(Paths.tscn_level)
-	var level : Level = tscn_level.instantiate()
-	level.init_level(selected_map_type, Enums.EPlayerType.Robot)
 	var main : Main = get_tree().get_first_node_in_group("main")
-	for node in main.get_children():
-		node.queue_free()
-	main.active_level = level
-	main.add_child(level)
+	$AnimationPlayer.play("RESET")
+	$AnimPlayerForStarter.play("RESET")
+	settings_showed = false
+	starter_showed = true
+	ranklist_showed = false
+	pick_map_theme_showed = false
+	main.load_level(selected_map_type)
 

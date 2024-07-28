@@ -13,7 +13,7 @@ signal clicked(map_type : Enums.EMapType)
 		$TextureRect.texture = load(map_theme_data.tex_path)
 		$Label.text = map_theme_data.label
 		
-var locked : bool = false
+var locked : bool = true
 
 class MapThemeData:
 	var label : String
@@ -70,6 +70,7 @@ func _ready() -> void:
 	if locked:
 		disabled = true
 		$Locked.show()
+		$TextureRect.modulate = Color.from_string("ffffff34", Color.WHITE)
 		$Button.show()
 	else:
 		disabled = false

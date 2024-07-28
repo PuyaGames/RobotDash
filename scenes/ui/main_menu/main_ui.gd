@@ -13,7 +13,7 @@ var selected_map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
 	$AnimPlayerForStarter.play("RESET")
-	var tscn_map_theme_item : PackedScene = load("res://scenes/ui/map_theme_item.tscn")
+	var tscn_map_theme_item : PackedScene = load(Paths.tscn_map_theme_item)
 	for map_type : Enums.EMapType in Enums.EMapType.values():
 		var map_theme_item : MapThemeItem = tscn_map_theme_item.instantiate()
 		map_theme_item.type = map_type

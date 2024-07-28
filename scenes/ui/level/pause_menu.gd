@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 
+signal on_continue
+
+
 @onready var settings_button : Button = $Panel/VBoxContainer/HBoxContainer/SettingsButton
 @onready var shop_button : Button = $Panel/VBoxContainer/HBoxContainer/ShopButton
 @onready var settings_label : Label = $Panel/VBoxContainer/HBoxContainer/SettingsButton/Label
@@ -39,3 +42,4 @@ func _on_shop_button_button_down() -> void:
 func _on_continue_button_button_down() -> void:
 	queue_free()
 	get_tree().paused = false
+	on_continue.emit()

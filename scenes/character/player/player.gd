@@ -47,10 +47,12 @@ var jump_gravity : float
 var jump_velocity : float
 var fall_gravity : float
 var player_state : EPlayerState = EPlayerState.Walk
+var level : Level
 
 
 func _ready() -> void:
 	$HpNumber.hp = start_hp
+	level = get_tree().get_first_node_in_group("level") as Level
 	_calculate_movement_parameters()
 
 
@@ -202,10 +204,10 @@ func attack() -> void:
 		hp_number.add_hp(enemy.hp_number)
 		enemy.dead()
 	elif get_hp() < enemy.get_hp():
-		dead()
 		player_state = EPlayerState.Dead
+		dead()
 	else:
-		player_state = EPlayerState.Idle
+		guess(enemy)
 	
 	
 func reset_attack_state() -> void:
@@ -235,8 +237,21 @@ func revive() -> void:
 	jump_fall_time = jump_fall_time_bak
 	_calculate_movement_parameters()
 	player_state = EPlayerState.Idle
-	position = Vector2(160.0, 832.0)
+	position = Vector2(160.0, 800.0)
+	on_revive.emit()
 	
 	
 func get_hp() -> int:
 	return $HpNumber.hp
+	
+	
+func guess(faced_enemy : Enemy) -> void:
+	#if get_hp() > enemy.get_hp():
+		#player_state = attack_state_pool.pick_random()
+		#hp_number.add_hp(enemy.hp_number)
+		#enemy.dead()
+	#elif get_hp() < enemy.get_hp():
+		#player_state = EPlayerState.Dead
+		#dead()
+	player_state = EPlayerState.Dead
+	dead()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcch5ccxh6yd4"]
+
+[ext_resource type="Script" path="res://scenes/ui/level/card.gd" id="1_wj752"]
+[ext_resource type="Texture2D" uid="uid://77oidb3mpnly" path="res://resources/ui/card/blue_card_back.tres" id="2_sw32j"]
+
+[node name="Card" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wj752")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(70, 95)
+texture = ExtResource("2_sw32j")

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cakhiekf5iw3s"]
+
+[ext_resource type="Texture2D" uid="uid://jsrpaxletgu6" path="res://assets/textures/ui/cards.png" id="1_olpus"]
+
+[resource]
+atlas = ExtResource("1_olpus")
+region = Rect2(700, 190, 140, 190)

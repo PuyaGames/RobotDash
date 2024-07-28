@@ -33,13 +33,13 @@ var theme_data_dict : Dictionary = {
 	Enums.EMapType.Halloween_Orange :
 		MapThemeData.new("万圣节", "res://resources/ui/map_theme/halloween_04.atlastex"),
 	Enums.EMapType.Desert_Cactus :
-		MapThemeData.new("风化", "res://resources/ui/map_theme/desert_01.atlastex"),
-	Enums.EMapType.Desert_Rock :
 		MapThemeData.new("仙人掌", "res://resources/ui/map_theme/desert_02.atlastex"),
-	Enums.EMapType.Desert_Sky :
+	Enums.EMapType.Desert_Rock :
 		MapThemeData.new("怪石嶙峋", "res://resources/ui/map_theme/desert_03.atlastex"),
-	Enums.EMapType.Desert_Dusk :
+	Enums.EMapType.Desert_Sky :
 		MapThemeData.new("常规沙漠", "res://resources/ui/map_theme/desert_04.atlastex"),
+	Enums.EMapType.Desert_Dusk :
+		MapThemeData.new("风化", "res://resources/ui/map_theme/desert_01.atlastex"),
 	Enums.EMapType.Sweet_Pink :
 		MapThemeData.new("超级大蛋糕", "res://resources/ui/map_theme/sweet_01.atlastex"),
 	Enums.EMapType.Sweet_Blue :
@@ -51,9 +51,9 @@ var theme_data_dict : Dictionary = {
 	Enums.EMapType.Beach_Blue :
 		MapThemeData.new("高饱和海滩", "res://resources/ui/map_theme/beach_01.atlastex"),
 	Enums.EMapType.Beach_Green :
-		MapThemeData.new("满地贝壳", "res://resources/ui/map_theme/beach_02.atlastex"),
+		MapThemeData.new("椰子树", "res://resources/ui/map_theme/beach_02.atlastex"),
 	Enums.EMapType.Beach_Cyan :
-		MapThemeData.new("海边的酒吧", "res://resources/ui/map_theme/beach_03.atlastex"),
+		MapThemeData.new("青", "res://resources/ui/map_theme/beach_03.atlastex"),
 	Enums.EMapType.Beach_Dusk :
 		MapThemeData.new("黄昏与海", "res://resources/ui/map_theme/beach_04.atlastex")
 }

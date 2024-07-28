@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cv81cr6de4lgc"]
 
-[ext_resource type="Script" path="res://scenes/ui/map_theme_item.gd" id="1_6dc00"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/map_theme_item.gd" id="1_6dc00"]
 [ext_resource type="Texture2D" uid="uid://bhpwsu4xxkp0x" path="res://resources/ui/map_theme/halloween_01.atlastex" id="2_4870s"]
 [ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="3_4rqm8"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="4_3yg4t"]
@@ -23,11 +23,9 @@ clip_contents = true
 custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
-disabled = true
 script = ExtResource("1_6dc00")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.2)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,6 +55,7 @@ text = "主题名称"
 horizontal_alignment = 1
 
 [node name="Locked" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -89,6 +88,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_lvu02")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

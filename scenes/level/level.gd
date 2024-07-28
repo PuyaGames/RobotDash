@@ -72,11 +72,13 @@ func _on_hint_button_button_down() -> void:
 	
 	
 func _popup_defeat_menu() -> void:
-	var tscn_defeat_menu : PackedScene = load("res://scenes/ui/defeat_menu.tscn")
+	var tscn_defeat_menu : PackedScene = load("res://scenes/ui/level/defeat_menu.tscn")
 	var defeat_menu : CanvasLayer = tscn_defeat_menu.instantiate()
-	defeat_menu.init_defeat_menu(player)
+	defeat_menu.init_defeat_menu(self)
 	add_child(defeat_menu)
 	
 	
 func _show_hint() -> void:
 	$Hint.show()
+	
+	

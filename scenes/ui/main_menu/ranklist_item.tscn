@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://beu0o0f1xy3w3"]
 
-[ext_resource type="Script" path="res://scenes/ui/ranklist_item.gd" id="1_48r6y"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/ranklist_item.gd" id="1_48r6y"]
 
 [node name="RanklistItem" type="Panel"]
 clip_contents = true

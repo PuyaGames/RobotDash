@@ -56,5 +56,7 @@ const sf_robot_run : String = "res://resources/ui/sf_robot_run.tres"
 const sf_zombie_run : String = "res://resources/ui/sf_zombie_run.tres"
 # PackedScene
 const tscn_level : String = "res://scenes/level/level.tscn"
-const tscn_main_menu : String = "res://scenes/ui/main_menu.tscn"
+const tscn_main_menu : String = "res://scenes/ui/main_menu/main_menu.tscn"
 const tscn_player : String = "res://scenes/character/player/player.tscn"
+const tscn_map_theme_item : String = "res://scenes/ui/main_menu/map_theme_item.tscn"
+const tscn_guess : String = "res://scenes/ui/level/guess.tscn"

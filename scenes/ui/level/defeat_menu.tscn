@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dmv8sb2lnlr7b"]
 
-[ext_resource type="Script" path="res://scenes/ui/defeat_menu.gd" id="1_8w3xr"]
+[ext_resource type="Script" path="res://scenes/ui/level/defeat_menu.gd" id="1_8w3xr"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_gcqqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]

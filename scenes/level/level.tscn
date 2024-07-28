@@ -1,11 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=22 format=3 uid="uid://cpf0i51h6ms7j"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_7jelm"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jeg3s"]
 [ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/parallax_scrolling.tscn" id="1_n0yag"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_cvuvq"]
 [ext_resource type="Texture2D" uid="uid://binp51etodvv2" path="res://assets/textures/background/halloween/1_game_background/layers/1.png" id="2_g8caq"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_dxken"]
 [ext_resource type="Texture2D" uid="uid://d86m2v88dj1l" path="res://assets/textures/background/halloween/1_game_background/layers/2.png" id="3_o88j5"]
 [ext_resource type="Texture2D" uid="uid://b48o14ocslul0" path="res://assets/textures/background/halloween/1_game_background/layers/3.png" id="4_53vm5"]
 [ext_resource type="Texture2D" uid="uid://bmyx01wt4bl5j" path="res://assets/textures/background/halloween/1_game_background/layers/4.png" id="5_3skol"]
@@ -16,13 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cmeeg816o3qaw" path="res://scenes/character/player/player.tscn" id="13_uqsvg"]
 [ext_resource type="Texture2D" uid="uid://dwnbtj0544rwb" path="res://assets/textures/water_noise.jpg" id="14_7rwk6"]
 [ext_resource type="Texture2D" uid="uid://b8ohm704fi7sp" path="res://assets/textures/ui/buttons.png" id="16_370dc"]
-[ext_resource type="PackedScene" uid="uid://c0kw4sqbx6lkg" path="res://scenes/ui/loading.tscn" id="17_ew04u"]
-
-[sub_resource type="Resource" id="Resource_0rg0c"]
-script = ExtResource("3_dxken")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57anw"]
 
@@ -100,27 +90,11 @@ script = ExtResource("1_jeg3s")
 _player_type = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(375, 812)
 limit_left = 0
 limit_top = 0
 limit_right = 750
 limit_bottom = 1334
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("1_7jelm")
-
-[node name="PhantomCamera2D" type="Node2D" parent="."]
-position = Vector2(375, 812)
-script = ExtResource("2_cvuvq")
-follow_mode = 2
-tween_resource = SubResource("Resource_0rg0c")
-draw_limits = true
-limit_left = 0
-limit_top = 0
-limit_right = 750
-limit_bottom = 1334
-metadata/_edit_group_ = true
 
 [node name="Visible" type="Control" parent="."]
 clip_contents = true
@@ -212,9 +186,6 @@ texture_normal = SubResource("AtlasTexture_iw7pm")
 texture_pressed = SubResource("AtlasTexture_hpjm4")
 stretch_mode = 0
 metadata/_edit_group_ = true
-
-[node name="Loading" parent="." instance=ExtResource("17_ew04u")]
-visible = false
 
 [node name="Hint" type="CanvasLayer" parent="."]
 visible = false

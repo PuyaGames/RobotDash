@@ -255,3 +255,7 @@ func guess(faced_enemy : Enemy) -> void:
 		#dead()
 	player_state = EPlayerState.Dead
 	dead()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	player_state = EPlayerState.Dead

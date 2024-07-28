@@ -11,7 +11,7 @@ region = Rect2(1332, 444, 64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3540w"]
 shader = ExtResource("4_3yg4t")
-shader_parameter/width = 6.0
+shader_parameter/width = 2.0
 shader_parameter/outline_color = Color(0, 0, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvu02"]

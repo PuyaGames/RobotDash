@@ -167,7 +167,16 @@ _data = {
 [node name="MainUi" type="CanvasLayer"]
 script = ExtResource("1_jv4cg")
 
-[node name="UnderLayer" type="Button" parent="."]
+[node name="Mask" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="UnderLayerButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -456,7 +465,7 @@ libraries = {
 "": SubResource("AnimationLibrary_0xurv")
 }
 
-[connection signal="button_down" from="UnderLayer" to="." method="_on_under_layer_button_down"]
+[connection signal="button_down" from="UnderLayerButton" to="." method="_on_under_layer_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/RanklistButton" to="." method="_on_ranklist_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]

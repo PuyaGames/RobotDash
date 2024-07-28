@@ -423,10 +423,19 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" parent="." index="3"]
+visible = false
 position = Vector2(16, 24)
 shape = SubResource("CircleShape2D_8ja8q")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="5"]
+visible = false
 position = Vector2(-40, 24)
 target_position = Vector2(120, 0)
 collision_mask = 2
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="6"]
+visible = false
+position = Vector2(-2.38419e-06, 24)
+scale = Vector2(4, 5.6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

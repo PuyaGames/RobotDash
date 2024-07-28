@@ -13,17 +13,12 @@ class_name Level
 func _ready() -> void:
 	if enable_main_menu_mode:
 		$CanvasLayer.hide()
-		$Loading.hide()
-		$Camera2D/PhantomCameraHost.queue_free()
 	else:
 		$CanvasLayer.show()
-		$Loading.show()
 		player.init_player(_player_type)
 		player.connect("on_dead", _popup_defeat_menu)
 		player.connect("on_revive", _show_hint)
-		$Loading.connect("loading_finished", Callable(
-			func() -> void: $AnimationPlayer.play("Opening")
-		))
+		$AnimationPlayer.play("Opening")
 		
 	_init_level_map()
 
@@ -51,7 +46,7 @@ func _init_level_map() -> void:
 
 func _on_pause_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		add_child(load("res://scenes/ui/pause_menu.tscn").instantiate())
+		add_child(load("res://scenes/ui/level/pause_menu.tscn").instantiate())
 		get_tree().paused = true
 	
 	

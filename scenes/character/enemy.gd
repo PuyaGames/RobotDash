@@ -4,6 +4,7 @@ class_name Enemy
 
 @export var _enemy_type : Enums.EEnemyType = Enums.EEnemyType.Grey
 @export var hp : int = 100
+@export var death_sound : AudioStream
 
 @onready var hp_number : HpNumber = $HpNumber
 
@@ -88,6 +89,7 @@ func dead() -> void:
 	velocity.x = rng.randf_range(600.0, 1000.0)
 	velocity.y = up_velocity
 	z_index = 100
+	SoundManager.play_sound(death_sound)
 	
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

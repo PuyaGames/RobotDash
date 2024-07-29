@@ -4,11 +4,30 @@ class_name Main
 
 var active_level : Level
 var main_menu : MainMenu
-var background_music : OvaniSong = load("res://resources/music/background.tres")
+var background_music : OvaniSong
+
+var music_enabled : bool = true:
+	set(new_value):
+		music_enabled = new_value
+		if music_enabled:
+			fade_music(-12.0, 1.0)
+		else:
+			fade_music(-80.0, 1.0)
+
+var sound_enabled : bool = true:
+	set(new_value):
+		sound_enabled = new_value
+		if sound_enabled:
+			AudioServer.set_bus_mute(1, false)
+		else:
+			AudioServer.set_bus_mute(1, true)
 
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(Paths.tscn_main_menu)
+	SoundManager.set_default_music_bus("Music")
+	SoundManager.set_default_ui_sound_bus("UI")
+	SoundManager.set_default_sound_bus("Sounds")
 
 
 func _process(_delta: float) -> void:
@@ -17,6 +36,7 @@ func _process(_delta: float) -> void:
 	if progress[0] == 1.0:
 		var tscn_main_menu : PackedScene = ResourceLoader.load_threaded_get(Paths.tscn_main_menu)
 		main_menu = tscn_main_menu.instantiate()
+		background_music = main_menu.background_music
 		$UI.add_child(main_menu)
 
 
@@ -37,10 +57,10 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		pass
 		
-		
-func play_music() -> void:
-	$OvaniPlayer.PlaySongNow()
+	
+func fade_music(volume : float, transition_time : float) -> void:
+	$OvaniPlayer.FadeVolume(volume, transition_time)
 
 
 func _on_loading_loading_finished() -> void:
-	$OvaniPlayer.PlaySongNow(background_music)
+	$OvaniPlayer.PlaySongNow(background_music, 4.0)

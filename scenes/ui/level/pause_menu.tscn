@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds3bjvdn31k7"]
+[gd_scene load_steps=14 format=3 uid="uid://ds3bjvdn31k7"]
 
 [ext_resource type="Script" path="res://scenes/ui/level/pause_menu.gd" id="1_4p0yk"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_a30jk"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="2_dhib0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
@@ -74,6 +75,7 @@ _data = {
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_4p0yk")
+click_sound = ExtResource("2_a30jk")
 
 [node name="Mask" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -245,4 +247,7 @@ libraries = {
 
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/ShopButton" to="." method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/MusicButton" to="." method="_on_music_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/SoundButton" to="." method="_on_sound_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/BackButton" to="." method="_on_back_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_down"]

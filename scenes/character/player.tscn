@@ -1,7 +1,7 @@
 [gd_scene load_steps=54 format=3 uid="uid://cmeeg816o3qaw"]
 
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="1_ac2ss"]
-[ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_637sq"]
+[ext_resource type="Script" path="res://scenes/character/player.gd" id="2_637sq"]
 
 [sub_resource type="Animation" id="Animation_vajqx"]
 resource_name = "Cheer"
@@ -410,7 +410,7 @@ _player_type = 5
 start_hp = 10
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 15
+frame = 43
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

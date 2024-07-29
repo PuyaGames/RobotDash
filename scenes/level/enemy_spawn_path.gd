@@ -11,7 +11,7 @@ var player : Player
 
 
 func _ready() -> void:
-	tscn_enemy = load("res://scenes/character/enemy/enemy.tscn")
+	tscn_enemy = load(Paths.tscn_enemy)
 	
 	for enemy_type in spawn_config.enemy_type_list:
 		var key : String = Enums.EEnemyType.keys()[enemy_type]
@@ -22,7 +22,8 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(2.0).timeout
 	var main : Main = get_tree().get_first_node_in_group("main") as Main
-	player = main.active_level.player
+	if main.active_level.enable_main_menu_mode == false:
+		player = main.active_level.player
 
 
 func spawn_enemies() -> void:

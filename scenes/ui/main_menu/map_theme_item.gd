@@ -13,6 +13,8 @@ signal clicked(map_type : Enums.EMapType)
 		$TextureRect.texture = load(map_theme_data.tex_path)
 		$Label.text = map_theme_data.label
 		
+@export var click_sound : AudioStream
+		
 var locked : bool = true
 
 class MapThemeData:
@@ -84,6 +86,7 @@ func _on_button_button_down() -> void:
 
 
 func _on_button_down() -> void:
+	SoundManager.play_sound(click_sound)
 	clicked.emit(type)
 	set_selected(true)
 	

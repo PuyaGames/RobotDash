@@ -5,6 +5,8 @@ class_name MainMenu
 @onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
 
 var level : Level
+# Useful for ResourceLoader in Main
+var background_music : OvaniSong = load("res://resources/music/background.tres")
 
 
 func _ready() -> void:
@@ -22,9 +24,13 @@ func _process(delta: float) -> void:
 	
 func hide_all() -> void:
 	hide()
-	$MainUi.hide()
+	$MainUI.hide()
 	
 	
 func show_all() -> void:
 	show()
-	$MainUi.show()
+	$MainUI.show()
+	$MainUI.update_settings_buttons()
+	var main : Main = get_tree().get_first_node_in_group("main") as Main
+	if main.music_enabled:
+		main.fade_music(-12.0, 2.0)

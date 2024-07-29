@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dirltgl1lpjhq"]
+[gd_scene load_steps=10 format=3 uid="uid://dirltgl1lpjhq"]
 
 [ext_resource type="PackedScene" uid="uid://h5hgdb0d3dor" path="res://scenes/character/character.tscn" id="1_vera4"]
-[ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_th4ml"]
+[ext_resource type="Script" path="res://scenes/character/enemy.gd" id="2_th4ml"]
 [ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="3_43fje"]
+[ext_resource type="AudioStream" uid="uid://bx2q2itqfbwu6" path="res://assets/audios/sounds/error_004.ogg" id="3_qfo0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30b5q"]
 atlas = ExtResource("3_43fje")
@@ -57,6 +58,7 @@ collision_layer = 2
 script = ExtResource("2_th4ml")
 _enemy_type = 1
 hp = 100
+death_sound = ExtResource("3_qfo0h")
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1

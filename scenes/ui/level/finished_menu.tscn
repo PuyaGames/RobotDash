@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjxubhl0vwg0g"]
+[gd_scene load_steps=10 format=3 uid="uid://bjxubhl0vwg0g"]
 
+[ext_resource type="Script" path="res://scenes/ui/level/finished_menu.gd" id="1_c7aoj"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="2_byvrg"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_xsp03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
 atlas = ExtResource("2_byvrg")
@@ -55,6 +57,8 @@ _data = {
 
 [node name="FinishedMenu" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_c7aoj")
+click_sound = ExtResource("2_xsp03")
 
 [node name="Mask" type="ColorRect" parent="."]
 anchors_preset = 15

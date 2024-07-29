@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmv8sb2lnlr7b"]
+[gd_scene load_steps=10 format=3 uid="uid://dmv8sb2lnlr7b"]
 
 [ext_resource type="Script" path="res://scenes/ui/level/defeat_menu.gd" id="1_8w3xr"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_gcqqi"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_fdved"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
 atlas = ExtResource("1_gcqqi")
@@ -57,6 +58,7 @@ _data = {
 [node name="DefeatMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_8w3xr")
+click_sound = ExtResource("2_fdved")
 
 [node name="Mask" type="ColorRect" parent="."]
 anchors_preset = 15

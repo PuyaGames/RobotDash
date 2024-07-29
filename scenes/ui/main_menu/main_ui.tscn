@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cikowdx8g5fta"]
+[gd_scene load_steps=16 format=3 uid="uid://cikowdx8g5fta"]
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_ui.gd" id="1_jv4cg"]
 [ext_resource type="PackedScene" uid="uid://beu0o0f1xy3w3" path="res://scenes/ui/main_menu/ranklist_item.tscn" id="2_2mro1"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_7qa7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85eus"]
 atlas = ExtResource("1_jcbcx")
@@ -164,6 +165,7 @@ _data = {
 
 [node name="MainUI" type="CanvasLayer"]
 script = ExtResource("1_jv4cg")
+click_sound = ExtResource("2_7qa7b")
 
 [node name="Mask" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -460,6 +462,8 @@ libraries = {
 }
 
 [connection signal="button_down" from="UnderLayerButton" to="." method="_on_under_layer_button_down"]
+[connection signal="button_down" from="Settings/VBoxContainer/MusicButton" to="." method="_on_music_button_button_down"]
+[connection signal="button_down" from="Settings/VBoxContainer/SoundButton" to="." method="_on_sound_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/RanklistButton" to="." method="_on_ranklist_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]

@@ -10,8 +10,8 @@ func _ready() -> void:
 	ResourceLoader.load_threaded_request(Paths.tscn_main_menu)
 
 
-func _process(delta: float) -> void:
-	var progress : Array
+func _process(_delta: float) -> void:
+	var progress : Array = []
 	ResourceLoader.load_threaded_get_status(Paths.tscn_main_menu, progress)
 	if progress[0] == 1.0:
 		var tscn_main_menu : PackedScene = ResourceLoader.load_threaded_get(Paths.tscn_main_menu)

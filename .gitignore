@@ -3,3 +3,6 @@
 .build/
 .vscode/
 android/
+# Dependencies
+assets/audios/musics/Circuit City (RT 5.0)/
+OvaniPlugin/

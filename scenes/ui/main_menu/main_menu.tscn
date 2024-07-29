@@ -15,4 +15,4 @@ handle_input_locally = false
 size = Vector2i(750, 1624)
 render_target_update_mode = 4
 
-[node name="MainUi" parent="." instance=ExtResource("2_oxkhh")]
+[node name="MainUI" parent="." instance=ExtResource("2_oxkhh")]

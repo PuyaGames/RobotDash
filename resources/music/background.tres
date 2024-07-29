@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://gjrca72k8ggn"]
+
+[ext_resource type="Script" path="res://OvaniPlugin/OvaniSong.gd" id="1_7hhhp"]
+[ext_resource type="AudioStream" uid="uid://b8sp6v3ajkf67" path="res://assets/audios/musics/Circuit City (RT 5.0)/80s Circuit City Intensity 1.wav" id="1_ibtak"]
+[ext_resource type="AudioStream" uid="uid://dkgekuu05iy4h" path="res://assets/audios/musics/Circuit City (RT 5.0)/80s Circuit City Intensity 2.wav" id="2_1auc7"]
+[ext_resource type="AudioStream" uid="uid://480yhkgh4l7e" path="res://assets/audios/musics/Circuit City (RT 5.0)/80s Circuit City Main.wav" id="3_skpm3"]
+[ext_resource type="AudioStream" uid="uid://cdmo8oc61b8fx" path="res://assets/audios/musics/Circuit City (RT 5.0)/80s Circuit City Cut 30.wav" id="4_dtfsc"]
+[ext_resource type="AudioStream" uid="uid://cykw4fbhh3jbg" path="res://assets/audios/musics/Circuit City (RT 5.0)/80s Circuit City Cut 60.wav" id="5_obi1k"]
+
+[resource]
+script = ExtResource("1_7hhhp")
+Intensity1 = ExtResource("1_ibtak")
+Intensity2 = ExtResource("2_1auc7")
+Intensity3 = ExtResource("3_skpm3")
+Loop30 = ExtResource("4_dtfsc")
+Loop60 = ExtResource("5_obi1k")
+ReverbTail = 5.0
+SongMode = 0

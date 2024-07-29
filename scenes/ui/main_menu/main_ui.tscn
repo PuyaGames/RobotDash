@@ -162,7 +162,7 @@ _data = {
 "starter_enter": SubResource("Animation_4r7hg")
 }
 
-[node name="MainUi" type="CanvasLayer"]
+[node name="MainUI" type="CanvasLayer"]
 script = ExtResource("1_jv4cg")
 
 [node name="Mask" type="ColorRect" parent="."]

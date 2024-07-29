@@ -4,6 +4,7 @@ class_name Main
 
 var active_level : Level
 var main_menu : MainMenu
+var background_music : OvaniSong = load("res://resources/music/background.tres")
 
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _process(_delta: float) -> void:
 	if progress[0] == 1.0:
 		var tscn_main_menu : PackedScene = ResourceLoader.load_threaded_get(Paths.tscn_main_menu)
 		main_menu = tscn_main_menu.instantiate()
-		add_child(main_menu)
+		$UI.add_child(main_menu)
 
 
 func load_level(map_type : Enums.EMapType) -> void:
@@ -37,3 +38,9 @@ func _notification(what: int) -> void:
 		pass
 		
 		
+func play_music() -> void:
+	$OvaniPlayer.PlaySongNow()
+
+
+func _on_loading_loading_finished() -> void:
+	$OvaniPlayer.PlaySongNow(background_music)

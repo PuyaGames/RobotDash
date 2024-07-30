@@ -13,9 +13,9 @@ func _ready() -> void:
 		platform_assembly_01.enable_spawn_enemies = false
 
 
-func spawn_enemies() -> void:
-	platform_assembly_01.spawn_enemies()
-	platform_assembly_02.spawn_enemies()
+func spawn_enemies(time : float) -> void:
+	platform_assembly_01.spawn_enemies(time)
+	platform_assembly_02.spawn_enemies(time)
 	
 	
 func clear_enemies() -> void:

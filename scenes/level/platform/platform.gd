@@ -40,11 +40,11 @@ func init_platform(map_type : Enums.EMapType) -> void:
 		_set_platform_by_bean(type, load(Paths.map_beach_dusk_bean))
 	
 	
-func spawn_enemies() -> void:
+func spawn_enemies(time : float) -> void:
 	var enemy_spawn_path : EnemySpawnPath
 	if has_node("EnemySpawnPath"):
 		enemy_spawn_path = get_node("EnemySpawnPath")
-		enemy_spawn_path.spawn_enemies()
+		enemy_spawn_path.spawn_enemies(time)
 	
 	
 func clear_enemies() -> void:

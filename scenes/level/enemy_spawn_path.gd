@@ -26,7 +26,7 @@ func _ready() -> void:
 		player = main.active_level.player
 
 
-func spawn_enemies() -> void:
+func spawn_enemies(time : float) -> void:
 	if points.size() != 2:
 		return
 		

@@ -89,7 +89,7 @@ func _on_start_button_button_down() -> void:
 	pick_map_theme_showed = false
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
-		main.fade_music(-24.0, 2.0)
+		main.fade_music()
 	main.load_level(selected_map_type)
 	SoundManager.play_sound(click_sound)
 	$UnderLayerButton.disabled = true

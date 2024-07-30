@@ -16,7 +16,7 @@ script = ExtResource("1_ry27t")
 [node name="OvaniPlayer" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("3_80yb3")
-Volume = -8.0
+Volume = -12.0
 Intensity = 1.0
 
 [connection signal="loading_finished" from="Loading" to="." method="_on_loading_loading_finished"]

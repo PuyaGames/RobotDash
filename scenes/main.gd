@@ -10,9 +10,9 @@ var music_enabled : bool = true:
 	set(new_value):
 		music_enabled = new_value
 		if music_enabled:
-			fade_music(-12.0, 1.0)
+			loud_music()
 		else:
-			fade_music(-80.0, 1.0)
+			mute_music()
 
 var sound_enabled : bool = true:
 	set(new_value):
@@ -58,8 +58,16 @@ func _notification(what: int) -> void:
 		pass
 		
 	
-func fade_music(volume : float, transition_time : float) -> void:
-	$OvaniPlayer.FadeVolume(volume, transition_time)
+func fade_music() -> void:
+	$OvaniPlayer.FadeVolume(-16.0, 1.0)
+	
+	
+func loud_music() -> void:
+	$OvaniPlayer.FadeVolume(-8.0, 1.0)
+	
+	
+func mute_music() -> void:
+	$OvaniPlayer.FadeVolume(-80.0, 1.0)
 
 
 func _on_loading_loading_finished() -> void:

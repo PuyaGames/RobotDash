@@ -76,14 +76,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -300.0
+offset_top = -275.0
 offset_right = 300.0
-offset_bottom = 100.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 6.28319
 scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(300, 300)
+pivot_offset = Vector2(300, 275)
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ct8wt")
 metadata/_edit_group_ = true
@@ -105,7 +105,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_rvgi6")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 50
-text = "60秒快跑已完成"
+text = "游戏结束"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
@@ -152,5 +152,5 @@ libraries = {
 "": SubResource("AnimationLibrary_3sc7y")
 }
 
-[connection signal="button_down" from="Panel/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_revive_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_button_down"]

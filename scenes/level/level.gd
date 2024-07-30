@@ -4,20 +4,23 @@ class_name Level
 @export var enable_main_menu_mode : bool = false
 @export var _map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 @export var _player_type : Enums.EPlayerType = Enums.EPlayerType.DaZhuang
+# Sounds
 @export var click_sound : AudioStream
 @export var jump_sound : AudioStream
 @export var double_jump_sound : AudioStream
 @export var player_death_sound : AudioStream
 @export var player_revive_sound : AudioStream
+@export var timer_sound : AudioStream
+@export var finished_sound : AudioStream
 
 @onready var player : Player = $Visible/SubViewportContainer/SubViewport/Player
 @onready var background : ParallaxScrolling = $Visible/SubViewportContainer/SubViewport/Background
 @onready var terrain_generator : TerrainGenerator = $Visible/SubViewportContainer/SubViewport/TerrainGenerator
 
-var timer_60s : int = 60:
+var time_60s : int = 60:
 	set(new_value):
-		timer_60s = new_value
-		$CanvasLayer/TopPanel/Timer.text = str(new_value)
+		time_60s = new_value
+		$CanvasLayer/TopPanel/Time.text = str(new_value)
 
 
 func _ready() -> void:
@@ -70,7 +73,7 @@ func _on_game_continue() -> void:
 	$CanvasLayer/TopPanel/PauseButton.button_pressed = false
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
-		main.fade_music(-12.0, 2.0)
+		main.loud_music()
 	
 	
 func move_forward(speed : float, delta : float) -> void:
@@ -86,7 +89,7 @@ func init_level(map_type : Enums.EMapType, player_type : Enums.EPlayerType) -> v
 func _on_hint_button_button_down() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
-		main.fade_music(-12.0, 2.0)
+		main.loud_music()
 	player.running = true
 	player.set_run_state()
 	$Hint.hide()
@@ -98,7 +101,7 @@ func _on_hint_button_button_down() -> void:
 func _on_player_dead() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
-		main.fade_music(-24.0, 2.0)
+		main.fade_music()
 	$Timer.stop()
 	var tscn_defeat_menu : PackedScene = load("res://scenes/ui/level/defeat_menu.tscn")
 	var defeat_menu : CanvasLayer = tscn_defeat_menu.instantiate()
@@ -113,7 +116,15 @@ func _on_player_revive() -> void:
 	
 	
 func _on_timer_timeout() -> void:
-	if timer_60s > 0:
-		timer_60s -= 1
+	if time_60s > 0:
+		time_60s -= 1
+		if time_60s < 10:
+			SoundManager.play_sound(timer_sound)
 	else:
-		pass
+		$Timer.stop()
+		player.set_idle_state()
+		var tscn_finished_menu : PackedScene = load("res://scenes/ui/level/finished_menu.tscn")
+		var ui_finished_menu : UI_FinishedMenu = tscn_finished_menu.instantiate()
+		ui_finished_menu.current_map_type = _map_type
+		add_child(ui_finished_menu)
+		SoundManager.play_sound(finished_sound)

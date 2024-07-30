@@ -33,4 +33,4 @@ func show_all() -> void:
 	$MainUI.update_settings_buttons()
 	var main : Main = get_tree().get_first_node_in_group("main") as Main
 	if main.music_enabled:
-		main.fade_music(-12.0, 2.0)
+		main.loud_music()

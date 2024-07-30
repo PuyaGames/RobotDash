@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=29 format=3 uid="uid://cpf0i51h6ms7j"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jeg3s"]
 [ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/parallax_scrolling.tscn" id="1_n0yag"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bao2gbsamwx6c" path="res://assets/textures/background/halloween/1_game_background/layers/5.png" id="6_54e7l"]
 [ext_resource type="AudioStream" uid="uid://tmbo52jdt355" path="res://assets/audios/sounds/question_001.ogg" id="6_k6e5k"]
 [ext_resource type="AudioStream" uid="uid://c3mgricch4lkl" path="res://assets/audios/sounds/question_003.ogg" id="7_m7n58"]
+[ext_resource type="AudioStream" uid="uid://dkvnqra7pypx8" path="res://assets/audios/sounds/glass_002.ogg" id="7_p37a1"]
 [ext_resource type="Texture2D" uid="uid://7exp8dhx4xmj" path="res://assets/textures/background/halloween/1_game_background/layers/6.png" id="7_unaa6"]
+[ext_resource type="AudioStream" uid="uid://b2wdemee3ktoo" path="res://assets/audios/sounds/confirmation_002.ogg" id="8_optxh"]
 [ext_resource type="PackedScene" uid="uid://wcgv0uc1kk08" path="res://scenes/level/terrain_generator.tscn" id="12_ct1ow"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="13_5dx4o"]
 [ext_resource type="PackedScene" uid="uid://cmeeg816o3qaw" path="res://scenes/character/player.tscn" id="13_uqsvg"]
@@ -98,6 +100,8 @@ jump_sound = ExtResource("3_yxcr0")
 double_jump_sound = ExtResource("4_h5jir")
 player_death_sound = ExtResource("6_k6e5k")
 player_revive_sound = ExtResource("7_m7n58")
+timer_sound = ExtResource("7_p37a1")
+finished_sound = ExtResource("8_optxh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(375, 812)
@@ -179,7 +183,7 @@ anchor_right = 1.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n667b")
 
-[node name="Timer" type="Label" parent="CanvasLayer/TopPanel"]
+[node name="Time" type="Label" parent="CanvasLayer/TopPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

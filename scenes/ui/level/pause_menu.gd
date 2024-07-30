@@ -24,7 +24,7 @@ func _ready() -> void:
 	_update_music_button(main.music_enabled)
 	_update_sound_button(main.sound_enabled)
 	if main.music_enabled:
-		main.fade_music(-24.0, 2.0)
+		main.fade_music()
 	settings_button.button_pressed = true
 	settings_button.disabled = true
 	settings_label.add_theme_color_override(

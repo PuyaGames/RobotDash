@@ -410,7 +410,7 @@ _player_type = 5
 start_hp = 10
 
 [node name="Sprite2D" parent="." index="0"]
-frame = 43
+frame = 41
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -422,20 +422,24 @@ tree_root = SubResource("AnimationNodeStateMachine_2vcd4")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="Area2D" type="Area2D" parent="." index="3"]
 visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(16, 24)
 shape = SubResource("CircleShape2D_8ja8q")
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="5"]
+[node name="CollisionShape2D" parent="." index="4"]
 visible = false
-position = Vector2(-40, 24)
-target_position = Vector2(120, 0)
-collision_mask = 2
+position = Vector2(16, 24)
+shape = SubResource("CircleShape2D_8ja8q")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="6"]
 visible = false
 position = Vector2(-2.38419e-06, 24)
 scale = Vector2(4, 5.6)
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

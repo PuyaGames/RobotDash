@@ -87,9 +87,9 @@ func init_platform_assembly(map_type : Enums.EMapType) -> void:
 		
 func spawn_enemies(time : float) -> void:
 	if platform_01 != null:
-		platform_01.spawn_enemies(time)
+		platform_01.spawn_enemies()
 	if platform_02 != null:
-		platform_02.spawn_enemies(time)
+		platform_02.spawn_enemies()
 		
 		
 func clear_enemies() -> void:

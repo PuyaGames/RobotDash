@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b45u1g8sxrwnf"]
+
+[ext_resource type="Script" path="res://scenes/component/item/speed_up.gd" id="1_54rbv"]
+
+[node name="SpeedUp" type="Node"]
+script = ExtResource("1_54rbv")

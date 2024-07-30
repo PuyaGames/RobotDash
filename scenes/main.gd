@@ -45,11 +45,14 @@ func load_level(map_type : Enums.EMapType) -> void:
 	var tscn_level : PackedScene = load(Paths.tscn_level)
 	active_level = tscn_level.instantiate()
 	active_level.init_level(map_type, Enums.EPlayerType.Robot)
+	for node in $Level.get_children():
+		node.queue_free()
 	$Level.add_child(active_level)
 	
 	
 func open_main_menu() -> void:
-	active_level.queue_free()
+	if active_level != null:
+		active_level.queue_free()
 	main_menu.show_all()
 	
 	

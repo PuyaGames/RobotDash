@@ -119,12 +119,14 @@ func _on_timer_timeout() -> void:
 	if time_60s > 0:
 		time_60s -= 1
 		if time_60s < 10:
+			$CanvasLayer/TopPanel/Time.modulate = Color.RED
 			SoundManager.play_sound(timer_sound)
 	else:
 		$Timer.stop()
-		player.set_idle_state()
 		var tscn_finished_menu : PackedScene = load("res://scenes/ui/level/finished_menu.tscn")
 		var ui_finished_menu : UI_FinishedMenu = tscn_finished_menu.instantiate()
+		ui_finished_menu.score = player.get_hp()
 		ui_finished_menu.current_map_type = _map_type
 		add_child(ui_finished_menu)
+		player.stop_running()
 		SoundManager.play_sound(finished_sound)

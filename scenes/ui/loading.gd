@@ -5,18 +5,16 @@ signal loading_finished
 
 @export var loading_time : float = 2.0
 
-const pick_pool : Array[String] = [
-	Paths.sf_dazhuang_run,
-	Paths.sf_robot_run,
-	Paths.sf_sangbiao_run,
-	Paths.sf_xiaoli_run,
-	Paths.sf_xiaomei_run,
-	Paths.sf_zombie_run
-]
+#const pick_pool : Array[String] = [
+	#Paths.sf_dazhuang_run,
+	#Paths.sf_robot_run,
+	#Paths.sf_sangbiao_run,
+	#Paths.sf_xiaoli_run,
+	#Paths.sf_xiaomei_run,
+	#Paths.sf_zombie_run
+#]
 
 func _ready() -> void:
-	var sprite_frames_path : String = pick_pool.pick_random()
-	$Panel/AnimatedSprite2D.sprite_frames = load(sprite_frames_path)
 	$Panel/AnimatedSprite2D.play()
 	$Timer.start(loading_time)
 	$Timer.connect("timeout", Callable(self, "free_self"))

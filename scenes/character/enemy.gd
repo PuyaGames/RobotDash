@@ -2,7 +2,7 @@ extends Character
 class_name Enemy
 
 
-@export var _enemy_type : Enums.EEnemyType = Enums.EEnemyType.Grey
+@export var enemy_type : Enums.EEnemyType = Enums.EEnemyType.Grey
 @export var hp : int = 100
 @export var death_sound : AudioStream
 
@@ -15,11 +15,30 @@ var up_height : float = 3.0
 var up_gravity : float
 var up_velocity : float
 var down_gravity : float
+var dead : bool = false
 
 
 func _ready() -> void:
 	$VisibleOnScreenNotifier2D.show()
-	$HpNumber.hp = hp
+	var main : Main = get_tree().get_first_node_in_group("main")
+	if enemy_type == Enums.EEnemyType.Grey:
+		$HpNumber.hp = 1
+	elif enemy_type == Enums.EEnemyType.Green:
+		$HpNumber.hp = 0
+	elif enemy_type == Enums.EEnemyType.Red:
+		$HpNumber.hp = 3
+	elif enemy_type == Enums.EEnemyType.Blue:
+		$HpNumber.hp = 4
+	elif enemy_type == Enums.EEnemyType.BlackOne:
+		$HpNumber.hp = 0
+	elif enemy_type == Enums.EEnemyType.BlackTwo:
+		$HpNumber.hp = -2
+	elif enemy_type == Enums.EEnemyType.BlackThree:
+		$HpNumber.hp = 999
+	elif enemy_type == Enums.EEnemyType.BlackFour:
+		$HpNumber.hp = -10
+	elif enemy_type == Enums.EEnemyType.BlackFive:
+		$HpNumber.hp = main.active_level.player.get_hp()
 	
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	var timer : SceneTreeTimer = get_tree().create_timer(rng.randf_range(0, 2.0))
@@ -27,7 +46,6 @@ func _ready() -> void:
 		func() -> void: $AnimationPlayer.play("Breath")
 	))
 	
-	_init_enemy()
 	_calculate_movement_parameters()
 	
 
@@ -47,29 +65,29 @@ func _calculate_movement_parameters() -> void:
 	up_velocity = up_gravity * up_time * -1.0
 	
 	
-func init_enemy(enemy_type : Enums.EEnemyType) -> void:
-	_enemy_type = enemy_type
+func init_enemy(in_enemy_type : Enums.EEnemyType) -> void:
+	enemy_type = in_enemy_type
 	_init_enemy()
 	
 	
 func _init_enemy() -> void:
-	if _enemy_type == Enums.EEnemyType.Grey:
+	if enemy_type == Enums.EEnemyType.Grey:
 		_set_enemy_by_bean(load(Paths.enemy_grey_bean))
-	elif _enemy_type == Enums.EEnemyType.Green:
+	elif enemy_type == Enums.EEnemyType.Green:
 		_set_enemy_by_bean(load(Paths.enemy_green_bean))
-	elif _enemy_type == Enums.EEnemyType.Red:
+	elif enemy_type == Enums.EEnemyType.Red:
 		_set_enemy_by_bean(load(Paths.enemy_red_bean))
-	elif _enemy_type == Enums.EEnemyType.Blue:
+	elif enemy_type == Enums.EEnemyType.Blue:
 		_set_enemy_by_bean(load(Paths.enemy_blue_bean))
-	elif _enemy_type == Enums.EEnemyType.BlackOne:
+	elif enemy_type == Enums.EEnemyType.BlackOne:
 		_set_enemy_by_bean(load(Paths.enemy_black_01_bean))
-	elif _enemy_type == Enums.EEnemyType.BlackTwo:
+	elif enemy_type == Enums.EEnemyType.BlackTwo:
 		_set_enemy_by_bean(load(Paths.enemy_black_02_bean))
-	elif _enemy_type == Enums.EEnemyType.BlackThree:
+	elif enemy_type == Enums.EEnemyType.BlackThree:
 		_set_enemy_by_bean(load(Paths.enemy_black_03_bean))
-	elif _enemy_type == Enums.EEnemyType.BlackFour:
+	elif enemy_type == Enums.EEnemyType.BlackFour:
 		_set_enemy_by_bean(load(Paths.enemy_black_04_bean))
-	elif _enemy_type == Enums.EEnemyType.BlackFive:
+	elif enemy_type == Enums.EEnemyType.BlackFive:
 		_set_enemy_by_bean(load(Paths.enemy_black_05_bean))
 	
 	
@@ -78,8 +96,9 @@ func _set_enemy_by_bean(enemy_bean : EnemyBean) -> void:
 	_dead_texture = enemy_bean.dead_texture
 	
 	
-func dead() -> void:
-	$CollisionShape2D.disabled = true
+func die() -> void:
+	dead = true
+	$CollisionShape2D.queue_free()
 	$AnimationPlayer.play("Rotate")
 	$Sprite2D.texture = _dead_texture
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()

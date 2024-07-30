@@ -56,7 +56,7 @@ _data = {
 [node name="Enemy" instance=ExtResource("1_vera4")]
 collision_layer = 2
 script = ExtResource("2_th4ml")
-_enemy_type = 1
+enemy_type = 1
 hp = 100
 death_sound = ExtResource("3_qfo0h")
 

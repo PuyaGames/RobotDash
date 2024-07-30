@@ -22,11 +22,12 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(2.0).timeout
 	var main : Main = get_tree().get_first_node_in_group("main") as Main
-	if main.active_level.enable_main_menu_mode == false:
+	if main.active_level != null &&\
+	   main.active_level.enable_main_menu_mode == false:
 		player = main.active_level.player
 
 
-func spawn_enemies(time : float) -> void:
+func spawn_enemies() -> void:
 	if points.size() != 2:
 		return
 		
@@ -41,10 +42,6 @@ func spawn_enemies(time : float) -> void:
 	for i in positions.size():
 		var enemy : Enemy = tscn_enemy.instantiate()
 		enemy.init_enemy(enemy_type_pool.pick_random())
-		var enemy_start_hp : int = randi_range(int(player.get_hp() * 0.8), int(player.get_hp() * 1.4))
-		if enemy_start_hp < player.get_hp():
-			enemy_start_hp = int(enemy_start_hp * 0.1) + 1
-		enemy.hp = enemy_start_hp
 		enemy.position = positions[i]
 		existing_enemy_list.append(enemy)
 		add_child(enemy)

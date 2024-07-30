@@ -22,7 +22,7 @@ func _ready() -> void:
 	level = get_tree().get_first_node_in_group("level") as Level
 	terrain_root_list = [terrain_root_01, terrain_root_02, terrain_root_03]
 	terrain_list = [terrain_01, terrain_02, terrain_03]
-	terrain_01.regenerate_platform_assemply_01(Enums.EPlatformAssemblyType.S_S_R_R)
+	terrain_01.regenerate_platform_assemply_01(Enums.EPlatformAssemblyType.N_S_N_R)
 	terrain_02.random_regenerate_platform_assembly()
 	terrain_03.random_regenerate_platform_assembly()
 

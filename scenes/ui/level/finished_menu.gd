@@ -5,6 +5,7 @@ class_name UI_FinishedMenu
 @export var click_sound : AudioStream
 
 var current_map_type : Enums.EMapType
+var score : int
 
 
 func _ready() -> void:
@@ -12,14 +13,11 @@ func _ready() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
 		main.fade_music()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	$Panel/VBoxContainer/Score.text = "得分：" + str(score)
 
 
 func _on_restart_button_button_down() -> void:
+	SoundManager.play_sound(click_sound)
 	var main : Main = get_tree().get_first_node_in_group("main")
 	main.load_level(current_map_type)
 	queue_free()

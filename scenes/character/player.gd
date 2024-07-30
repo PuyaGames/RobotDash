@@ -25,7 +25,6 @@ enum EPlayerState
 @export var start_hp : int = 10
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
-@onready var ray_cast_2d : RayCast2D = $RayCast2D
 @onready var hp_number : Node2D = $HpNumber
 
 var jump_height_bak : float
@@ -48,13 +47,16 @@ var jump_velocity : float
 var fall_gravity : float
 var player_state : EPlayerState = EPlayerState.Walk
 var level : Level
+var next_speed_level : int = 2
 
 
 func _ready() -> void:
+	$Area2D.show()
 	$CollisionShape2D.show()
-	$RayCast2D.show()
+	#$RayCast2D.show()
 	$VisibleOnScreenNotifier2D.show()
 	$HpNumber.hp = start_hp
+	$HpNumber.connect("hp_updated", _on_hp_updated)
 	level = get_tree().get_first_node_in_group("level") as Level
 	_calculate_movement_parameters()
 
@@ -69,10 +71,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y += fall_gravity * delta
 		if not is_on_floor() &&\
 		(player_state == EPlayerState.Jump ||\
-		 player_state == EPlayerState.DoubleJump ||\
-		 player_state == EPlayerState.Run||\
-		 player_state == EPlayerState.Kick||\
-		 player_state == EPlayerState.Shove):
+			player_state == EPlayerState.DoubleJump ||\
+			player_state == EPlayerState.Run||\
+			player_state == EPlayerState.Kick||\
+			player_state == EPlayerState.Shove):
 			set_fall_state()
 	else:
 		velocity.y += jump_gravity * delta
@@ -82,12 +84,11 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if player_state == EPlayerState.Fall ||\
-		   player_state == EPlayerState.DoubleJump:
+			player_state == EPlayerState.DoubleJump:
 			reset_jump_state()
 			
-	if ray_cast_2d.is_colliding():
-		if is_on_floor() && player_state != EPlayerState.Dead:
-			attack()
+	if get_hp() == 0:
+		die()
 		
 	move_and_slide()
 
@@ -192,33 +193,32 @@ func reset_jump_state() -> void:
 	has_double_jump = false
 	
 	
-func attack() -> void:
+func attack(enemy : Enemy) -> void:
+	if enemy == null:
+		return
+	
 	var attack_state_pool : Array[EPlayerState] = [
 		EPlayerState.Kick,
 		EPlayerState.Shove
 	]
 	
-	var enemy : Enemy = ray_cast_2d.get_collider() as Enemy
-	if enemy == null:
-		return
-		
 	if get_hp() > enemy.get_hp():
 		player_state = attack_state_pool.pick_random()
-		hp_number.add_hp(enemy.hp_number)
-		enemy.dead()
+		hp_number.add_hp(enemy)
+		enemy.die()
 	elif get_hp() < enemy.get_hp():
 		player_state = EPlayerState.Dead
-		dead()
+		die()
 	else:
-		guess(enemy)
-	
+		judge(enemy)
+		
 	
 func reset_attack_state() -> void:
 	player_state = EPlayerState.Run
 	
 	
-func dead() -> void:
-	$CollisionShape2D.disabled = true
+func die() -> void:
+	call_deferred("_disable_collision")
 	$HpNumber.hide()
 	jump_height_bak = jump_height
 	jump_peak_time_bak = jump_peak_time
@@ -232,6 +232,10 @@ func dead() -> void:
 	on_dead.emit()
 	
 	
+func _disable_collision() -> void:
+	$CollisionShape2D.disabled = true
+	
+	
 func revive() -> void:
 	$CollisionShape2D.disabled = false
 	$HpNumber.show()
@@ -242,13 +246,15 @@ func revive() -> void:
 	player_state = EPlayerState.Idle
 	position = Vector2(160.0, 800.0)
 	on_revive.emit()
+	if get_hp() == 0:
+		$HpNumber.hp = 10
 	
 	
 func get_hp() -> int:
 	return $HpNumber.hp
 	
 	
-func guess(faced_enemy : Enemy) -> void:
+func judge(faced_enemy : Enemy) -> void:
 	#if get_hp() > enemy.get_hp():
 		#player_state = attack_state_pool.pick_random()
 		#hp_number.add_hp(enemy.hp_number)
@@ -257,9 +263,32 @@ func guess(faced_enemy : Enemy) -> void:
 		#player_state = EPlayerState.Dead
 		#dead()
 	player_state = EPlayerState.Dead
-	dead()
+	die()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if player_state == EPlayerState.Dead:
 		player_state = EPlayerState.Idle
+		
+		
+func stop_running() -> void:
+	position = Vector2(160.0, 800.0)
+	player_state = EPlayerState.Idle
+	
+	
+func _on_hp_updated(new_hp : int) -> void:
+	if new_hp >= next_speed_level * 10.0:
+		movement_speed += 40.0
+		next_speed_level += 1
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not body is Enemy:
+		return
+	if player_state == EPlayerState.Dead:
+		return
+	var enemy : Enemy = body as Enemy
+	if enemy.dead:
+		return
+		
+	attack(enemy)

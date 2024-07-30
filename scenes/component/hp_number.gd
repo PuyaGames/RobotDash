@@ -2,12 +2,27 @@ extends Node2D
 class_name HpNumber
 
 
+signal hp_updated(new_hp : int)
+
+
 @export var hp_type : Enums.EHpType = Enums.EHpType.Blue
 
 var hp : int = 100:
 	set(new_value):
+		if owner is Player and new_value <= 0:
+			new_value = 0
 		hp = new_value
 		$Label.text = str(new_value)
+		
+		if owner is Player:
+			return
+		if new_value != 0:
+			return
+		var enemy : Enemy = owner as Enemy
+		if enemy.enemy_type == Enums.EEnemyType.Green:
+			$Label.text = "x2"
+		elif enemy.enemy_type == Enums.EEnemyType.BlackOne:
+			$Label.text = "x0.5"
 
 const red : Color = Color8(255, 28, 0)
 const blue : Color = Color8(20, 50, 255)
@@ -26,11 +41,17 @@ func _ready() -> void:
 		$Label.add_theme_color_override("font_color", red)
 
 
-func add_hp(target_hp_number : HpNumber) -> void:
-	new_hp_value = hp + target_hp_number.hp
-	var new_hp_comp : HpNumber = target_hp_number.duplicate()
-	target_hp_number.hide()
-	new_hp_comp.position = target_hp_number.global_position
+func add_hp(enemy : Enemy) -> void:
+	if enemy.enemy_type == Enums.EEnemyType.Green:
+		new_hp_value = hp * 2
+	elif enemy.enemy_type == Enums.EEnemyType.BlackOne:
+		new_hp_value = int(hp * 0.5)
+	else:
+		new_hp_value = hp + enemy.get_hp()
+		
+	var new_hp_comp : HpNumber = enemy.hp_number.duplicate()
+	enemy.hp_number.hide()
+	new_hp_comp.position = enemy.hp_number.global_position
 	level.add_child(new_hp_comp)
 	var tween : Tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(new_hp_comp, "position", global_position, 0.12)
@@ -42,9 +63,6 @@ func add_hp(target_hp_number : HpNumber) -> void:
 	))
 	
 	
-func reduce_hp(_value : int) -> void:
-	$AnimationPlayer.play("Updated")
-	
-	
 func update_label() -> void:
 	hp = new_hp_value
+	hp_updated.emit(hp)

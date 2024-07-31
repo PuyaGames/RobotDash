@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://chr83qi1208ut"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_xeshv"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_upjmx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r8cx"]
+atlas = ExtResource("1_xeshv")
+region = Rect2(1052, 312, 34, 34)
+
+[resource]
+script = ExtResource("2_upjmx")
+icon_tex = SubResource("AtlasTexture_1r8cx")
+item_name = "幸运碎片"
+detail = "x2 出现的概率 + 0.1"
+count = 1

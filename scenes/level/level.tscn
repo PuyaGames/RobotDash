@@ -141,6 +141,7 @@ layer_06_texture = ExtResource("7_unaa6")
 [node name="Player" parent="Visible/SubViewportContainer/SubViewport" groups=["player"] instance=ExtResource("13_uqsvg")]
 position = Vector2(-50, 832)
 _player_type = 3
+start_hp = null
 
 [node name="Water" type="TextureRect" parent="Visible"]
 material = SubResource("ShaderMaterial_ewcog")

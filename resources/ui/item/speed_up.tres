@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cr0ey1niolqis"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_3y6qh"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_cll1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ugy2"]
+atlas = ExtResource("1_3y6qh")
+region = Rect2(684.851, 310.892, 26.4393, 49.1875)
+
+[resource]
+script = ExtResource("2_cll1k")
+icon_tex = SubResource("AtlasTexture_8ugy2")
+item_name = "速度提升"
+detail = "移动速度 + 20"
+count = 2

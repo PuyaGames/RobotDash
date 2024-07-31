@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bgt2m7n3xixcq"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_vmtc5"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_c1pq5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_213ju"]
+atlas = ExtResource("1_vmtc5")
+region = Rect2(681, 471, 38, 37)
+
+[resource]
+script = ExtResource("2_c1pq5")
+icon_tex = SubResource("AtlasTexture_213ju")
+item_name = "双重跳跃"
+detail = "能够在空中进行一次跳跃"
+count = 1

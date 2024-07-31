@@ -38,7 +38,10 @@ var running : bool = false
 var jump_peak_time : float = 0.5
 var jump_fall_time : float = 0.5
 var jump_height : float = 2.0
+# For item: DoubleJump
 var can_double_jump : bool = false
+# For item: Better
+var better : bool = false
 var movement_speed : float = 300.0
 var player_jump_position : Vector2
 var has_double_jump : bool = false
@@ -53,7 +56,6 @@ var next_speed_level : int = 2
 func _ready() -> void:
 	$Area2D.show()
 	$CollisionShape2D.show()
-	#$RayCast2D.show()
 	$VisibleOnScreenNotifier2D.show()
 	$HpNumber.hp = start_hp
 	$HpNumber.connect("hp_updated", _on_hp_updated)
@@ -86,9 +88,6 @@ func _physics_process(delta: float) -> void:
 		if player_state == EPlayerState.Fall ||\
 			player_state == EPlayerState.DoubleJump:
 			reset_jump_state()
-			
-	if get_hp() == 0:
-		die()
 		
 	move_and_slide()
 
@@ -250,10 +249,6 @@ func revive() -> void:
 		$HpNumber.hp = 10
 	
 	
-func get_hp() -> int:
-	return $HpNumber.hp
-	
-	
 func judge(faced_enemy : Enemy) -> void:
 	#if get_hp() > enemy.get_hp():
 		#player_state = attack_state_pool.pick_random()
@@ -277,6 +272,8 @@ func stop_running() -> void:
 	
 	
 func _on_hp_updated(new_hp : int) -> void:
+	if new_hp == 0:
+		die()
 	if new_hp >= next_speed_level * 10.0:
 		movement_speed += 40.0
 		next_speed_level += 1

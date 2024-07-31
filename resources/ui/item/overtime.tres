@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://d3vj3mppjhfcc"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_njgvu"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_ymnp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftbxj"]
+atlas = ExtResource("1_njgvu")
+region = Rect2(983, 21, 22, 22)
+
+[resource]
+script = ExtResource("2_ymnp3")
+icon_tex = SubResource("AtlasTexture_ftbxj")
+item_name = "时间宝石"
+detail = "游戏时长 + 2 秒"
+count = 1

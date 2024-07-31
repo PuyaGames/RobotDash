@@ -32,6 +32,16 @@ enum EPlayerType
 	Zombie
 }
 
+enum EItemType
+{
+	SpeedUp,
+	Better,
+	Huge,
+	DoubleJump,
+	Luck,
+	Overtime
+}
+
 enum EEnemyType
 {
 	None,

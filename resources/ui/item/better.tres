@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://c4g3rmlb2d5v1"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_u53ar"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_wcctc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oym44"]
+atlas = ExtResource("1_u53ar")
+region = Rect2(753, 106, 37, 32)
+
+[resource]
+script = ExtResource("2_wcctc")
+icon_tex = SubResource("AtlasTexture_oym44")
+item_name = "略胜一筹"
+detail = "总是能够战胜相同数值的敌人"
+count = 1

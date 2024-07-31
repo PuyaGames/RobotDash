@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://mi835xix2bye"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_6i4h1"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_u8dro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wli3v"]
+atlas = ExtResource("1_6i4h1")
+region = Rect2(1055, 95, 26, 22)
+
+[resource]
+script = ExtResource("2_u8dro")
+icon_tex = SubResource("AtlasTexture_wli3v")
+item_name = "泰坦纹章"
+detail = "巨大化 2 秒"
+count = 1

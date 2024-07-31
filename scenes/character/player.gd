@@ -4,6 +4,7 @@ class_name Player
 
 signal on_dead
 signal on_revive
+signal on_hp_updated(new_hp : int)
 
 
 enum EPlayerState
@@ -33,6 +34,11 @@ var jump_fall_time_bak : float
 const death_jump_height : float = 1.0
 const death_jump_peak_time : float = 0.3
 const death_jump_fall_time : float = 0.2
+
+const attack_state_pool : Array[EPlayerState] = [
+	EPlayerState.Kick,
+	EPlayerState.Shove
+]
 
 var running : bool = false
 var jump_peak_time : float = 0.5
@@ -196,11 +202,6 @@ func attack(enemy : Enemy) -> void:
 	if enemy == null:
 		return
 	
-	var attack_state_pool : Array[EPlayerState] = [
-		EPlayerState.Kick,
-		EPlayerState.Shove
-	]
-	
 	if get_hp() > enemy.get_hp():
 		player_state = attack_state_pool.pick_random()
 		hp_number.add_hp(enemy)
@@ -250,15 +251,13 @@ func revive() -> void:
 	
 	
 func judge(faced_enemy : Enemy) -> void:
-	#if get_hp() > enemy.get_hp():
-		#player_state = attack_state_pool.pick_random()
-		#hp_number.add_hp(enemy.hp_number)
-		#enemy.dead()
-	#elif get_hp() < enemy.get_hp():
-		#player_state = EPlayerState.Dead
-		#dead()
-	player_state = EPlayerState.Dead
-	die()
+	if better:
+		player_state = attack_state_pool.pick_random()
+		hp_number.add_hp(faced_enemy)
+		faced_enemy.die()
+	else:
+		player_state = EPlayerState.Dead
+		die()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
@@ -275,8 +274,10 @@ func _on_hp_updated(new_hp : int) -> void:
 	if new_hp == 0:
 		die()
 	if new_hp >= next_speed_level * 10.0:
-		movement_speed += 40.0
+		movement_speed += 20.0
 		next_speed_level += 1
+		
+	on_hp_updated.emit(new_hp)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

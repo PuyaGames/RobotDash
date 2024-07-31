@@ -15,6 +15,7 @@ var count : int = 1:
 		count = new_value
 		$HBoxContainer/Count.text = str(count)
 		if count == 0:
+			$HBoxContainer/Count.modulate = Color.RED
 			self.disabled = true
 
 
@@ -35,6 +36,10 @@ func _update_store_item() -> void:
 		data = load("res://resources/ui/item/luck.tres")
 	elif type == Enums.EItemType.Overtime:
 		data = load("res://resources/ui/item/overtime.tres")
+	elif type == Enums.EItemType.OneAttack:
+		data = load("res://resources/ui/item/one_attack.tres")
+	elif type == Enums.EItemType.Retreat:
+		data = load("res://resources/ui/item/retreat.tres")
 		
 	$Icon.texture = data.icon_tex
 	$Name.text = data.item_name

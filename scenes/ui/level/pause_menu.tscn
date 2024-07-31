@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds3bjvdn31k7"]
+[gd_scene load_steps=16 format=3 uid="uid://ds3bjvdn31k7"]
 
 [ext_resource type="Script" path="res://scenes/ui/level/pause_menu.gd" id="1_4p0yk"]
 [ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_a30jk"]
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="2_dhib0"]
+[ext_resource type="PackedScene" uid="uid://cithfjyabe6e5" path="res://scenes/ui/level/store_item.tscn" id="4_fuw22"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
 atlas = ExtResource("2_dhib0")
@@ -33,6 +34,8 @@ texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 expand_margin_top = 20.0
 expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgur0"]
 
 [sub_resource type="Animation" id="Animation_lfqhv"]
 resource_name = "Enter"
@@ -86,7 +89,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(600, 600)
+custom_minimum_size = Vector2(600, 720)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -100,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 6.28319
 scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(300, 350)
+pivot_offset = Vector2(300, 360)
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_ct8wt")
 metadata/_edit_group_ = true
@@ -218,6 +221,7 @@ text = "返回主菜单"
 icon_alignment = 2
 
 [node name="Shop" type="Panel" parent="Panel/VBoxContainer/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(600, 476)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8o1gx")
@@ -229,12 +233,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bgur0")
+
+[node name="SpeedUp" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+
+[node name="Better" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 1
+
+[node name="Huge" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 2
+
+[node name="DoubleJump" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 3
+
+[node name="Luck" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 4
+
+[node name="Overtime" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 5
+
+[node name="OneAttack" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 6
+
+[node name="Restreat" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+layout_mode = 2
+type = 7
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bgur0")
 
 [node name="ContinueButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)

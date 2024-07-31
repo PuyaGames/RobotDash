@@ -6,13 +6,13 @@
 script = ExtResource("1_6p3ac")
 enemy_type_list = Array[int]([1, 2, 3, 4, 5, 6, 7, 8, 9])
 enemy_occurrence_rate_dict = {
-"BlackFive": 0.2,
-"BlackFour": 0.2,
+"BlackFive": 0.1,
+"BlackFour": 0.1,
 "BlackOne": 0.1,
-"BlackThree": 0.05,
-"BlackTwo": 0.6,
-"Blue": 0.6,
-"Green": 0.05,
+"BlackThree": 0.1,
+"BlackTwo": 0.2,
+"Blue": 0.4,
+"Green": 0.01,
 "Grey": 1.0,
-"Red": 0.8
+"Red": 0.6
 }

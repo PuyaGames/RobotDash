@@ -39,7 +39,9 @@ enum EItemType
 	Huge,
 	DoubleJump,
 	Luck,
-	Overtime
+	Overtime,
+	OneAttack,
+	Retreat
 }
 
 enum EEnemyType

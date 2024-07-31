@@ -85,7 +85,7 @@ func init_platform_assembly(map_type : Enums.EMapType) -> void:
 		platform_02.init_platform(map_type)
 		
 		
-func spawn_enemies(time : float) -> void:
+func spawn_enemies() -> void:
 	if platform_01 != null:
 		platform_01.spawn_enemies()
 	if platform_02 != null:
@@ -100,9 +100,8 @@ func clear_enemies() -> void:
 
 
 func _on_enter_screen_notifier_2d_screen_entered() -> void:
-	var main : Main = get_tree().get_first_node_in_group("main")
 	if enable_spawn_enemies:
-		spawn_enemies(main.active_level.time_60s)
+		spawn_enemies()
 	else:
 		enable_spawn_enemies = true
 

@@ -11,5 +11,5 @@ region = Rect2(1052, 312, 34, 34)
 script = ExtResource("2_upjmx")
 icon_tex = SubResource("AtlasTexture_1r8cx")
 item_name = "幸运碎片"
-detail = "x2 出现的概率 + 0.1"
+detail = "x10 出现的概率提升到 2%"
 count = 1

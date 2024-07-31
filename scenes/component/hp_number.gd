@@ -20,9 +20,9 @@ var hp : int = 100:
 			return
 		var enemy : Enemy = owner as Enemy
 		if enemy.enemy_type == Enums.EEnemyType.Green:
-			$Label.text = "x2"
+			$Label.text = "x10"
 		elif enemy.enemy_type == Enums.EEnemyType.BlackOne:
-			$Label.text = "x0.5"
+			$Label.text = "÷2"
 
 const red : Color = Color8(255, 28, 0)
 const blue : Color = Color8(20, 50, 255)
@@ -43,7 +43,7 @@ func _ready() -> void:
 
 func add_hp(enemy : Enemy) -> void:
 	if enemy.enemy_type == Enums.EEnemyType.Green:
-		new_hp_value = hp * 2
+		new_hp_value = hp * 10
 	elif enemy.enemy_type == Enums.EEnemyType.BlackOne:
 		new_hp_value = int(hp * 0.5)
 	else:
@@ -66,3 +66,8 @@ func add_hp(enemy : Enemy) -> void:
 func update_label() -> void:
 	hp = new_hp_value
 	hp_updated.emit(hp)
+	
+	
+func update_hp(new_hp : int) -> void:
+	new_hp_value = new_hp
+	$AnimationPlayer.play("Updated")

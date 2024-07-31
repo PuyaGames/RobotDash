@@ -3,9 +3,11 @@ extends Node
 
 # TapTapADN
 const media_id : int = 1008256
-const media_name : String = "测试"
+const media_name : String = "机器人快跑"
 const media_key : String = "EcUJwj9otm1MWVrb5dv6HIMarxAefiKA7egruir72hcikTU3lpbSSLhHiasdVRmO"
-const space_id : int = 1036744
+const revive_space_id : int = 1037811
+const store_space_id : int = 1037810
+const map_theme_space_id : int = 1036744
 
 var platform_assembly_occurrence_rate_dict : Dictionary = {
 	Enums.EPlatformAssemblyType.L_L_N_N : 1.0,

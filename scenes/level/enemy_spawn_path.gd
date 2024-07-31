@@ -16,7 +16,7 @@ func _ready() -> void:
 	for enemy_type in spawn_config.enemy_type_list:
 		var key : String = Enums.EEnemyType.keys()[enemy_type]
 		var value : float = spawn_config.enemy_occurrence_rate_dict[key]
-		for i in range(value * 10):
+		for i in range(value * 100):
 			enemy_type_pool.append(enemy_type)
 	enemy_type_pool.shuffle()
 	
@@ -69,3 +69,7 @@ func _calculate_spawn_positions(spawn_number : int) -> Array[Vector2]:
 	return positions
 	
 	
+func add_enemy_to_pool(enemy_type : Enums.EEnemyType, number : int) -> void:
+	for i in range(number):
+		enemy_type_pool.append(enemy_type)
+

@@ -12,4 +12,4 @@ script = ExtResource("2_cll1k")
 icon_tex = SubResource("AtlasTexture_8ugy2")
 item_name = "速度提升"
 detail = "移动速度 + 20"
-count = 2
+count = 1

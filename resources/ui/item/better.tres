@@ -11,5 +11,5 @@ region = Rect2(753, 106, 37, 32)
 script = ExtResource("2_wcctc")
 icon_tex = SubResource("AtlasTexture_oym44")
 item_name = "略胜一筹"
-detail = "总是能够战胜相同数值的敌人"
+detail = "总是能够战胜数值相同的敌人"
 count = 1

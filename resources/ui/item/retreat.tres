@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bivvjoh65yj3c"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_vsjlj"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_bxuqh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk4nd"]
+atlas = ExtResource("1_vsjlj")
+region = Rect2(1260, 749, 48, 55)
+
+[resource]
+script = ExtResource("2_bxuqh")
+icon_tex = SubResource("AtlasTexture_bk4nd")
+item_name = "冷静思考"
+detail = "向后一步，获得更多反应空间"
+count = 1

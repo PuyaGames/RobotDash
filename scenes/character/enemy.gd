@@ -39,6 +39,7 @@ func _ready() -> void:
 		$HpNumber.hp = -10
 	elif enemy_type == Enums.EEnemyType.BlackFive:
 		$HpNumber.hp = main.active_level.player.get_hp()
+		main.active_level.player.connect("on_hp_updated", _update_hp)
 	
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	var timer : SceneTreeTimer = get_tree().create_timer(rng.randf_range(0, 2.0))
@@ -113,3 +114,7 @@ func die() -> void:
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+	
+	
+func _update_hp(new_hp : int) -> void:
+	$HpNumber.update_hp(new_hp)

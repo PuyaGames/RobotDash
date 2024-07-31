@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cfdu3ie1bt1m4"]
+
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_ey8df"]
+[ext_resource type="Script" path="res://scenes/resource/item_data.gd" id="2_17tj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h37vb"]
+atlas = ExtResource("1_ey8df")
+region = Rect2(757, 36, 30, 28)
+
+[resource]
+script = ExtResource("2_17tj6")
+icon_tex = SubResource("AtlasTexture_h37vb")
+item_name = "致命一击"
+detail = "可以击倒一次数值大于自己的敌人"
+count = 1

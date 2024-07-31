@@ -62,11 +62,11 @@ func _notification(what: int) -> void:
 		
 	
 func fade_music() -> void:
-	$OvaniPlayer.FadeVolume(-16.0, 1.0)
+	$OvaniPlayer.FadeVolume(-8.0, 1.0)
 	
 	
 func loud_music() -> void:
-	$OvaniPlayer.FadeVolume(-8.0, 1.0)
+	$OvaniPlayer.FadeVolume(0.0, 1.0)
 	
 	
 func mute_music() -> void:

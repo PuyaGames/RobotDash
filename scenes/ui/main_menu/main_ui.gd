@@ -47,7 +47,7 @@ func _on_play_button_button_down() -> void:
 func _on_ranklist_button_button_down() -> void:
 	$AnimPlayerForStarter.play_backwards("starter_enter")
 	starter_showed = false
-	$AnimationPlayer.play("ranklist_enter")
+	$AnimationPlayer.play("leaderboards_enter")
 	ranklist_showed = true
 	SoundManager.play_sound(click_sound)
 	$UnderLayerButton.disabled = false
@@ -67,7 +67,7 @@ func _on_under_layer_button_down() -> void:
 		$AnimPlayerForStarter.play("starter_enter")
 		starter_showed = true
 	if ranklist_showed:
-		$AnimationPlayer.play_backwards("ranklist_enter")
+		$AnimationPlayer.play_backwards("leaderboards_enter")
 		ranklist_showed = false
 	if settings_showed:
 		$AnimationPlayer.play_backwards("settings_enter")

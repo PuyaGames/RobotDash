@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_ui.gd" id="1_jv4cg"]
-[ext_resource type="PackedScene" uid="uid://beu0o0f1xy3w3" path="res://scenes/ui/main_menu/ranklist_item.tscn" id="2_2mro1"]
+[ext_resource type="PackedScene" uid="uid://beu0o0f1xy3w3" path="res://scenes/ui/main_menu/leaderboards_item.tscn" id="2_2mro1"]
 [ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_7qa7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85eus"]
@@ -59,7 +59,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ranklist:position")
+tracks/3/path = NodePath("Leaderboards:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -67,6 +67,22 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 1624)]
+}
+
+[sub_resource type="Animation" id="Animation_txwlv"]
+resource_name = "leaderboards_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Leaderboards:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 1624), Vector2(0, 324)]
 }
 
 [sub_resource type="Animation" id="Animation_ix4sr"]
@@ -83,22 +99,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
 "values": [Vector2(0, -1004), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_txwlv"]
-resource_name = "ranklist_enter"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ranklist:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(2, 2),
-"update": 0,
-"values": [Vector2(0, 1624), Vector2(0, 324)]
 }
 
 [sub_resource type="Animation" id="Animation_6f2ff"]
@@ -120,8 +120,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_damr1"]
 _data = {
 "RESET": SubResource("Animation_lposd"),
+"leaderboards_enter": SubResource("Animation_txwlv"),
 "pick_map_theme_enter": SubResource("Animation_ix4sr"),
-"ranklist_enter": SubResource("Animation_txwlv"),
 "settings_enter": SubResource("Animation_6f2ff")
 }
 
@@ -303,7 +303,7 @@ theme_override_font_sizes/font_size = 40
 text = "设置"
 icon_alignment = 2
 
-[node name="Ranklist" type="Panel" parent="."]
+[node name="Leaderboards" type="Panel" parent="."]
 custom_minimum_size = Vector2(750, 1300)
 anchors_preset = 7
 anchor_left = 0.5
@@ -318,7 +318,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ranklist"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Leaderboards"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,71 +327,71 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Ranklist/VBoxContainer"]
+[node name="Label" type="Label" parent="Leaderboards/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 50
 text = "排行榜"
 horizontal_alignment = 1
 
-[node name="1" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="1" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 
-[node name="2" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="2" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 2
 
-[node name="3" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="3" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 3
 
-[node name="4" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="4" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 4
 
-[node name="5" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="5" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 5
 
-[node name="6" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="6" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 6
 
-[node name="7" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="7" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 7
 
-[node name="8" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="8" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 8
 
-[node name="9" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="9" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 9
 
-[node name="10" parent="Ranklist/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="10" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
 layout_mode = 2
 rank_number = 10
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Ranklist/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Leaderboards/VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="RankNumberLabel" type="Label" parent="Ranklist/VBoxContainer/HBoxContainer2"]
+[node name="RankNumberLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 32
 text = "第1名"
 
-[node name="IdLabel" type="Label" parent="Ranklist/VBoxContainer/HBoxContainer2"]
+[node name="IdLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 32
 text = "买辣椒不用券#114514"
 
-[node name="HpLabel" type="Label" parent="Ranklist/VBoxContainer/HBoxContainer2"]
+[node name="HpLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)

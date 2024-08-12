@@ -16,8 +16,9 @@ signal loading_finished
 
 func _ready() -> void:
 	$Panel/AnimatedSprite2D.play()
-	$Timer.start(loading_time)
-	$Timer.connect("timeout", Callable(self, "free_self"))
+	if loading_time > 0.0:
+		$Timer.start(loading_time)
+		$Timer.connect("timeout", Callable(self, "free_self"))
 	
 	
 func free_self() -> void:

@@ -10,6 +10,7 @@ region = Rect2(684.851, 310.892, 26.4393, 49.1875)
 [node name="StoreItem" type="Button"]
 process_mode = 3
 custom_minimum_size = Vector2(600, 120)
+mouse_filter = 1
 script = ExtResource("1_mcqf8")
 
 [node name="Icon" type="TextureRect" parent="."]

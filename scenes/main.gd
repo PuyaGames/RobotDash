@@ -28,7 +28,19 @@ func _ready() -> void:
 	SoundManager.set_default_music_bus("Music")
 	SoundManager.set_default_ui_sound_bus("UI")
 	SoundManager.set_default_sound_bus("Sounds")
+	GodotTDS.load_splash_ad(1038037)
+	GodotTDS.on_splash_ad_return.connect(_on_splash_ad_return)
 
+
+func _on_splash_ad_return(code : int, msg : String) -> void:
+	if code == 1021:
+		$UI.add_child(main_menu)
+		$Loading.hide()
+		GodotTDS.show_splash_ad()
+	elif code == 1025:
+		GodotTDS.dispose_splash_ad()
+		$OvaniPlayer.PlaySongNow(background_music, 4.0)
+		
 
 func _process(_delta: float) -> void:
 	var progress : Array = []
@@ -37,7 +49,6 @@ func _process(_delta: float) -> void:
 		var tscn_main_menu : PackedScene = ResourceLoader.load_threaded_get(Paths.tscn_main_menu)
 		main_menu = tscn_main_menu.instantiate()
 		background_music = main_menu.background_music
-		$UI.add_child(main_menu)
 
 
 func load_level(map_type : Enums.EMapType) -> void:
@@ -71,7 +82,3 @@ func loud_music() -> void:
 	
 func mute_music() -> void:
 	$OvaniPlayer.FadeVolume(-80.0, 1.0)
-
-
-func _on_loading_loading_finished() -> void:
-	$OvaniPlayer.PlaySongNow(background_music, 4.0)

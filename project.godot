@@ -25,6 +25,7 @@ Structs="*res://scenes/global/structs.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 Paths="*res://scenes/global/paths.gd"
 Config="*res://scenes/global/config.gd"
+GodotTDS="*res://addons/GodotTDS/GodotTDS.gd"
 
 [debug]
 
@@ -41,7 +42,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotTDS/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [filesystem]
 
@@ -96,5 +97,6 @@ tips/show_jitter_tips=false
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

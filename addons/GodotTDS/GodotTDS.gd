@@ -2,6 +2,7 @@ extends Node
 
 
 const config = preload("res://addons/GodotTDS/config.gd")
+const StateCode = preload("res://addons/GodotTDS/state_code.gd")
 
 
 # 登录相关操作的信号

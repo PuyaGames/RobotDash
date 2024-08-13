@@ -42,7 +42,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotTDS/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotPrivacyPlugin/plugin.cfg", "res://addons/GodotTDS/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [filesystem]
 

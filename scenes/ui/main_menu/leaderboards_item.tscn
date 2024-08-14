@@ -8,8 +8,11 @@ custom_minimum_size = Vector2(750, 90)
 offset_right = 750.0
 offset_bottom = 90.0
 script = ExtResource("1_tq1ju")
+_rank = null
+_score = null
+_nickname = null
 
-[node name="RankNumberLabel" type="Label" parent="."]
+[node name="RankLabel" type="Label" parent="."]
 layout_mode = 2
 offset_left = 24.0
 offset_top = 23.0
@@ -28,14 +31,14 @@ offset_right = 240.0
 offset_bottom = 63.0
 color = Color(1, 1, 1, 0)
 
-[node name="IdLabel" type="Label" parent="ClipBox"]
+[node name="NicknameLabel" type="Label" parent="ClipBox"]
 layout_mode = 2
 offset_right = 306.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 30
 text = "买辣椒不用券#114514"
 
-[node name="HpLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 2
 offset_left = 600.0
 offset_top = 23.0

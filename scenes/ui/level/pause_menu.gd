@@ -17,6 +17,7 @@ signal on_continue
 
 var music_enabled : bool = true
 var sound_enabled : bool = true
+var store_opened : bool = false
 
 
 func _ready() -> void:
@@ -30,6 +31,9 @@ func _ready() -> void:
 	settings_label.add_theme_color_override(
 		"font_color", Color.from_string("65676b", Color.BLACK))
 	$AnimationPlayer.play("Enter")
+	
+	if store_opened:
+		open_store()
 
 
 func _on_settings_button_button_down() -> void:
@@ -43,7 +47,7 @@ func _on_settings_button_button_down() -> void:
 	SoundManager.play_sound(click_sound)
 
 
-func _on_shop_button_button_down() -> void:
+func open_store() -> void:
 	shop_button.disabled = true
 	shop_label.add_theme_color_override(
 		"font_color", Color.from_string("65676b", Color.BLACK))
@@ -52,6 +56,10 @@ func _on_shop_button_button_down() -> void:
 	settings_label.add_theme_color_override("font_color", Color.WHITE)
 	tab_container.current_tab = 1
 	SoundManager.play_sound(click_sound)
+
+
+func _on_shop_button_button_down() -> void:
+	open_store()
 
 
 func _on_continue_button_button_down() -> void:

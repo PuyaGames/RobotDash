@@ -60,10 +60,14 @@ func _init_level_map() -> void:
 	terrain_generator.init_terrain_generator(_map_type)
 
 
+var store_button_clicked : bool = false
+
 func _on_pause_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		var pause_menu : UI_PauseMenu = load("res://scenes/ui/level/pause_menu.tscn").instantiate()
 		pause_menu.on_continue.connect(_on_game_continue)
+		if store_button_clicked:
+			pause_menu.store_opened = true
 		add_child(pause_menu)
 		get_tree().paused = true
 		SoundManager.play_sound(click_sound)
@@ -71,6 +75,7 @@ func _on_pause_button_toggled(toggled_on: bool) -> void:
 	
 func _on_game_continue() -> void:
 	$CanvasLayer/TopPanel/PauseButton.button_pressed = false
+	store_button_clicked = false
 	var main : Main = get_tree().get_first_node_in_group("main")
 	if main.music_enabled:
 		main.loud_music()
@@ -130,3 +135,9 @@ func _on_timer_timeout() -> void:
 		add_child(ui_finished_menu)
 		player.stop_running()
 		SoundManager.play_sound(finished_sound)
+
+
+func _on_store_button_button_down() -> void:
+	store_button_clicked = true
+	$CanvasLayer/TopPanel/PauseButton.button_pressed = true
+	SoundManager.play_sound(click_sound)

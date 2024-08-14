@@ -1,28 +1,30 @@
-@tool
 extends Panel
 
 @onready var clip_box: ColorRect = $ClipBox
 @onready var id_label: Label = $ClipBox/IdLabel
 
-@export var rank_number : int = 1:
+@export var _rank : int = 1:
 	set(new_value):
-		rank_number = new_value
-		$RankNumberLabel.text = "第%d名" % new_value
+		_rank = new_value
+		$RankLabel.text = "第%d名" % new_value
 			
-@export var hp : int = 100:
+@export var _score : int = 100:
 	set(new_value):
-		hp = new_value
-		$HpLabel.text = "%d米" % new_value
+		_score = new_value
+		$ScoreLabel.text = "%d米" % new_value
 			
-@export var id : String = "用户名#114514":
+@export var _nickname : String = "用户名#114514":
 	set(new_value):
-		id = new_value
-		$ClipBox/IdLabel.text = "{name}#{id}".format({
-			"name": new_value,
-			"id": randi_range(1, 114514)
-		})
+		_nickname = new_value
+		$ClipBox/NicknameLabel.text = new_value
 
 var enable_scrolling : bool = false
+
+
+func init_data(rank : int, nickname : String, score : int) -> void:
+	_rank = rank
+	_nickname = nickname
+	_score = score
 
 
 func _ready() -> void:

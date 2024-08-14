@@ -1,9 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://cikowdx8g5fta"]
+[gd_scene load_steps=19 format=3 uid="uid://cikowdx8g5fta"]
 
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_jcbcx"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_ui.gd" id="1_jv4cg"]
-[ext_resource type="PackedScene" uid="uid://beu0o0f1xy3w3" path="res://scenes/ui/main_menu/leaderboards_item.tscn" id="2_2mro1"]
 [ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_7qa7b"]
+[ext_resource type="Texture2D" uid="uid://cnf4lh50xqmbu" path="res://assets/textures/ui/taptap.svg" id="3_ma5fw"]
+[ext_resource type="Texture2D" uid="uid://b8ohm704fi7sp" path="res://assets/textures/ui/buttons.png" id="5_fhad6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_513ui"]
+atlas = ExtResource("5_fhad6")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt764"]
+atlas = ExtResource("5_fhad6")
+region = Rect2(233, 401, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85eus"]
 atlas = ExtResource("1_jcbcx")
@@ -175,6 +184,61 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
+[node name="TapLoginButton" type="TextureButton" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -336.0
+offset_right = -32.0
+offset_bottom = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("3_ma5fw")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_group_ = true
+
+[node name="AchievementButton" type="TextureButton" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -224.0
+offset_right = -32.0
+offset_bottom = -144.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("AtlasTexture_513ui")
+stretch_mode = 0
+metadata/_edit_group_ = true
+
+[node name="TapMomentButton" type="TextureButton" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("AtlasTexture_rt764")
+stretch_mode = 0
+metadata/_edit_group_ = true
+
 [node name="UnderLayerButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -208,9 +272,8 @@ custom_minimum_size = Vector2(400, 340)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 750.0
 offset_top = 360.0
-offset_right = 1150.0
+offset_right = 400.0
 offset_bottom = 700.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
@@ -258,9 +321,9 @@ custom_minimum_size = Vector2(400, 400)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = 1000.0
+offset_top = -624.0
 offset_right = 400.0
-offset_bottom = 1400.0
+offset_bottom = -224.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
@@ -310,88 +373,52 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 1624.0
-offset_right = 750.0
-offset_bottom = 2924.0
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 1300.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Leaderboards"]
+[node name="VBox" type="VBoxContainer" parent="Leaderboards"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Leaderboards/VBoxContainer"]
+[node name="Label" type="Label" parent="Leaderboards/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 50
 text = "排行榜"
 horizontal_alignment = 1
 
-[node name="1" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
+[node name="List" type="VBoxContainer" parent="Leaderboards/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="2" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 2
-
-[node name="3" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 3
-
-[node name="4" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 4
-
-[node name="5" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 5
-
-[node name="6" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 6
-
-[node name="7" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 7
-
-[node name="8" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 8
-
-[node name="9" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 9
-
-[node name="10" parent="Leaderboards/VBoxContainer" instance=ExtResource("2_2mro1")]
-layout_mode = 2
-rank_number = 10
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Leaderboards/VBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="Leaderboards/VBox"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="RankNumberLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
+[node name="RankLabel" type="Label" parent="Leaderboards/VBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 32
 text = "第1名"
 
-[node name="IdLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
+[node name="NicknameLabel" type="Label" parent="Leaderboards/VBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
 theme_override_font_sizes/font_size = 32
 text = "买辣椒不用券#114514"
 
-[node name="HpLabel" type="Label" parent="Leaderboards/VBoxContainer/HBoxContainer2"]
+[node name="ScoreLabel" type="Label" parent="Leaderboards/VBox/HBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
@@ -403,8 +430,9 @@ custom_minimum_size = Vector2(750, 960)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -375.0
 offset_top = -1004.0
-offset_right = 750.0
+offset_right = 375.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
@@ -461,6 +489,9 @@ libraries = {
 "": SubResource("AnimationLibrary_0xurv")
 }
 
+[connection signal="button_down" from="TapLoginButton" to="." method="_on_tap_login_button_button_down"]
+[connection signal="button_down" from="AchievementButton" to="." method="_on_achievement_button_button_down"]
+[connection signal="button_down" from="TapMomentButton" to="." method="_on_tap_moment_button_button_down"]
 [connection signal="button_down" from="UnderLayerButton" to="." method="_on_under_layer_button_down"]
 [connection signal="button_down" from="Settings/VBoxContainer/MusicButton" to="." method="_on_music_button_button_down"]
 [connection signal="button_down" from="Settings/VBoxContainer/SoundButton" to="." method="_on_sound_button_button_down"]

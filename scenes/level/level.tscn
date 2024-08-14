@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpf0i51h6ms7j"]
+[gd_scene load_steps=30 format=3 uid="uid://cpf0i51h6ms7j"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jeg3s"]
 [ext_resource type="PackedScene" uid="uid://d0cm1os56ell5" path="res://scenes/level/parallax_scrolling.tscn" id="1_n0yag"]
@@ -42,6 +42,10 @@ region = Rect2(548, 400, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpjm4"]
 atlas = ExtResource("16_370dc")
 region = Rect2(544, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x58eo"]
+atlas = ExtResource("16_370dc")
+region = Rect2(336, 160, 80, 80)
 
 [sub_resource type="Animation" id="Animation_5634y"]
 resource_name = "Opening"
@@ -166,7 +170,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.352941)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="JumpButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 15
@@ -215,6 +218,22 @@ texture_pressed = SubResource("AtlasTexture_hpjm4")
 stretch_mode = 0
 metadata/_edit_group_ = true
 
+[node name="StoreButton" type="TextureButton" parent="CanvasLayer/TopPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 144.0
+offset_right = -32.0
+offset_bottom = 224.0
+grow_horizontal = 0
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("AtlasTexture_x58eo")
+stretch_mode = 0
+metadata/_edit_group_ = true
+
 [node name="Hint" type="CanvasLayer" parent="."]
 visible = false
 
@@ -237,5 +256,6 @@ libraries = {
 
 [connection signal="button_down" from="CanvasLayer/JumpButton" to="." method="_on_jump_button_button_down"]
 [connection signal="toggled" from="CanvasLayer/TopPanel/PauseButton" to="." method="_on_pause_button_toggled"]
+[connection signal="button_down" from="CanvasLayer/TopPanel/StoreButton" to="." method="_on_store_button_button_down"]
 [connection signal="button_down" from="Hint/HintButton" to="." method="_on_hint_button_button_down"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

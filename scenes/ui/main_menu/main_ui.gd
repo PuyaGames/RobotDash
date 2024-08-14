@@ -15,7 +15,7 @@ var selected_map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 func _ready() -> void:
 	$AnimationPlayer.play("RESET")
 	$AnimPlayerForStarter.play("RESET")
-	$UnderLayerButton.disabled = true
+	$UnderLayerButton.hide()
 	var tscn_map_theme_item : PackedScene = load(Paths.tscn_map_theme_item)
 	for map_type : Enums.EMapType in Enums.EMapType.values():
 		var map_theme_item : MapThemeItem = tscn_map_theme_item.instantiate()
@@ -41,7 +41,7 @@ func _on_play_button_button_down() -> void:
 	$AnimationPlayer.play("pick_map_theme_enter")
 	pick_map_theme_showed = true
 	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.disabled = false
+	$UnderLayerButton.show()
 	
 	
 func _on_ranklist_button_button_down() -> void:
@@ -50,7 +50,7 @@ func _on_ranklist_button_button_down() -> void:
 	$AnimationPlayer.play("leaderboards_enter")
 	ranklist_showed = true
 	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.disabled = false
+	$UnderLayerButton.show()
 
 
 func _on_settings_button_button_down() -> void:
@@ -59,7 +59,7 @@ func _on_settings_button_button_down() -> void:
 	$AnimationPlayer.play("settings_enter")
 	settings_showed = true
 	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.disabled = false
+	$UnderLayerButton.show()
 
 
 func _on_under_layer_button_down() -> void:
@@ -77,7 +77,7 @@ func _on_under_layer_button_down() -> void:
 		pick_map_theme_showed = false
 		
 	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.disabled = true
+	$UnderLayerButton.hide()
 
 
 func _on_start_button_button_down() -> void:
@@ -92,7 +92,7 @@ func _on_start_button_button_down() -> void:
 		main.fade_music()
 	main.load_level(selected_map_type)
 	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.disabled = true
+	$UnderLayerButton.hide()
 
 
 func _on_music_button_button_down() -> void:
@@ -127,3 +127,17 @@ func update_settings_buttons() -> void:
 	var main : Main = get_tree().get_first_node_in_group("main")
 	_update_music_button(main.music_enabled)
 	_update_sound_button(main.sound_enabled)
+
+
+func _on_achievement_button_button_down() -> void:
+	SoundManager.play_sound(click_sound)
+	GodotTDS.show_achievement_page()
+
+
+func _on_tap_moment_button_button_down() -> void:
+	SoundManager.play_sound(click_sound)
+	GodotTDS.tap_moment()
+
+
+func _on_tap_login_button_button_down() -> void:
+	GodotTDS.login()

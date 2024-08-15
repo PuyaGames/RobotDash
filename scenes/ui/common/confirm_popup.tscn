@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://lk2hjupsibcn"]
+
+[ext_resource type="Script" path="res://scenes/ui/common/confirm_popup.gd" id="1_e7pmk"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_bub8t"]
+[ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="3_1toyf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
+atlas = ExtResource("3_1toyf")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jtylo"]
+texture = SubResource("AtlasTexture_sv45o")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_204bu"]
+resource_name = "Enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipl7p"]
+_data = {
+"Enter": SubResource("Animation_204bu")
+}
+
+[node name="ConfirmPopup" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_e7pmk")
+click_sound = ExtResource("2_bub8t")
+
+[node name="Mask" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 420)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -210.0
+offset_right = 300.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.28319
+pivot_offset = Vector2(300, 210)
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_jtylo")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.396078, 0.403922, 0.419608, 1)
+theme_override_font_sizes/font_size = 48
+text = "文本"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ConfirmButton" type="Button" parent="Panel/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "确定"
+icon_alignment = 2
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "取消"
+icon_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ipl7p")
+}
+
+[connection signal="button_down" from="Panel/VBoxContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_button_down"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6crcu56dwfos"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ry27t"]
-[ext_resource type="PackedScene" uid="uid://c0kw4sqbx6lkg" path="res://scenes/ui/loading.tscn" id="2_4i1vg"]
+[ext_resource type="PackedScene" uid="uid://c0kw4sqbx6lkg" path="res://scenes/ui/common/loading.tscn" id="2_4i1vg"]
 [ext_resource type="Script" path="res://OvaniPlugin/OvaniPlayer.gd" id="3_80yb3"]
 
 [node name="Main" type="Node" groups=["main"]]

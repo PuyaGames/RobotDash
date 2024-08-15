@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://64ptj2lttm10" path="res://assets/textures/ui/panel.png" id="1_gcqqi"]
 [ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_fdved"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sv45o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4brjn"]
 atlas = ExtResource("1_gcqqi")
 region = Rect2(200, 200, 100, 100)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct8wt"]
-texture = SubResource("AtlasTexture_sv45o")
+texture = SubResource("AtlasTexture_4brjn")
 texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0

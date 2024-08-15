@@ -2,17 +2,22 @@ extends CanvasLayer
 
 
 @onready var map_theme_bar: VBoxContainer = $PickMapTheme/VBoxContainer/ScrollContainer/VBoxContainer
+@onready var leaderboards : VBoxContainer = $Leaderboards/VBox/List
+
+const hint_text : String = "连续观看两个30秒的不可跳过的广告即可永久解锁所有主题"
 
 var settings_showed : bool = false
 var starter_showed : bool = true
 var ranklist_showed : bool = false
 var pick_map_theme_showed : bool = false
 var selected_map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
+var tscn_leaderboard_item : PackedScene = load("res://scenes/ui/main_menu/leaderboards_item.tscn")
 
 @export var click_sound : AudioStream
 
 
 func _ready() -> void:
+	GodotTDS.on_leaderboard_return.connect(_on_leaderboard_return)
 	$AnimationPlayer.play("RESET")
 	$AnimPlayerForStarter.play("RESET")
 	$UnderLayerButton.hide()
@@ -27,12 +32,42 @@ func _ready() -> void:
 		map_theme_bar.add_child(map_theme_item)
 
 
+func show_leaderboard(rankings : Array) -> void:
+	for node in leaderboards.get_children():
+		leaderboards.remove_child(node)
+		
+	for ranking : Dictionary in rankings:
+		var leaderboards_item : LeaderboardsItem = tscn_leaderboard_item.instantiate()
+		leaderboards_item.init_data(ranking["rank"] + 1, ranking["nickname"], ranking["statisticValue"])
+		leaderboards.add_child(leaderboards_item)
+		
+	$AnimPlayerForStarter.play_backwards("starter_enter")
+	starter_showed = false
+	$AnimationPlayer.play("leaderboards_enter")
+	ranklist_showed = true
+	SoundManager.play_sound(click_sound)
+	$UnderLayerButton.show()
+	
+	
+func update_user_rank(user_rank : Dictionary) -> void:
+	GodotTDS.push_log(str(user_rank))
+	$Leaderboards/VBox/HBox/RankLabel.text = "第{0}名".format([user_rank["rank"] + 1])
+	$Leaderboards/VBox/HBox/NicknameLabel.text = user_rank["nickname"]
+	$Leaderboards/VBox/HBox/ScoreLabel.text = user_rank["statisticValue"]
+
+
+func _on_leaderboard_return(code : int, msg : String) -> void:
+	if code == GodotTDS.StateCode.LEADERBOARD_FETCH_SECTION_RANKINGS_SUCCESS:
+		show_leaderboard(JSON.parse_string(msg)["list"])
+	elif code == GodotTDS.StateCode.LEADERBOARD_FETCH_USER_RANKING_SUCCESS:
+		update_user_rank(JSON.parse_string(msg)["list"][0])
+
+
 func update_selected_map_type(map_type : Enums.EMapType) -> void:
 	for map_theme_item : MapThemeItem in map_theme_bar.get_children():
 		map_theme_item.set_selected(false)
 		
 	selected_map_type = map_type
-
 
 
 func _on_play_button_button_down() -> void:
@@ -44,13 +79,12 @@ func _on_play_button_button_down() -> void:
 	$UnderLayerButton.show()
 	
 	
-func _on_ranklist_button_button_down() -> void:
-	$AnimPlayerForStarter.play_backwards("starter_enter")
-	starter_showed = false
-	$AnimationPlayer.play("leaderboards_enter")
-	ranklist_showed = true
-	SoundManager.play_sound(click_sound)
-	$UnderLayerButton.show()
+func _on_leaderboard_button_button_down() -> void:
+	if GodotTDS.is_logged_in():
+		GodotTDS.fetch_leaderboard_section_rankings("Score", 0, 10)
+		GodotTDS.fetch_leaderboard_user_around_rankings("Score")
+	else:
+		GodotTDS.show_toast("未登录")
 
 
 func _on_settings_button_button_down() -> void:
@@ -131,7 +165,10 @@ func update_settings_buttons() -> void:
 
 func _on_achievement_button_button_down() -> void:
 	SoundManager.play_sound(click_sound)
-	GodotTDS.show_achievement_page()
+	if GodotTDS.is_logged_in():
+		GodotTDS.show_achievement_page()
+	else:
+		GodotTDS.show_toast("未登录")
 
 
 func _on_tap_moment_button_button_down() -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0kw4sqbx6lkg"]
 
-[ext_resource type="Script" path="res://scenes/ui/loading.gd" id="1_arxnb"]
+[ext_resource type="Script" path="res://scenes/ui/common/loading.gd" id="1_arxnb"]
 [ext_resource type="SpriteFrames" uid="uid://bqt556rgjjy0r" path="res://resources/ui/player/sf_robot_run.tres" id="2_0eyql"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjmnf"]

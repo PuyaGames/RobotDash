@@ -1,7 +1,7 @@
 extends Node
 
 
-const config = preload("res://addons/GodotTDS/config.gd")
+const Config = preload("res://addons/GodotTDS/config.gd")
 const StateCode = preload("res://addons/GodotTDS/state_code.gd")
 
 
@@ -81,8 +81,8 @@ func _ready() -> void:
 	if Engine.has_singleton(_plugin_name):
 		_plugin_singleton = Engine.get_singleton(_plugin_name)
 		_plugin_singleton.init(
-			config.client_id, config.client_token, config.server_url,
-			config.media_id, config.media_name, config.media_key
+			Config.client_id, Config.client_token, Config.server_url,
+			Config.media_id, Config.media_name, Config.media_key
 		)
 			
 		_plugin_singleton.connect("onLogInReturn", _dont_call_on_login_return)
@@ -109,6 +109,11 @@ func push_log(msg : String, error : bool = false) -> void:
 func get_cache_dir_path() -> String:
 	var cache_dir_path : Variant = _call_android_function("getCacheDirPath")
 	return "" if cache_dir_path == null else cache_dir_path
+	
+	
+# 在安卓平台弹出一个吐司弹窗
+func show_toast(msg : String) -> void:
+	_call_android_function("showToast", [msg])
 		
 		
 # 使用内建账户登录
@@ -119,6 +124,12 @@ func login() -> void:
 # 退出登录
 func logout() -> void:
 	_call_android_function("logOut")
+	
+	
+# 判断当前用户是否登录
+func is_logged_in() -> bool:
+	var logged_in : Variant = _call_android_function("isLoggedIn")
+	return false if logged_in == null else logged_in
 		
 		
 # 防沉迷
@@ -146,11 +157,6 @@ func get_user_object_id() -> String:
 # 设置悬浮窗是否可见
 func set_entry_visible(visible : bool) -> void:
 	_call_android_function("setEntryVisible", [visible])
-	
-	
-# 设置信号响应时的弹窗是否可见
-func set_show_tips_toast(show : bool) -> void:
-	_call_android_function("setShowTipsToast", [show])
 	
 	
 # 从 TapTap 服务器拉取所有的成就数据

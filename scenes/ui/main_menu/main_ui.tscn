@@ -272,8 +272,9 @@ custom_minimum_size = Vector2(400, 340)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = 750.0
 offset_top = 360.0
-offset_right = 400.0
+offset_right = 1150.0
 offset_bottom = 700.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
@@ -321,9 +322,9 @@ custom_minimum_size = Vector2(400, 400)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -624.0
+offset_top = 1000.0
 offset_right = 400.0
-offset_bottom = -224.0
+offset_bottom = 1400.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
@@ -348,7 +349,7 @@ theme_override_font_sizes/font_size = 40
 text = "开始游戏"
 icon_alignment = 2
 
-[node name="RanklistButton" type="Button" parent="Starter/VBoxContainer"]
+[node name="LeaderboardButton" type="Button" parent="Starter/VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_vertical = 6
@@ -373,9 +374,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -375.0
-offset_right = 375.0
-offset_bottom = 1300.0
+offset_top = 1624.0
+offset_right = 750.0
+offset_bottom = 2924.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
@@ -403,6 +404,7 @@ theme_override_constants/separation = 20
 [node name="HBox" type="HBoxContainer" parent="Leaderboards/VBox"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+size_flags_vertical = 10
 
 [node name="RankLabel" type="Label" parent="Leaderboards/VBox/HBox"]
 layout_mode = 2
@@ -430,9 +432,8 @@ custom_minimum_size = Vector2(750, 960)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -375.0
 offset_top = -1004.0
-offset_right = 375.0
+offset_right = 750.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_h0rf6")
 metadata/_edit_group_ = true
@@ -496,6 +497,6 @@ libraries = {
 [connection signal="button_down" from="Settings/VBoxContainer/MusicButton" to="." method="_on_music_button_button_down"]
 [connection signal="button_down" from="Settings/VBoxContainer/SoundButton" to="." method="_on_sound_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
-[connection signal="button_down" from="Starter/VBoxContainer/RanklistButton" to="." method="_on_ranklist_button_button_down"]
+[connection signal="button_down" from="Starter/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_button_down"]
 [connection signal="button_down" from="Starter/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
 [connection signal="button_down" from="PickMapTheme/VBoxContainer/StartButton" to="." method="_on_start_button_button_down"]

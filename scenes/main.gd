@@ -36,6 +36,9 @@ func _ready() -> void:
 func _on_splash_ad_return(code : int, msg : String) -> void:
 	if code == GodotTDS.StateCode.AD_SPLASH_TIME_OVER:
 		GodotTDS.dispose_splash_ad()
+		$OvaniPlayer.PlaySongNow(background_music, 4.0)
+	elif code == GodotTDS.StateCode.AD_SPLASH_LOAD_FAIL:
+		$OvaniPlayer.PlaySongNow(background_music, 4.0)
 		
 
 func _process(_delta: float) -> void:
@@ -62,6 +65,7 @@ func open_main_menu() -> void:
 	if active_level != null:
 		active_level.queue_free()
 	main_menu.show_all()
+	GodotTDS.dispose_banner_ad()
 	
 	
 func _notification(what: int) -> void:
@@ -83,4 +87,3 @@ func mute_music() -> void:
 
 func _on_loading_loading_finished() -> void:
 	GodotTDS.show_splash_ad()
-	$OvaniPlayer.PlaySongNow(background_music, 4.0)

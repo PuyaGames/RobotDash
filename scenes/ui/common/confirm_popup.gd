@@ -20,9 +20,10 @@ func init_text(text : String) -> void:
 func _on_confirm_button_button_down() -> void:
 	SoundManager.play_sound(click_sound)
 	confirm.emit()
+	queue_free()
 
 
 func _on_cancel_button_button_down() -> void:
 	SoundManager.play_sound(click_sound)
-	queue_free()
 	cancel.emit()
+	queue_free()

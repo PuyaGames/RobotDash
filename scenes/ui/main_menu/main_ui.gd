@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var map_theme_bar: VBoxContainer = $PickMapTheme/VBoxContainer/ScrollContainer/VBoxContainer
 @onready var leaderboards : VBoxContainer = $Leaderboards/VBox/List
 
-const hint_text : String = "连续观看两个30秒的不可跳过的广告即可永久解锁所有主题"
+const hint_text : String = "连续观看两个30秒不可跳过的广告即可永久解锁所有主题\n{0}/2"
 
 var settings_showed : bool = false
 var starter_showed : bool = true
@@ -12,11 +12,13 @@ var ranklist_showed : bool = false
 var pick_map_theme_showed : bool = false
 var selected_map_type : Enums.EMapType = Enums.EMapType.Halloween_Green
 var tscn_leaderboard_item : PackedScene = load("res://scenes/ui/main_menu/leaderboards_item.tscn")
+var map_theme_list : Array[MapThemeItem]
 
 @export var click_sound : AudioStream
 
 
 func _ready() -> void:
+	_load_reward_video_ad()
 	GodotTDS.on_leaderboard_return.connect(_on_leaderboard_return)
 	$AnimationPlayer.play("RESET")
 	$AnimPlayerForStarter.play("RESET")
@@ -28,8 +30,18 @@ func _ready() -> void:
 		if map_type == Enums.EMapType.Halloween_Green:
 			map_theme_item.locked = false
 			map_theme_item.set_selected(true)
-		map_theme_item.clicked.connect(update_selected_map_type)
+		map_theme_item.clicked.connect(_update_selected_map_type)
+		map_theme_item.locked_clicked.connect(_on_locked_map_theme_clicked)
 		map_theme_bar.add_child(map_theme_item)
+		map_theme_list.append(map_theme_item)
+
+
+func _load_reward_video_ad() -> void:
+	var data : GodotTDS.RewardVideoAdData = GodotTDS.RewardVideoAdData.new()
+	data.space_id = 1036744
+	GodotTDS.load_reward_video_ad(data)
+	GodotTDS.on_reward_video_ad_return.disconnect(_on_reward_video_ad_return)
+	GodotTDS.on_reward_video_ad_return.connect(_on_reward_video_ad_return)
 
 
 func show_leaderboard(rankings : Array) -> void:
@@ -49,25 +61,69 @@ func show_leaderboard(rankings : Array) -> void:
 	$UnderLayerButton.show()
 	
 	
-func update_user_rank(user_rank : Dictionary) -> void:
-	GodotTDS.push_log(str(user_rank))
-	$Leaderboards/VBox/HBox/RankLabel.text = "第{0}名".format([user_rank["rank"] + 1])
-	$Leaderboards/VBox/HBox/NicknameLabel.text = user_rank["nickname"]
-	$Leaderboards/VBox/HBox/ScoreLabel.text = user_rank["statisticValue"]
+func update_user_rank(user_rank_arr : Array) -> void:
+	if user_rank_arr.size() < 1:
+		$Leaderboards/VBox/HBox/RankLabel.text = "未上榜"
+		$Leaderboards/VBox/HBox/NicknameLabel.text = GodotTDS.get_user_profile()["name"]
+		$Leaderboards/VBox/HBox/ScoreLabel.text = "无记录"
+		return
+		
+	var user_rank_obj : Dictionary = user_rank_arr[0]
+	$Leaderboards/VBox/HBox/RankLabel.text = "第{0}名".format([user_rank_obj["rank"] + 1])
+	$Leaderboards/VBox/HBox/NicknameLabel.text = user_rank_obj["nickname"]
+	$Leaderboards/VBox/HBox/ScoreLabel.text = user_rank_obj["statisticValue"]
 
 
 func _on_leaderboard_return(code : int, msg : String) -> void:
 	if code == GodotTDS.StateCode.LEADERBOARD_FETCH_SECTION_RANKINGS_SUCCESS:
-		show_leaderboard(JSON.parse_string(msg)["list"])
+		var rankings_obj : Dictionary = JSON.parse_string(msg)
+		if rankings_obj.has("list"):
+			show_leaderboard(rankings_obj["list"])
+		else:
+			show_leaderboard([])
 	elif code == GodotTDS.StateCode.LEADERBOARD_FETCH_USER_RANKING_SUCCESS:
-		update_user_rank(JSON.parse_string(msg)["list"][0])
+		var user_rank : Dictionary = JSON.parse_string(msg)
+		if user_rank.has("list"):
+			update_user_rank(user_rank["list"])
+		else:
+			update_user_rank([])
 
 
-func update_selected_map_type(map_type : Enums.EMapType) -> void:
+func _update_selected_map_type(map_type : Enums.EMapType) -> void:
 	for map_theme_item : MapThemeItem in map_theme_bar.get_children():
 		map_theme_item.set_selected(false)
 		
 	selected_map_type = map_type
+
+
+func _on_locked_map_theme_clicked() -> void:
+	var confirm_popup : ConfirmPopup = load("res://scenes/ui/common/confirm_popup.tscn").instantiate()
+	confirm_popup.init_text(hint_text.format([_watch_reward_video_count]))
+	confirm_popup.connect("confirm", _watch_reward_video)
+	add_child(confirm_popup)
+
+
+var _watch_reward_video_count : int = 0
+
+func _watch_reward_video() -> void:
+	GodotTDS.show_reward_video_ad()
+	
+	
+func _on_reward_video_ad_return(code : int, msg : String) -> void:
+	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_COMPLETED ||\
+	   code == GodotTDS.StateCode.AD_REWARD_VIDEO_SKIPPED:
+		_watch_reward_video_count += 1
+		_load_reward_video_ad()
+		if _watch_reward_video_count == 2:
+			_unlock_all_map_theme()
+			GodotTDS.on_reward_video_ad_return.disconnect(_on_reward_video_ad_return)
+	elif code == GodotTDS.StateCode.AD_REWARD_VIDEO_CLOSED:
+		pass
+
+
+func _unlock_all_map_theme() -> void:
+	for map_theme : MapThemeItem in map_theme_list:
+		map_theme.unlock()
 
 
 func _on_play_button_button_down() -> void:

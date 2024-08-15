@@ -28,6 +28,8 @@ func _ready() -> void:
 	if enable_main_menu_mode:
 		$CanvasLayer.hide()
 	else:
+		GodotTDS.load_banner_ad(1038038)
+		GodotTDS.on_banner_ad_return.connect(_on_banner_ad_return)
 		$CanvasLayer.show()
 		player.init_player(_player_type)
 		player.connect("on_dead", _on_player_dead)
@@ -35,6 +37,12 @@ func _ready() -> void:
 		$AnimationPlayer.play("Opening")
 		
 	_init_level_map()
+	
+	
+func _on_banner_ad_return(code : int, msg : String) -> void:
+	GodotTDS.show_banner_ad()
+	GodotTDS.on_banner_ad_return.disconnect(_on_banner_ad_return)
+	
 
 func _process(delta: float) -> void:
 	if player.running == false:

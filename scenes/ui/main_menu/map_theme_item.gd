@@ -4,6 +4,7 @@ class_name MapThemeItem
 
 
 signal clicked(map_type : Enums.EMapType)
+signal locked_clicked
 
 
 @export var type : Enums.EMapType = Enums.EMapType.Halloween_Green:
@@ -82,11 +83,18 @@ func _ready() -> void:
 
 
 func _on_button_button_down() -> void:
-	print_debug("Unlocked")
+	locked_clicked.emit()
 
 
 func _on_button_down() -> void:
 	SoundManager.play_sound(click_sound)
 	clicked.emit(type)
 	set_selected(true)
+	
+	
+func unlock() -> void:
+	disabled = false
+	$Locked.hide()
+	$TextureRect.modulate = Color.WHITE
+	$Button.hide()
 	

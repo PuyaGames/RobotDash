@@ -38,6 +38,7 @@ _data = {
 
 [node name="ConfirmPopup" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("1_e7pmk")
 click_sound = ExtResource("2_bub8t")
 

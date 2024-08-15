@@ -23,7 +23,7 @@ enum EPlayerState
 }
 
 @export var _player_type : Enums.EPlayerType = Enums.EPlayerType.Robot
-@export var start_hp : int = 10
+@export var start_hp : int = 3
 
 @onready var anim_tree : AnimationTree = $"AnimationTree"
 @onready var hp_number : Node2D = $HpNumber

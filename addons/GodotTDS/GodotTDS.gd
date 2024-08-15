@@ -124,8 +124,8 @@ func login() -> void:
 # 退出登录
 func logout() -> void:
 	_call_android_function("logOut")
-	
-	
+
+
 # 判断当前用户是否登录
 func is_logged_in() -> bool:
 	var logged_in : Variant = _call_android_function("isLoggedIn")
@@ -291,6 +291,10 @@ func load_banner_ad(space_id : int) -> void:
 
 func show_banner_ad(gravity : int = GRAVITY_BOTTOM, height = -1) -> void:
 	_call_android_function("showBannerAd", [gravity, height])
+	
+	
+func dispose_banner_ad() -> void:
+	_call_android_function("disposeBannerAd")
 	
 	
 func load_interstitial_ad(space_id : int) -> void:

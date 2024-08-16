@@ -16,7 +16,11 @@ signal locked_clicked
 		
 @export var click_sound : AudioStream
 		
+const press_threshold : float = 20.0
+		
 var locked : bool = true
+var button_clicked_position : Vector2 = Vector2()
+var locked_button_clicked_position : Vector2 = Vector2()
 
 class MapThemeData:
 	var label : String
@@ -52,7 +56,7 @@ var theme_data_dict : Dictionary = {
 	Enums.EMapType.Sweet_Cyan :
 		MapThemeData.new("魔法的城堡", "res://resources/ui/map_theme/sweet_04.atlastex"),
 	Enums.EMapType.Beach_Blue :
-		MapThemeData.new("高饱和海滩", "res://resources/ui/map_theme/beach_01.atlastex"),
+		MapThemeData.new("海滩", "res://resources/ui/map_theme/beach_01.atlastex"),
 	Enums.EMapType.Beach_Green :
 		MapThemeData.new("椰子树", "res://resources/ui/map_theme/beach_02.atlastex"),
 	Enums.EMapType.Beach_Cyan :
@@ -83,13 +87,19 @@ func _ready() -> void:
 
 
 func _on_button_button_down() -> void:
-	locked_clicked.emit()
+	locked_button_clicked_position = get_local_mouse_position()
 
 
-func _on_button_down() -> void:
-	SoundManager.play_sound(click_sound)
-	clicked.emit(type)
-	set_selected(true)
+func _on_button_button_up() -> void:
+	if get_local_mouse_position().distance_squared_to(locked_button_clicked_position) < press_threshold:
+		locked_clicked.emit()
+
+
+func _on_button_up() -> void:
+	if get_local_mouse_position().distance_squared_to(button_clicked_position) < press_threshold:
+		SoundManager.play_sound(click_sound)
+		clicked.emit(type)
+		set_selected(true)
 	
 	
 func unlock() -> void:
@@ -98,3 +108,6 @@ func unlock() -> void:
 	$TextureRect.modulate = Color.WHITE
 	$Button.hide()
 	
+
+func _on_button_down() -> void:
+	button_clicked_position = get_local_mouse_position()

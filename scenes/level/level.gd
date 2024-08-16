@@ -24,19 +24,24 @@ var time_60s : int = 60:
 
 
 func _ready() -> void:
+	clear_all_reward_video_ad_signal()
+	_init_level_map()
 	$CanvasLayer/JumpButton.hide()
 	if enable_main_menu_mode:
 		$CanvasLayer.hide()
 	else:
-		GodotTDS.load_banner_ad(1038038)
-		GodotTDS.on_banner_ad_return.connect(_on_banner_ad_return)
 		$CanvasLayer.show()
 		player.init_player(_player_type)
 		player.connect("on_dead", _on_player_dead)
 		player.connect("on_revive", _on_player_revive)
 		$AnimationPlayer.play("Opening")
-		
-	_init_level_map()
+		GodotTDS.load_banner_ad(1038038)
+		GodotTDS.on_banner_ad_return.connect(_on_banner_ad_return)
+	
+	
+func clear_all_reward_video_ad_signal() -> void:
+	for dict : Dictionary in GodotTDS.on_reward_video_ad_return.get_connections():
+		GodotTDS.disconnect(dict["signal"].get_name(), dict["callable"])
 	
 	
 func _on_banner_ad_return(code : int, msg : String) -> void:

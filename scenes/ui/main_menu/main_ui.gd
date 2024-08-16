@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var map_theme_bar: VBoxContainer = $PickMapTheme/VBoxContainer/ScrollContainer/VBoxContainer
 @onready var leaderboards : VBoxContainer = $Leaderboards/VBox/List
 
-const hint_text : String = "连续观看两个30秒不可跳过的广告即可永久解锁所有主题\n{0}/2"
+const hint_text : String = "观看一个30秒不可跳过的广告即可在本次解锁所有主题"
 
 var settings_showed : bool = false
 var starter_showed : bool = true
@@ -19,7 +19,6 @@ var map_theme_list : Array[MapThemeItem]
 
 func _ready() -> void:
 	_load_reward_video_ad()
-	GodotTDS.on_leaderboard_return.connect(_on_leaderboard_return)
 	$AnimationPlayer.play("RESET")
 	$AnimPlayerForStarter.play("RESET")
 	$UnderLayerButton.hide()
@@ -40,8 +39,8 @@ func _load_reward_video_ad() -> void:
 	var data : GodotTDS.RewardVideoAdData = GodotTDS.RewardVideoAdData.new()
 	data.space_id = 1036744
 	GodotTDS.load_reward_video_ad(data)
-	GodotTDS.on_reward_video_ad_return.disconnect(_on_reward_video_ad_return)
-	GodotTDS.on_reward_video_ad_return.connect(_on_reward_video_ad_return)
+	if not GodotTDS.on_reward_video_ad_return.is_connected(_on_reward_video_ad_return):
+		GodotTDS.on_reward_video_ad_return.connect(_on_reward_video_ad_return)
 
 
 func show_leaderboard(rankings : Array) -> void:
@@ -98,27 +97,20 @@ func _update_selected_map_type(map_type : Enums.EMapType) -> void:
 
 func _on_locked_map_theme_clicked() -> void:
 	var confirm_popup : ConfirmPopup = load("res://scenes/ui/common/confirm_popup.tscn").instantiate()
-	confirm_popup.init_text(hint_text.format([_watch_reward_video_count]))
+	confirm_popup.init_text(hint_text)
 	confirm_popup.connect("confirm", _watch_reward_video)
 	add_child(confirm_popup)
-
-
-var _watch_reward_video_count : int = 0
+	
 
 func _watch_reward_video() -> void:
 	GodotTDS.show_reward_video_ad()
 	
 	
-func _on_reward_video_ad_return(code : int, msg : String) -> void:
+func _on_reward_video_ad_return(code : int, _msg : String) -> void:
 	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_COMPLETED ||\
 	   code == GodotTDS.StateCode.AD_REWARD_VIDEO_SKIPPED:
-		_watch_reward_video_count += 1
-		_load_reward_video_ad()
-		if _watch_reward_video_count == 2:
 			_unlock_all_map_theme()
 			GodotTDS.on_reward_video_ad_return.disconnect(_on_reward_video_ad_return)
-	elif code == GodotTDS.StateCode.AD_REWARD_VIDEO_CLOSED:
-		pass
 
 
 func _unlock_all_map_theme() -> void:
@@ -133,6 +125,8 @@ func _on_play_button_button_down() -> void:
 	pick_map_theme_showed = true
 	SoundManager.play_sound(click_sound)
 	$UnderLayerButton.show()
+	if not GodotTDS.on_reward_video_ad_return.is_connected(_on_reward_video_ad_return):
+		GodotTDS.on_reward_video_ad_return.connect(_on_reward_video_ad_return)
 	
 	
 func _on_leaderboard_button_button_down() -> void:

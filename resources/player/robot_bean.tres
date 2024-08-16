@@ -9,5 +9,5 @@ texture_sheet = ExtResource("2_04atr")
 jump_peak_time = 0.5
 jump_fall_time = 0.5
 jump_height = 2.5
-can_double_jump = true
+can_double_jump = false
 movement_speed = 200.0

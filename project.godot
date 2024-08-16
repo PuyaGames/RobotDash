@@ -50,6 +50,7 @@ import/blender/enabled=false
 
 [gui]
 
+common/default_scroll_deadzone=20
 theme/custom_font="res://assets/fonts/SourceHanSansCN-Bold.otf"
 
 [input]

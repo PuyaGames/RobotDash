@@ -60,7 +60,6 @@ class AndroidExportPlugin extends EditorExportPlugin:
 			"com.squareup.okhttp3:okhttp:4.9.2",
 			"io.reactivex.rxjava2:rxandroid:2.1.1",
 			"io.reactivex.rxjava2:rxjava:2.2.19",
-			"com.squareup.okhttp3:okhttp:3.12.1",
 			"com.android.support:appcompat-v7:28.0.0",
 			"com.android.support:support-annotations:28.0.0",
 			"com.android.support:support-v4:28.0.0",

@@ -56,7 +56,14 @@ class AndroidExportPlugin extends EditorExportPlugin:
 			return PackedStringArray([_plugin_name + "/bin/release/" + _plugin_name + "-release.aar"])
 
 	func _get_android_dependencies(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
-		return PackedStringArray(["androidx.appcompat:appcompat:1.6.1","androidx.constraintlayout:constraintlayout:2.1.3","com.google.android.material:material:1.5.0","io.noties.markwon:core:4.6.2","io.noties.markwon:html:4.6.2","com.google.code.gson:gson:2.10.1"])
+		return PackedStringArray([
+			"androidx.appcompat:appcompat:1.6.1",
+			"androidx.constraintlayout:constraintlayout:2.1.3",
+			"com.google.android.material:material:1.5.0",
+			"io.noties.markwon:core:4.6.2",
+			"io.noties.markwon:html:4.6.2",
+			"com.google.code.gson:gson:2.10.1"
+		])
 
 	func _get_name():
 		return _plugin_name

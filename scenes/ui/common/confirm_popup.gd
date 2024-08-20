@@ -9,10 +9,6 @@ signal cancel
 @export var click_sound : AudioStream
 
 
-func _ready() -> void:
-	$AnimationPlayer.play("Enter")
-
-
 func init_text(text : String) -> void:
 	$Panel/VBoxContainer/MarginContainer/Label.text = text
 

@@ -3,6 +3,9 @@ extends Button
 class_name StoreItem
 
 
+signal clicked
+
+
 @export var type : Enums.EItemType = Enums.EItemType.SpeedUp:
 	set(new_value):
 		type = new_value
@@ -45,3 +48,7 @@ func _update_store_item() -> void:
 	$Name.text = data.item_name
 	$Detail.text = data.detail
 	count = data.count
+
+
+func _on_button_up() -> void:
+	clicked.emit()

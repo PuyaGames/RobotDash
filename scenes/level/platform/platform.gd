@@ -45,6 +45,13 @@ func spawn_enemies() -> void:
 	if has_node("EnemySpawnPath"):
 		enemy_spawn_path = get_node("EnemySpawnPath")
 		enemy_spawn_path.spawn_enemies()
+		
+		
+func spawn_item_chest() -> void:
+	var enemy_spawn_path : EnemySpawnPath
+	if has_node("EnemySpawnPath"):
+		enemy_spawn_path = get_node("EnemySpawnPath")
+		enemy_spawn_path.spawn_item_chest()
 	
 	
 func clear_enemies() -> void:

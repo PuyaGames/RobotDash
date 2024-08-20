@@ -130,6 +130,9 @@ func _on_play_button_button_down() -> void:
 	
 	
 func _on_leaderboard_button_button_down() -> void:
+	if not GodotTDS.on_leaderboard_return.is_connected(_on_leaderboard_return):
+		GodotTDS.on_leaderboard_return.connect(_on_leaderboard_return)
+	
 	if GodotTDS.is_logged_in():
 		GodotTDS.fetch_leaderboard_section_rankings("Score", 0, 10)
 		GodotTDS.fetch_leaderboard_user_around_rankings("Score")

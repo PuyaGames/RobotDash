@@ -22,6 +22,16 @@ var time_60s : int = 60:
 		time_60s = new_value
 		$CanvasLayer/TopPanel/Time.text = str(new_value)
 
+# For item
+var speed_up_count : int = 1
+var better_count : int = 1
+var huge_count : int = 1
+var double_jump_count : int = 1
+var luck_count : int = 1
+var overtime_count : int = 1
+var one_attack_count : int = 1
+var restreat_count : int = 1
+
 
 func _ready() -> void:
 	clear_all_reward_video_ad_signal()

@@ -21,7 +21,6 @@ func _ready() -> void:
 	data.space_id = 1037811
 	GodotTDS.load_reward_video_ad(data)
 	GodotTDS.on_reward_video_ad_return.connect(_on_reward_video_ad_return)
-	$AnimationPlayer.play("Enter")
 	
 
 func _exit_tree() -> void:

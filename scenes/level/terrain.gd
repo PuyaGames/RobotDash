@@ -18,6 +18,10 @@ func spawn_enemies() -> void:
 	platform_assembly_02.spawn_enemies()
 	
 	
+func spawn_item_chest() -> void:
+	platform_assembly_01.spawn_item_chest()
+	
+	
 func clear_enemies() -> void:
 	platform_assembly_01.clear_enemies()
 	platform_assembly_02.clear_enemies()

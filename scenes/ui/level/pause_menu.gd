@@ -30,7 +30,6 @@ func _ready() -> void:
 	settings_button.disabled = true
 	settings_label.add_theme_color_override(
 		"font_color", Color.from_string("65676b", Color.BLACK))
-	$AnimationPlayer.play("Enter")
 	
 	if store_opened:
 		open_store()

@@ -18,7 +18,6 @@ func _ready() -> void:
 	if GodotTDS.is_logged_in():
 		GodotTDS.submit_leaderboard_score("Score", score)
 		GodotTDS.on_leaderboard_return.connect(_on_leaderboard_return)
-	$AnimationPlayer.play("Enter")
 		
 
 func _on_leaderboard_return(code : int, msg : String) -> void:
@@ -38,7 +37,7 @@ func _show_rank_from_msg(msg : String) -> void:
 		var arr : Array = dict["list"]
 		if arr.size() != 0:
 			var rank_obj : Dictionary = arr[0]
-			rank.text = "排名：{0}".format([rank_obj["rank"]])
+			rank.text = "排名：{0}".format([rank_obj["rank"] + 1])
 
 
 func _on_restart_button_button_down() -> void:

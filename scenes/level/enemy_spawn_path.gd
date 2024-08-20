@@ -5,6 +5,7 @@ class_name EnemySpawnPath
 @export var spawn_config : EnemySpawnConfig
 
 var tscn_enemy : PackedScene
+var tscn_item_chest : PackedScene
 var enemy_type_pool : Array[Enums.EEnemyType]
 var existing_enemy_list : Array[Enemy]
 var player : Player
@@ -12,6 +13,7 @@ var player : Player
 
 func _ready() -> void:
 	tscn_enemy = load(Paths.tscn_enemy)
+	tscn_item_chest = load("res://scenes/level/item_chest.tscn")
 	
 	for enemy_type in spawn_config.enemy_type_list:
 		var key : String = Enums.EEnemyType.keys()[enemy_type]
@@ -45,6 +47,19 @@ func spawn_enemies() -> void:
 		enemy.position = positions[i]
 		existing_enemy_list.append(enemy)
 		add_child(enemy)
+		
+		
+func spawn_item_chest() -> void:
+	if points.size() != 2:
+		return
+		
+	var owner_platform : Platform2D = owner as Platform2D
+	var positions : Array[Vector2] = _calculate_spawn_positions(1)
+	
+	for i in positions.size():
+		var item_chest : ItemChest = tscn_item_chest.instantiate()
+		item_chest.position = positions[i]
+		add_child(item_chest)
 		
 		
 func clear_enemies() -> void:

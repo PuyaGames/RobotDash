@@ -92,6 +92,12 @@ func spawn_enemies() -> void:
 		platform_02.spawn_enemies()
 		
 		
+# Only used for first platform
+func spawn_item_chest() -> void:
+	if platform_02 != null:
+		platform_02.spawn_item_chest()
+		
+		
 func clear_enemies() -> void:
 	if platform_01 != null:
 		platform_01.clear_enemies()

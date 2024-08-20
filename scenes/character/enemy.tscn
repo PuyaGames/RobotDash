@@ -10,8 +10,8 @@ atlas = ExtResource("3_43fje")
 region = Rect2(1862, 20, 37, 42)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lcdc"]
-radius = 37.0
-height = 108.0
+radius = 21.0
+height = 90.0
 
 [sub_resource type="Animation" id="Animation_auecf"]
 resource_name = "Breath"
@@ -69,7 +69,7 @@ hframes = 1
 vframes = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 0)
+position = Vector2(-16, 3)
 shape = SubResource("CapsuleShape2D_5lcdc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]

@@ -24,8 +24,8 @@ var sound_enabled : bool = true:
 			
 			
 func _ready() -> void:
-	GodotTDS.load_splash_ad(1038037)
-	GodotTDS.on_splash_ad_return.connect(_on_splash_ad_return)
+	GodotTDS.load_interstitial_ad(1038040)
+	GodotTDS.on_interstitial_ad_return.connect(_on_interstitial_ad_return)
 	ResourceLoader.load_threaded_request(Paths.tscn_main_menu)
 	SoundManager.set_default_music_bus("Music")
 	SoundManager.set_default_ui_sound_bus("UI")
@@ -33,11 +33,12 @@ func _ready() -> void:
 	$Loading.show_and_queue(true)
 
 
-func _on_splash_ad_return(code : int, msg : String) -> void:
-	if code == GodotTDS.StateCode.AD_SPLASH_TIME_OVER:
-		GodotTDS.dispose_splash_ad()
+func _on_interstitial_ad_return(code : int, msg : String) -> void:
+	if code == GodotTDS.StateCode.AD_INTERSTITIAL_CLOSED:
 		$OvaniPlayer.PlaySongNow(background_music, 4.0)
-	elif code == GodotTDS.StateCode.AD_SPLASH_LOAD_FAIL:
+	elif code == GodotTDS.StateCode.AD_INTERSTITIAL_LOAD_FAIL:
+		$OvaniPlayer.PlaySongNow(background_music, 4.0)
+	elif code == GodotTDS.StateCode.AD_INTERSTITIAL_ERROR:
 		$OvaniPlayer.PlaySongNow(background_music, 4.0)
 		
 
@@ -86,4 +87,4 @@ func mute_music() -> void:
 
 
 func _on_loading_loading_finished() -> void:
-	GodotTDS.show_splash_ad()
+	GodotTDS.show_interstitial_ad()

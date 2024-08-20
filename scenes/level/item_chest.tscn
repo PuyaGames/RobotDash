@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlv33ubsn3kj5"]
+
+[ext_resource type="Script" path="res://scenes/level/item_chest.gd" id="1_kfy58"]
+[ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="1_wrtn5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuj34"]
+atlas = ExtResource("1_wrtn5")
+region = Rect2(1406, 666, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgyy8"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_coc8v"]
+resource_name = "Float"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(0, -20), Vector2(0, -40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrmb2"]
+_data = {
+"Float": SubResource("Animation_coc8v")
+}
+
+[node name="ItemChest" type="Node2D"]
+script = ExtResource("1_kfy58")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+texture = SubResource("AtlasTexture_yuj34")
+
+[node name="Area2D" type="Area2D" parent="Body"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area2D"]
+shape = SubResource("RectangleShape2D_wgyy8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wrmb2")
+}
+autoplay = "Float"
+
+[connection signal="body_entered" from="Body/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -2,28 +2,19 @@ extends Line2D
 class_name EnemySpawnPath
 
 
-@export var spawn_config : EnemySpawnConfig
-
 var tscn_enemy : PackedScene
 var tscn_item_chest : PackedScene
-var enemy_type_pool : Array[Enums.EEnemyType]
 var existing_enemy_list : Array[Enemy]
 var player : Player
+var main : Main
 
 
 func _ready() -> void:
 	tscn_enemy = load(Paths.tscn_enemy)
 	tscn_item_chest = load("res://scenes/level/item_chest.tscn")
 	
-	for enemy_type in spawn_config.enemy_type_list:
-		var key : String = Enums.EEnemyType.keys()[enemy_type]
-		var value : float = spawn_config.enemy_occurrence_rate_dict[key]
-		for i in range(value * 100):
-			enemy_type_pool.append(enemy_type)
-	enemy_type_pool.shuffle()
-	
 	await get_tree().create_timer(2.0).timeout
-	var main : Main = get_tree().get_first_node_in_group("main") as Main
+	main = get_tree().get_first_node_in_group("main") as Main
 	if main.active_level != null &&\
 	   main.active_level.enable_main_menu_mode == false:
 		player = main.active_level.player
@@ -43,7 +34,7 @@ func spawn_enemies() -> void:
 	
 	for i in positions.size():
 		var enemy : Enemy = tscn_enemy.instantiate()
-		enemy.init_enemy(enemy_type_pool.pick_random())
+		enemy.init_enemy(main.enemy_type_pool.pick_random())
 		enemy.position = positions[i]
 		existing_enemy_list.append(enemy)
 		add_child(enemy)
@@ -53,7 +44,6 @@ func spawn_item_chest() -> void:
 	if points.size() != 2:
 		return
 		
-	var owner_platform : Platform2D = owner as Platform2D
 	var positions : Array[Vector2] = _calculate_spawn_positions(1)
 	
 	for i in positions.size():
@@ -82,9 +72,3 @@ func _calculate_spawn_positions(spawn_number : int) -> Array[Vector2]:
 		positions.append(Vector2(path_length * (float(i) / (spawn_number * 2)), position_y))
 		
 	return positions
-	
-	
-func add_enemy_to_pool(enemy_type : Enums.EEnemyType, number : int) -> void:
-	for i in range(number):
-		enemy_type_pool.append(enemy_type)
-

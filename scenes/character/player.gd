@@ -44,12 +44,12 @@ var running : bool = false
 var jump_peak_time : float = 0.5
 var jump_fall_time : float = 0.5
 var jump_height : float = 2.0
-# For item: DoubleJump
+# For store item
 var can_double_jump : bool = false
-# For item: Better
+var offset : float = 160.0
 var better : bool = false
 var huge : bool = false
-var one_attack_count : int = 0
+var one_attack : bool = false
 var movement_speed : float = 300.0
 var player_jump_position : Vector2
 var has_double_jump : bool = false
@@ -67,7 +67,7 @@ func _ready() -> void:
 	$VisibleOnScreenNotifier2D.show()
 	$HpNumber.hp = start_hp
 	$HpNumber.connect("hp_updated", _on_hp_updated)
-	level = get_tree().get_first_node_in_group("level") as Level
+	level = get_tree().get_first_node_in_group("main").active_level
 	_calculate_movement_parameters()
 
 
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	if running == false:
 		return
 	
-	position.x = 160.0
+	position.x = offset
 
 	if velocity.y > 0.0:
 		velocity.y += fall_gravity * delta
@@ -204,13 +204,21 @@ func attack(enemy : Enemy) -> void:
 	if enemy == null:
 		return
 	
+	if one_attack:
+		player_state = attack_state_pool.pick_random()
+		hp_number.add_hp(enemy)
+		enemy.die()
+		one_attack = false
+		return
+	
 	if get_hp() > enemy.get_hp():
 		player_state = attack_state_pool.pick_random()
 		hp_number.add_hp(enemy)
 		enemy.die()
 	elif get_hp() < enemy.get_hp():
-		player_state = EPlayerState.Dead
-		die()
+		player_state = attack_state_pool.pick_random()
+		hp_number.add_hp(enemy)
+		enemy.die()
 	else:
 		judge(enemy)
 		
@@ -295,4 +303,41 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	
 func become_huge() -> void:
-	pass
+	scale *= 3
+	
+	
+func apply_item_effect(store_item : StoreItem) -> void:
+	print_debug(store_item, store_item.type, store_item.data.item_name)
+	if store_item.type == Enums.EItemType.DoubleJump:
+		store_item.count -= 1
+		level.double_jump_count -= 1
+		can_double_jump = true
+	elif store_item.type == Enums.EItemType.SpeedUp:
+		store_item.count -= 1
+		level.speed_up_count -= 1
+		movement_speed += 20.0
+	elif store_item.type == Enums.EItemType.Better:
+		store_item.count -= 1
+		level.better_count -= 1
+		better = true
+	elif store_item.type == Enums.EItemType.Huge:
+		store_item.count -= 1
+		level.huge_count -= 1
+		become_huge()
+	elif store_item.type == Enums.EItemType.Luck:
+		store_item.count -= 1
+		level.luck_count -= 1
+		var main : Main = get_tree().get_first_node_in_group("main")
+		main.add_enemy_to_pool(Enums.EEnemyType.Green, 100)
+	elif store_item.type == Enums.EItemType.Overtime:
+		store_item.count -= 1
+		level.overtime_count -= 1
+		level.time_60s += 2
+	elif store_item.type == Enums.EItemType.OneAttack:
+		store_item.count -= 1
+		level.one_attack_count -= 1
+		one_attack = true
+	elif store_item.type == Enums.EItemType.Retreat:
+		store_item.count -= 1
+		level.restreat_count -= 1
+		offset = 100.0

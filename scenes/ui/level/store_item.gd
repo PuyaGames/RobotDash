@@ -3,7 +3,7 @@ extends Button
 class_name StoreItem
 
 
-signal clicked
+signal clicked(store_item : StoreItem)
 
 
 @export var type : Enums.EItemType = Enums.EItemType.SpeedUp:
@@ -51,4 +51,4 @@ func _update_store_item() -> void:
 
 
 func _on_button_up() -> void:
-	clicked.emit()
+	clicked.emit(self)

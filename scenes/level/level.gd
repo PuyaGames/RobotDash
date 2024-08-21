@@ -54,9 +54,10 @@ func clear_all_reward_video_ad_signal() -> void:
 		GodotTDS.disconnect(dict["signal"].get_name(), dict["callable"])
 	
 	
-func _on_banner_ad_return(code : int, msg : String) -> void:
-	GodotTDS.show_banner_ad()
-	GodotTDS.on_banner_ad_return.disconnect(_on_banner_ad_return)
+func _on_banner_ad_return(code : int, _msg : String) -> void:
+	if code == GodotTDS.StateCode.AD_BANNER_LOAD_SUCCESS:
+		GodotTDS.show_banner_ad()
+		GodotTDS.on_banner_ad_return.disconnect(_on_banner_ad_return)
 	
 
 func _process(delta: float) -> void:

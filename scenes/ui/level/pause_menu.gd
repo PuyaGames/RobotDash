@@ -14,6 +14,14 @@ signal on_continue
 @onready var tab_container : TabContainer = $Panel/VBoxContainer/TabContainer
 @onready var music_button: Button = $Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/MusicButton
 @onready var sound_button: Button = $Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/SoundButton
+@onready var item_speed_up: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/SpeedUp
+@onready var item_better: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Better
+@onready var item_huge: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Huge
+@onready var item_luck: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Luck
+@onready var item_overtime: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Overtime
+@onready var item_one_attack: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/OneAttack
+@onready var item_restreat: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Restreat
+@onready var item_double_jump: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/DoubleJump
 
 var music_enabled : bool = true
 var sound_enabled : bool = true
@@ -30,6 +38,16 @@ func _ready() -> void:
 	settings_button.disabled = true
 	settings_label.add_theme_color_override(
 		"font_color", Color.from_string("65676b", Color.BLACK))
+	
+	# Set store item count
+	item_speed_up.count = main.active_level.speed_up_count
+	item_better.count = main.active_level.better_count
+	item_huge.count = main.active_level.huge_count
+	item_double_jump.count = main.active_level.double_jump_count
+	item_luck.count = main.active_level.luck_count
+	item_overtime.count = main.active_level.overtime_count
+	item_one_attack.count = main.active_level.one_attack_count
+	item_restreat.count = main.active_level.restreat_count
 	
 	if store_opened:
 		open_store()

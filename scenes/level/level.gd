@@ -23,7 +23,7 @@ var time_60s : int = 60:
 		$CanvasLayer/TopPanel/Time.text = str(new_value)
 
 # For item
-var speed_up_count : int = 1
+var speed_up_count : int = 2
 var better_count : int = 1
 var huge_count : int = 1
 var double_jump_count : int = 1

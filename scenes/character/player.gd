@@ -48,6 +48,8 @@ var jump_height : float = 2.0
 var can_double_jump : bool = false
 # For item: Better
 var better : bool = false
+var huge : bool = false
+var one_attack_count : int = 0
 var movement_speed : float = 300.0
 var player_jump_position : Vector2
 var has_double_jump : bool = false
@@ -290,3 +292,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 		
 	attack(enemy)
+	
+	
+func become_huge() -> void:
+	pass

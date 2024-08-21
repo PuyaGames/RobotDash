@@ -212,7 +212,6 @@ layout_mode = 2
 
 [node name="Better" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
-type = 1
 
 [node name="Huge" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2

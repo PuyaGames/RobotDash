@@ -34,6 +34,7 @@ enum EPlayerType
 
 enum EItemType
 {
+	None,
 	SpeedUp,
 	Better,
 	Huge,

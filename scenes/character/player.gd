@@ -45,6 +45,7 @@ var jump_peak_time : float = 0.5
 var jump_fall_time : float = 0.5
 var jump_height : float = 2.0
 # For store item
+var can_jump : bool = true
 var can_double_jump : bool = false
 var offset : float = 160.0
 var better : bool = false
@@ -167,6 +168,9 @@ func set_shove_state() -> void:
 
 
 func jump() -> void:
+	if can_jump == false:
+		return
+	
 	if player_state == EPlayerState.Run:
 		set_jump_state()
 		player_jump_position = position
@@ -174,6 +178,9 @@ func jump() -> void:
 
 
 func double_jump() -> void:
+	if can_jump == false:
+		return
+	
 	set_double_jump_state()
 	velocity.y = jump_velocity
 	has_double_jump = true
@@ -204,7 +211,7 @@ func attack(enemy : Enemy) -> void:
 	if enemy == null:
 		return
 	
-	if one_attack:
+	if one_attack or huge:
 		player_state = attack_state_pool.pick_random()
 		hp_number.add_hp(enemy)
 		enemy.die()
@@ -281,8 +288,6 @@ func stop_running() -> void:
 	
 	
 func _on_hp_updated(new_hp : int) -> void:
-	if new_hp == 0:
-		die()
 	if new_hp >= next_speed_level * 10.0:
 		movement_speed += 20.0
 		next_speed_level += 1
@@ -303,7 +308,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	
 func become_huge() -> void:
-	scale *= 3
+	scale = Vector2(5.0, 5.0)
+	huge = true
+	can_jump = false
+	set_collision_mask_value(4, false)
+	get_tree().create_timer(2).timeout.connect(become_normal)
+	
+	
+func become_normal() -> void:
+	scale = Vector2(1.0, 1.0)
+	can_jump = true
+	set_collision_mask_value(4, true)
 	
 	
 func apply_item_effect(store_item : StoreItem) -> void:

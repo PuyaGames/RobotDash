@@ -8,6 +8,7 @@
 size = Vector2(1939.71, 93.4247)
 
 [node name="Terrain" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_qmut3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

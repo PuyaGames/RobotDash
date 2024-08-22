@@ -150,5 +150,5 @@ func _watch_reward_video() -> void:
 func _on_reward_video_ad_return(code : int, _msg : String) -> void:
 	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_COMPLETED ||\
 	   code == GodotTDS.StateCode.AD_REWARD_VIDEO_SKIPPED:
-		player.apply_item_effect(_selected_store_item)
+		purchased_item_list.append(_selected_store_item)
 		

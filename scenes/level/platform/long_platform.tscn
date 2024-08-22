@@ -12,6 +12,7 @@ region = Rect2(0, 984, 640, 32)
 size = Vector2(640, 32)
 
 [node name="LongPlatform" instance=ExtResource("1_33fpo")]
+collision_layer = 8
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_hv7la")

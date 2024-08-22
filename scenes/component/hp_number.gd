@@ -9,8 +9,6 @@ signal hp_updated(new_hp : int)
 
 var hp : int = 100:
 	set(new_value):
-		if owner is Player and new_value <= 0:
-			new_value = 0
 		hp = new_value
 		$Label.text = str(new_value)
 		

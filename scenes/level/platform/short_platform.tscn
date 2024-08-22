@@ -12,6 +12,7 @@ region = Rect2(0, 984, 320, 32)
 size = Vector2(320, 32)
 
 [node name="ShortPlatform" instance=ExtResource("1_dtfx1")]
+collision_layer = 8
 type = 1
 
 [node name="Sprite2D" parent="." index="0"]

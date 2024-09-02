@@ -4,6 +4,7 @@ class_name UI_ChestMenu
 
 @export var click_sound : AudioStream
 
+@onready var store_item_1: StoreItem = $Panel/VBoxContainer/StoreItem1
 @onready var store_item_2: StoreItem = $Panel/VBoxContainer/StoreItem2
 
 var main : Main
@@ -49,9 +50,9 @@ func _exit_tree() -> void:
 func _on_reward_video_ad_return(code : int, _msg : String) -> void:
 	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_COMPLETED ||\
 	   code == GodotTDS.StateCode.AD_REWARD_VIDEO_SKIPPED:
-		player.set_run_state()
-		player.can_double_jump = true
+		player.apply_item_effect(store_item_1)
 		player.apply_item_effect(store_item_2)
+		level.show_hint()
 		queue_free()
 	elif code == GodotTDS.StateCode.AD_REWARD_VIDEO_LOAD_FAIL:
 		player.set_run_state()

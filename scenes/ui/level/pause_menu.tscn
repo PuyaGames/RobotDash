@@ -214,29 +214,25 @@ layout_mode = 2
 layout_mode = 2
 type = 2
 
-[node name="Huge" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+[node name="DoubleJump" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
 type = 3
 
-[node name="DoubleJump" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+[node name="Luck" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
 type = 4
 
-[node name="Luck" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+[node name="Overtime" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
 type = 5
 
-[node name="Overtime" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
+[node name="OneAttack" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
 type = 6
 
-[node name="OneAttack" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
-layout_mode = 2
-type = 7
-
 [node name="Restreat" parent="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer" instance=ExtResource("4_fuw22")]
 layout_mode = 2
-type = 8
+type = 7
 
 [node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
@@ -260,7 +256,6 @@ icon_alignment = 2
 [connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/SpeedUp" to="." method="_on_store_item_clicked"]
 [connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Better" to="." method="_on_store_item_clicked"]
 [connection signal="renamed" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Better" to="." method="_on_store_item_clicked"]
-[connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Huge" to="." method="_on_store_item_clicked"]
 [connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/DoubleJump" to="." method="_on_store_item_clicked"]
 [connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Luck" to="." method="_on_store_item_clicked"]
 [connection signal="clicked" from="Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Overtime" to="." method="_on_store_item_clicked"]

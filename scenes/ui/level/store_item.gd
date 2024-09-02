@@ -6,12 +6,15 @@ class_name StoreItem
 signal clicked(store_item : StoreItem)
 
 
+@export var click_sound : AudioStream
+
 @export var type : Enums.EItemType = Enums.EItemType.SpeedUp:
 	set(new_value):
 		type = new_value
 		_update_store_item()
 		
-
+const press_threshold : float = 20.0
+var button_clicked_position : Vector2 = Vector2()
 var data : ItemData
 var count : int = 1:
 	set(new_value):
@@ -31,8 +34,6 @@ func _update_store_item() -> void:
 		data = load("res://resources/ui/item/speed_up.tres")
 	elif type == Enums.EItemType.Better:
 		data = load("res://resources/ui/item/better.tres")
-	elif type == Enums.EItemType.Huge:
-		data = load("res://resources/ui/item/huge.tres")
 	elif type == Enums.EItemType.DoubleJump:
 		data = load("res://resources/ui/item/double_jump.tres")
 	elif type == Enums.EItemType.Luck:
@@ -43,6 +44,8 @@ func _update_store_item() -> void:
 		data = load("res://resources/ui/item/one_attack.tres")
 	elif type == Enums.EItemType.Retreat:
 		data = load("res://resources/ui/item/retreat.tres")
+	else:
+		return
 		
 	$Icon.texture = data.icon_tex
 	$Name.text = data.item_name
@@ -51,4 +54,10 @@ func _update_store_item() -> void:
 
 
 func _on_button_up() -> void:
-	clicked.emit(self)
+	if get_local_mouse_position().distance_squared_to(button_clicked_position) < press_threshold:
+		SoundManager.play_sound(click_sound)
+		clicked.emit(self)
+
+
+func _on_button_down() -> void:
+	button_clicked_position = get_local_mouse_position()

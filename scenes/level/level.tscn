@@ -79,7 +79,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hint")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -87,7 +87,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"show"
+"method": &"_show_hint"
 }]
 }
 
@@ -234,10 +234,67 @@ texture_normal = SubResource("AtlasTexture_x58eo")
 stretch_mode = 0
 metadata/_edit_group_ = true
 
+[node name="StatePanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 188.0
+offset_bottom = 228.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n667b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatePanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_bottom = 92.0
+grow_horizontal = 0
+
+[node name="DoubleJump" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 双重跳跃"
+
+[node name="Better" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 略胜一筹"
+
+[node name="Luck" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 幸运碎片"
+
+[node name="OneAttack" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 致命一击"
+
+[node name="Overtime" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 时间宝石"
+
+[node name="Retreat" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 冷静思考"
+
+[node name="SpeedUp" type="Label" parent="CanvasLayer/StatePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0 x 速度提升"
+
 [node name="Hint" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HintButton" type="Button" parent="Hint"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -245,6 +302,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
+disabled = true
 text = "单击屏幕开始"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

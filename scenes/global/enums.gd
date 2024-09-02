@@ -37,7 +37,6 @@ enum EItemType
 	None,
 	SpeedUp,
 	Better,
-	Huge,
 	DoubleJump,
 	Luck,
 	Overtime,

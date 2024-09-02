@@ -16,7 +16,6 @@ signal on_continue
 @onready var sound_button: Button = $Panel/VBoxContainer/TabContainer/Settings/VBoxContainer/SoundButton
 @onready var item_speed_up: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/SpeedUp
 @onready var item_better: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Better
-@onready var item_huge: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Huge
 @onready var item_luck: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Luck
 @onready var item_overtime: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/Overtime
 @onready var item_one_attack: StoreItem = $Panel/VBoxContainer/TabContainer/Shop/ScrollContainer/VBoxContainer/OneAttack
@@ -51,7 +50,6 @@ func _ready() -> void:
 	# Set store item count
 	item_speed_up.count = main.active_level.speed_up_count
 	item_better.count = main.active_level.better_count
-	item_huge.count = main.active_level.huge_count
 	item_double_jump.count = main.active_level.double_jump_count
 	item_luck.count = main.active_level.luck_count
 	item_overtime.count = main.active_level.overtime_count
@@ -150,5 +148,5 @@ func _watch_reward_video() -> void:
 func _on_reward_video_ad_return(code : int, _msg : String) -> void:
 	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_COMPLETED ||\
 	   code == GodotTDS.StateCode.AD_REWARD_VIDEO_SKIPPED:
-		purchased_item_list.append(_selected_store_item)
+		player.apply_item_effect(_selected_store_item)
 		

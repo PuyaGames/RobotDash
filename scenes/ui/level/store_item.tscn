@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cithfjyabe6e5"]
+[gd_scene load_steps=5 format=3 uid="uid://cithfjyabe6e5"]
 
 [ext_resource type="Script" path="res://scenes/ui/level/store_item.gd" id="1_mcqf8"]
+[ext_resource type="AudioStream" uid="uid://cstp1n3nro7o0" path="res://assets/audios/sounds/glass_006.ogg" id="2_3jvy5"]
 [ext_resource type="Texture2D" uid="uid://8fw4p6f8x54i" path="res://assets/textures/character/enemy_spritesheet.png" id="2_n1idw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ugy2"]
@@ -13,6 +14,7 @@ custom_minimum_size = Vector2(600, 120)
 focus_mode = 0
 mouse_filter = 1
 script = ExtResource("1_mcqf8")
+click_sound = ExtResource("2_3jvy5")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -78,4 +80,5 @@ theme_override_font_sizes/font_size = 30
 text = "移动速度 + 20"
 vertical_alignment = 1
 
+[connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

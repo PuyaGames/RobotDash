@@ -78,7 +78,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_0q4ea")
 [node name="StoreItem1" parent="Panel/VBoxContainer" instance=ExtResource("3_52w8y")]
 layout_mode = 2
 disabled = true
-type = 4
+type = 3
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

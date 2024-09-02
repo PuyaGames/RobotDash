@@ -25,12 +25,19 @@ var time_60s : int = 60:
 # For item
 var speed_up_count : int = 2
 var better_count : int = 1
-var huge_count : int = 1
 var double_jump_count : int = 1
 var luck_count : int = 1
 var overtime_count : int = 1
 var one_attack_count : int = 1
 var restreat_count : int = 1
+
+@onready var double_jump_state : Label = $CanvasLayer/StatePanel/VBoxContainer/DoubleJump
+@onready var better_state : Label = $CanvasLayer/StatePanel/VBoxContainer/Better
+@onready var luck_state : Label = $CanvasLayer/StatePanel/VBoxContainer/Luck
+@onready var one_attack_state : Label = $CanvasLayer/StatePanel/VBoxContainer/OneAttack
+@onready var overtime_state : Label = $CanvasLayer/StatePanel/VBoxContainer/Overtime
+@onready var retreat_state : Label = $CanvasLayer/StatePanel/VBoxContainer/Retreat
+@onready var speed_up_state : Label = $CanvasLayer/StatePanel/VBoxContainer/SpeedUp
 
 
 func _ready() -> void:
@@ -165,3 +172,12 @@ func _on_store_button_button_down() -> void:
 	store_button_clicked = true
 	$CanvasLayer/TopPanel/PauseButton.button_pressed = true
 	SoundManager.play_sound(click_sound)
+	
+	
+func _show_hint() -> void:
+	$Hint/HintButton.disabled = false
+	$Hint/HintButton.modulate = Color.WHITE
+	
+	
+func show_hint() -> void:
+	$Hint.show()

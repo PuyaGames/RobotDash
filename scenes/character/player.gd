@@ -49,7 +49,6 @@ var can_jump : bool = true
 var can_double_jump : bool = false
 var offset : float = 160.0
 var better : bool = false
-var huge : bool = false
 var one_attack : bool = false
 var movement_speed : float = 300.0
 var player_jump_position : Vector2
@@ -211,11 +210,12 @@ func attack(enemy : Enemy) -> void:
 	if enemy == null:
 		return
 	
-	if one_attack or huge:
+	if one_attack:
 		player_state = attack_state_pool.pick_random()
 		hp_number.add_hp(enemy)
 		enemy.die()
 		one_attack = false
+		level.one_attack_state.text = "0 x 致命一击"
 		return
 	
 	if get_hp() > enemy.get_hp():
@@ -223,9 +223,7 @@ func attack(enemy : Enemy) -> void:
 		hp_number.add_hp(enemy)
 		enemy.die()
 	elif get_hp() < enemy.get_hp():
-		player_state = attack_state_pool.pick_random()
-		hp_number.add_hp(enemy)
-		enemy.die()
+		die()
 	else:
 		judge(enemy)
 		
@@ -307,14 +305,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	attack(enemy)
 	
 	
-func become_huge() -> void:
-	scale = Vector2(5.0, 5.0)
-	huge = true
-	can_jump = false
-	set_collision_mask_value(4, false)
-	get_tree().create_timer(2).timeout.connect(become_normal)
-	
-	
 func become_normal() -> void:
 	scale = Vector2(1.0, 1.0)
 	can_jump = true
@@ -327,32 +317,38 @@ func apply_item_effect(store_item : StoreItem) -> void:
 		store_item.count -= 1
 		level.double_jump_count -= 1
 		can_double_jump = true
+		level.double_jump_state.text = "1 x 双重跳跃"
 	elif store_item.type == Enums.EItemType.SpeedUp:
 		store_item.count -= 1
 		level.speed_up_count -= 1
 		movement_speed += 20.0
+		if level.speed_up_count == 0:
+			level.speed_up_state.text = "2 x 速度提升"
+		else:
+			level.speed_up_state.text = "1 x 速度提升"
 	elif store_item.type == Enums.EItemType.Better:
 		store_item.count -= 1
 		level.better_count -= 1
 		better = true
-	elif store_item.type == Enums.EItemType.Huge:
-		store_item.count -= 1
-		level.huge_count -= 1
-		become_huge()
+		level.better_state.text = "1 x 略胜一筹"
 	elif store_item.type == Enums.EItemType.Luck:
 		store_item.count -= 1
 		level.luck_count -= 1
 		var main : Main = get_tree().get_first_node_in_group("main")
 		main.add_enemy_to_pool(Enums.EEnemyType.Green, 100)
+		level.luck_state.text = "1 x 幸运碎片"
 	elif store_item.type == Enums.EItemType.Overtime:
 		store_item.count -= 1
 		level.overtime_count -= 1
 		level.time_60s += 2
+		level.overtime_state.text = "1 x 时间宝石"
 	elif store_item.type == Enums.EItemType.OneAttack:
 		store_item.count -= 1
 		level.one_attack_count -= 1
 		one_attack = true
+		level.one_attack_state.text = "1 x 致命一击"
 	elif store_item.type == Enums.EItemType.Retreat:
 		store_item.count -= 1
 		level.restreat_count -= 1
 		offset = 100.0
+		level.one_attack_state.text = "1 x 冷静思考"

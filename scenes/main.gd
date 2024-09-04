@@ -29,6 +29,7 @@ var sound_enabled : bool = true:
 func _ready() -> void:
 	GodotTDS.load_interstitial_ad(1038040)
 	GodotTDS.on_interstitial_ad_return.connect(_on_interstitial_ad_return)
+	GodotTDS.on_reward_video_ad_return.connect(_on_update_reward_video_ad_count)
 	ResourceLoader.load_threaded_request(Paths.tscn_main_menu)
 	SoundManager.set_default_music_bus("Music")
 	SoundManager.set_default_ui_sound_bus("UI")
@@ -41,6 +42,11 @@ func _ready() -> void:
 		for i in range(value * 100):
 			enemy_type_pool.append(enemy_type)
 	enemy_type_pool.shuffle()
+
+
+func _on_update_reward_video_ad_count(code : int, _msg : String) -> void:
+	if code == GodotTDS.StateCode.AD_REWARD_VIDEO_SHOWN:
+		GodotTDS.reach_achievement("robot_dash_06")
 
 
 func _on_interstitial_ad_return(code : int, _msg : String) -> void:

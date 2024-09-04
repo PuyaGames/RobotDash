@@ -222,6 +222,7 @@ func attack(enemy : Enemy) -> void:
 		player_state = attack_state_pool.pick_random()
 		hp_number.add_hp(enemy)
 		enemy.die()
+		GodotTDS.grow_achievement_steps("robot_dash_04")
 	elif get_hp() < enemy.get_hp():
 		die()
 	else:
@@ -276,6 +277,9 @@ func judge(faced_enemy : Enemy) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	if position.y < 0.0:
+		GodotTDS.reach_achievement("robot_dash_01")
+	
 	if player_state == EPlayerState.Dead:
 		player_state = EPlayerState.Idle
 		
